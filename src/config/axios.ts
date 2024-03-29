@@ -14,20 +14,13 @@ export const getAccess = (): string =>
 
 //Refresh
 const storageRefreshKey = "ZOO_JWT_REFRESH";
-let isStored: boolean = true;
 
-export const storeRefresh = (auto: boolean, token: string): void => {
-  isStored = auto;
-  if (isStored) localStorage.setItem(storageRefreshKey, token);
-  else sessionStorage.setItem(storageRefreshKey, token);
+export const storeRefresh = (token: string): void => {
+  localStorage.setItem(storageRefreshKey, token);
 };
 export const removeRefresh = (): void => {
   localStorage.removeItem(storageRefreshKey);
-  sessionStorage.removeItem(storageRefreshKey);
 };
 export const getRefresh = (): string | null => {
-  return (
-    localStorage.getItem(storageRefreshKey) ??
-    sessionStorage.getItem(storageRefreshKey)
-  );
+  return localStorage.getItem(storageRefreshKey);
 };
