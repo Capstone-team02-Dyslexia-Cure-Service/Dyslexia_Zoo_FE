@@ -1,7 +1,7 @@
 declare namespace User {
   //DTO
   export interface SignInReqDto {
-    email: string;
+    name: string;
     password: string;
   }
 

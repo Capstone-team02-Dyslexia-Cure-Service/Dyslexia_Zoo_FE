@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 const SignInPage = () => {
   const { control, handleSubmit } = useForm<User.SignInReqDto>({
     defaultValues: {
-      email: "",
+      name: "",
       password: "",
     },
   });
@@ -17,19 +17,14 @@ const SignInPage = () => {
     <>
       <SignInForm onSubmit={handleSubmit(onSubmit)}>
         <Controller
-          name="email"
+          name="name"
           control={control}
           render={({ field }) => (
-            <TextField
-              type="email"
-              label="이메일"
-              variant="outlined"
-              {...field}
-            />
+            <TextField type="name" label="이름" variant="outlined" {...field} />
           )}
         />
         <Controller
-          name="email"
+          name="password"
           control={control}
           render={({ field }) => (
             <TextField
@@ -57,7 +52,11 @@ const SignInForm = styled.form`
 `;
 
 const MainImg = styled.img`
-  width: 500px;
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, 0%);
 `;
 
 export default SignInPage;
