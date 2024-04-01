@@ -1,4 +1,4 @@
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 import { Controller, useForm } from "react-hook-form";
 
 import TextField from "@mui/material/TextField";
@@ -20,14 +20,24 @@ const SignInPage = () => {
           name="email"
           control={control}
           render={({ field }) => (
-            <TextField type="email" placeholder="이메일" {...field} />
+            <TextField
+              type="email"
+              label="이메일"
+              variant="outlined"
+              {...field}
+            />
           )}
         />
         <Controller
           name="email"
           control={control}
           render={({ field }) => (
-            <TextField type="password" placeholder="qlalfqjsgh" {...field} />
+            <TextField
+              type="password"
+              label="비밀번호"
+              variant="outlined"
+              {...field}
+            />
           )}
         />
         <Button type="submit" variant="contained">
