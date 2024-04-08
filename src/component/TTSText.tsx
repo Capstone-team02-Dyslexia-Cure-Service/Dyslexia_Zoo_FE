@@ -1,8 +1,7 @@
-import styled from "@emotion/styled/macro";
-import { useCallback } from "react";
+import styled from "@emotion/styled";
 
-const TTSText = (text: string) => {
-  const speech = useCallback((text: string) => {
+const TTSText = ({ text }: { text: string }) => {
+  const speech = (text: string) => {
     let voices: SpeechSynthesisVoice[] = [];
 
     //디바이스에 내장된 voice를 가져온다.
@@ -36,7 +35,7 @@ const TTSText = (text: string) => {
     };
 
     speech(text);
-  }, []);
+  };
 
   const clickHandler = () => {
     speech(text);
@@ -47,6 +46,10 @@ const TTSText = (text: string) => {
 
 const Text = styled.div`
   size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `;
 
 export default TTSText;

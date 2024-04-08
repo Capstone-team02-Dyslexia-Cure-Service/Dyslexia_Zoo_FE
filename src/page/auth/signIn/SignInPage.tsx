@@ -3,6 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import TTSText from "@/component/TTSText";
 
 const SignInPage = () => {
   const { control, handleSubmit } = useForm<User.SignInReqDto>({
@@ -15,6 +16,7 @@ const SignInPage = () => {
   const onSubmit = () => {};
   return (
     <>
+      <TTSText text={"정상제 중간고사 망했죠?"} />
       <SunImg src="/img/sun.png" alt="signin_logo" />
       <SignInForm onSubmit={handleSubmit(onSubmit)}>
         <Controller
