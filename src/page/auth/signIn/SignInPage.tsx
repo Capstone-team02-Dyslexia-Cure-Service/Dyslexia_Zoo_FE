@@ -16,7 +16,7 @@ const SignInPage = () => {
   const onSubmit = () => {};
   return (
     <>
-      <TTSText text={"정상제 중간고사 망했죠?"} />
+      <TTSText text={"텍스트"} />
       <SunImg src="/img/sun.png" alt="signin_logo" />
       <SignInForm onSubmit={handleSubmit(onSubmit)}>
         <Controller
