@@ -7,4 +7,6 @@ export const Background = styled.img`
 
   width: 100%;
   height: 100%;
+
+  z-index: -1;
 `;

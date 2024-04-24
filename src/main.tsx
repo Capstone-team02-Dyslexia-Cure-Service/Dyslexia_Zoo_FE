@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM from "react-dom/client";
 
 import PageRouter from "./PageRouter";
 
@@ -11,12 +11,6 @@ async function enableMocking() {
   const { worker } = await import("./mock/browser");
   return worker.start();
 }
-
 enableMocking().then(() => {
-  render(
-    <React.StrictMode>
-      <PageRouter />
-    </React.StrictMode>,
-    document.getElementById("root")
-  );
+  ReactDOM.createRoot(document.getElementById("root")!).render(<PageRouter />);
 });
