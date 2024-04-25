@@ -16,6 +16,7 @@ export const speech = (text: string) => {
     const lang = "ko-KR";
     const utterThis = new SpeechSynthesisUtterance(text);
 
+    utterThis.rate = 0.6;
     utterThis.lang = lang;
 
     const kor_voice = voices.find(
