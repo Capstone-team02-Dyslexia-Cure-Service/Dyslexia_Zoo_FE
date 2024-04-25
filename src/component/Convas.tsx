@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import styled from "@emotion/styled";
 
 const Convas = () => {
   // useRef
@@ -11,11 +12,11 @@ const Convas = () => {
   useEffect(() => {
     // canvas useRef
     const canvas = canvasRef.current;
-    canvas!.width = 650;
-    canvas!.height = 540;
+    canvas!.width = 400;
+    canvas!.height = 150;
     const ctx = canvas!.getContext("2d");
     ctx!.lineJoin = "round";
-    ctx!.lineWidth = 2.5;
+    ctx!.lineWidth = 1;
     ctx!.strokeStyle = "#000000";
     setGetCtx(ctx);
   }, []);
@@ -35,19 +36,21 @@ const Convas = () => {
   };
 
   return (
-    <div className="view">
-      <div className="canvasWrap">
-        <canvas
-          className="canvas"
-          ref={canvasRef}
-          onMouseDown={() => setPainting(true)}
-          onMouseUp={() => setPainting(false)}
-          onMouseMove={drawFn}
-          onMouseLeave={() => setPainting(false)}
-        ></canvas>
-      </div>
-    </div>
+    <Canvas
+      ref={canvasRef}
+      onMouseDown={() => setPainting(true)}
+      onMouseUp={() => setPainting(false)}
+      onMouseMove={drawFn}
+      onMouseLeave={() => setPainting(false)}
+    />
   );
 };
+
+const Canvas = styled.canvas`
+  background-color: white;
+
+  border: 3px red solid;
+  border-radius: 5px;
+`;
 
 export default Convas;

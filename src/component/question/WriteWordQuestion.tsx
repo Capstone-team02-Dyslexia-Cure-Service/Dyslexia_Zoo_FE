@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
-import TTSText from "@/component/TTSText";
 import HeadphonesIcon from "@mui/icons-material/Headphones";
 
 import { speech } from "../function/speech";
 
+import TTSText from "@/component/TTSText";
 import { QuestionContainer, RowContainer } from "../Container";
+import Convas from "../Convas";
 
 const WriteWordQuestion = ({ content }: { content: string }) => {
   return (
@@ -19,6 +20,7 @@ const WriteWordQuestion = ({ content }: { content: string }) => {
             speech(content);
           }}
         />
+        <Convas />
       </RowContainer>
     </QuestionContainer>
   );
