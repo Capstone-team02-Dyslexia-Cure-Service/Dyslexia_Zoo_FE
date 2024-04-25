@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const QuestionContainer = styled(Container)`
-  flex-direction: row;
+  flex-direction: column;
 
   width: 800px;
   height: 270px;

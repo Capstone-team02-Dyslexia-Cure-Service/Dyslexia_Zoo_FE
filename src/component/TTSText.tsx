@@ -1,12 +1,24 @@
 import styled from "@emotion/styled";
 import { speech } from "./function/speech";
 
-const TTSText = ({ text }: { text: string }) => {
+const TTSText = ({
+  text,
+  style,
+}: {
+  text: string;
+  style?: React.CSSProperties;
+}) => {
   const clickHandler = () => {
     speech(text);
   };
 
-  return <Text onClick={clickHandler}>{text}</Text>;
+  return style ? (
+    <Text onClick={clickHandler} style={style}>
+      {text}
+    </Text>
+  ) : (
+    <Text onClick={clickHandler}>{text}</Text>
+  );
 };
 
 const Text = styled.div`

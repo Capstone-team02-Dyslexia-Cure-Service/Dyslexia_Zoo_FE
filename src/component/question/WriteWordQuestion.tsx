@@ -9,8 +9,15 @@ import { QuestionContainer } from "../Container";
 const WriteWordQuestion = ({ content }: { content: string }) => {
   return (
     <QuestionContainer>
-      <HeadphonesIcon />
-      <TTSText text={content} />
+      <TTSText
+        text={"단어를 듣고 올바른 철자로 작성해주세요!"}
+        style={{ fontSize: "20px" }}
+      />
+      <HeadphonesIcon
+        onClick={() => {
+          speech(content);
+        }}
+      />
     </QuestionContainer>
   );
 };
