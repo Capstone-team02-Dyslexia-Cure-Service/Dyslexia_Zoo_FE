@@ -14,12 +14,11 @@ export const RowContainer = styled(Container)`
 export const QuestionContainer = styled(Container)`
   flex-direction: column;
 
-  width: 800px;
-  height: 270px;
+  width: 600px;
+  height: 240px;
 
-  border: 3px solid;
-  border-color: gray;
+  border: 3px #0000cd solid;
   border-radius: 5px;
 
-  background-color: white;
+  background-color: #0000cd;
 `;

@@ -13,7 +13,7 @@ const Convas = () => {
     // canvas useRef
     const canvas = canvasRef.current;
     canvas!.width = 400;
-    canvas!.height = 150;
+    canvas!.height = 110;
     const ctx = canvas!.getContext("2d");
     ctx!.lineJoin = "round";
     ctx!.lineWidth = 1;
@@ -49,7 +49,6 @@ const Convas = () => {
 const Canvas = styled.canvas`
   background-color: white;
 
-  border: 3px red solid;
   border-radius: 5px;
 `;
 
