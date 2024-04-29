@@ -20,10 +20,16 @@ declare namespace Question {
 
   //Form type
   export interface ReadWordQuestionFrom {
-    answer: string;
+    id: string;
+    answer: string | undefined;
   }
 
-  export interface BasicTestForm {
-    answers: ReadWordQuestionAnswer[];
+  //Store
+  //문자 쓰기만 가정하고 설계됨. -> ( | )[]으로 변경 예정
+  //문자 쓰기만 가정하고 설계됨. -> answer type 변경 예정
+  export interface TestStore {
+    testAnswers: ReadWordQuestionAnswer[];
+    setIds: (ids: number[]) => void;
+    setTestAnswers: (index: number, answer: string) => void;
   }
 }

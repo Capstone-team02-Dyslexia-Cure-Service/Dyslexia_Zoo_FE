@@ -6,9 +6,16 @@ import TTSText from "@/component/TTSText";
 import { QuestionContainer, RowContainer } from "../Container";
 import { SoundButton, SaveButton } from "../Button";
 
-const WriteWordQuestion = ({ content }: { content: string }) => {
+const WriteWordQuestion = ({
+  content,
+  index,
+}: {
+  content: string;
+  index: number;
+}) => {
   const { register, handleSubmit } = useForm<Question.ReadWordQuestionFrom>();
   const onSubmit: SubmitHandler<Question.ReadWordQuestionFrom> = (data) => {
+    console.log(index);
     console.log(data);
   };
 
