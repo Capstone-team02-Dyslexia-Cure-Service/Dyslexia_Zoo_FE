@@ -1,59 +1,53 @@
-import styled from "@emotion/styled";
-import HeadphonesIcon from "@mui/icons-material/Headphones";
+import { useForm, SubmitHandler } from "react-hook-form";
 
-import { speech } from "../function/speech";
+import styled from "@emotion/styled";
 
 import TTSText from "@/component/TTSText";
-import { QuestionContainer, RowContainer, Container } from "../Container";
-import Convas from "../Convas";
+import { QuestionContainer, RowContainer } from "../Container";
+import { SoundButton, SaveButton } from "../Button";
 
 const WriteWordQuestion = ({ content }: { content: string }) => {
+  const { register, handleSubmit } = useForm<Question.ReadWordQuestionFrom>();
+  const onSubmit: SubmitHandler<Question.ReadWordQuestionFrom> = (data) => {
+    console.log(data);
+  };
+
   return (
-    <QuestionContainer>
+    <QuestionContainer onSubmit={handleSubmit(onSubmit)}>
       <TTSText
-        text={"단어를 듣고 올바른 철자로 작성해주세요!"}
+        text={"단어를 듣고 흰 칸에 올바른 철자로 작성해주세요!"}
         style={{
-          fontSize: "29px",
+          fontSize: "30px",
           fontWeight: "bold",
           color: "white",
           marginBottom: "12px",
         }}
       />
       <RowContainer>
-        <SoundButton>
-          <SoundIcon
-            onClick={() => {
-              speech(content);
-            }}
-          />
-        </SoundButton>
+        <SoundButton content={content} />
+        <AnswerInput {...register("answer")} />
+        <SaveButton onClick={handleSubmit(onSubmit)} />
       </RowContainer>
     </QuestionContainer>
   );
 };
 
-const SoundButton = styled(Container)`
-  background-color: #3232ff;
+const AnswerInput = styled.input`
+  background-color: white;
 
-  width: 110px;
+  width: 400px;
   height: 110px;
 
-  border-radius: 5px;
+  border: 0px white solid;
+  border-left: 5px white solid;
+  border-radius: 7px;
+
+  margin-left: 27px;
   margin-right: 27px;
-  margin-bottom: 2px;
 
-  box-shadow: 6px 8px 2px 0 black;
+  outline: none;
 
-  &:hover {
-    box-shadow: 0 0 0 0 black;
-    margin-bottom: 0px;
-    margin-top: 2px;
-  }
-`;
-
-const SoundIcon = styled(HeadphonesIcon)`
-  color: white;
-  font-size: 100px;
+  font-size: 45px;
 `;
 
 export default WriteWordQuestion;

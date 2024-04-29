@@ -7,14 +7,20 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const RowContainer = styled(Container)`
+export const RowContainer = styled.div`
+  display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const QuestionContainer = styled(Container)`
+export const QuestionContainer = styled.form`
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  width: 600px;
+  width: 750px;
   height: 240px;
 
   border: 3px #0000cd solid;
