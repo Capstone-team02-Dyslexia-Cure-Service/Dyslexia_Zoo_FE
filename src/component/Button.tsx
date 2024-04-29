@@ -7,6 +7,28 @@ import { speech } from "./function/speech";
 
 import { Container } from "./Container";
 
+export const SoundButton = ({ content }: { content: string }) => (
+  <Button>
+    <SoundIcon
+      onClick={() => {
+        speech(content);
+      }}
+    />
+  </Button>
+);
+
+export const SubmitButton = ({ onClick }: { onClick: any }) => (
+  <Button onClick={onClick}>
+    <SubmitIcon />
+  </Button>
+);
+
+export const SaveButton = ({ onClick }: { onClick: any }) => (
+  <Button onClick={onClick}>
+    <SaveIcon />
+  </Button>
+);
+
 const Button = styled(Container)`
   background-color: #3232ff;
 
@@ -39,25 +61,3 @@ const SaveIcon = styled(CheckIcon)`
   color: white;
   font-size: 100px;
 `;
-
-export const SoundButton = ({ content }: { content: string }) => (
-  <Button>
-    <SoundIcon
-      onClick={() => {
-        speech(content);
-      }}
-    />
-  </Button>
-);
-
-export const SubmitButton = ({ onClick }: { onClick: any }) => (
-  <Button onClick={onClick}>
-    <SubmitIcon />
-  </Button>
-);
-
-export const SaveButton = ({ onClick }: { onClick: any }) => (
-  <Button onClick={onClick}>
-    <SaveIcon />
-  </Button>
-);

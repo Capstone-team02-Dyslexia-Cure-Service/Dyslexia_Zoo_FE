@@ -24,14 +24,6 @@ declare namespace Question {
   }
 
   export interface BasicTestForm {
-    answer_1: ReadWordQuestionAnswer;
-    answer_2: ReadWordQuestionAnswer;
-    answer_3: ReadWordQuestionAnswer;
-    answer_4: ReadWordQuestionAnswer;
-    answer_5: ReadWordQuestionAnswer;
-    answer_6: ReadWordQuestionAnswer;
-    answer_7: ReadWordQuestionAnswer;
-    answer_8: ReadWordQuestionAnswer;
-    answer_9: ReadWordQuestionAnswer;
+    answers: ReadWordQuestionAnswer[];
   }
 }
