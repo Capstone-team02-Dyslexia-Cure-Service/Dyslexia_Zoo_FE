@@ -10,7 +10,6 @@ const Convas = () => {
   const [painting, setPainting] = useState(false);
 
   useEffect(() => {
-    // canvas useRef
     const canvas = canvasRef.current;
     canvas!.width = 400;
     canvas!.height = 110;
@@ -22,7 +21,6 @@ const Convas = () => {
   }, []);
 
   const drawFn = (event: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
-    // mouse position
     const mouseX = event.nativeEvent.offsetX;
     const mouseY = event.nativeEvent.offsetY;
     // drawing
@@ -48,7 +46,6 @@ const Convas = () => {
 
 const Canvas = styled.canvas`
   background-color: white;
-
   border-radius: 5px;
 `;
 

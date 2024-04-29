@@ -27,8 +27,6 @@ const WriteWordQuestion = ({ content }: { content: string }) => {
             }}
           />
         </SoundButton>
-
-        <Convas />
       </RowContainer>
     </QuestionContainer>
   );
