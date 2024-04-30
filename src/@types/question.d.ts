@@ -20,8 +20,7 @@ declare namespace Question {
 
   //Form type
   export interface ReadWordQuestionFrom {
-    id: string;
-    answer: string | undefined;
+    answer: string;
   }
 
   //Store
@@ -29,7 +28,7 @@ declare namespace Question {
   //문자 쓰기만 가정하고 설계됨. -> answer type 변경 예정
   export interface TestStore {
     testAnswers: ReadWordQuestionAnswer[];
-    setIds: (ids: number[]) => void;
-    setTestAnswers: (index: number, answer: string) => void;
+    setTest: (test: BasicTestResDto) => void;
+    setTestAnswers: (id: string, answer: string) => void;
   }
 }

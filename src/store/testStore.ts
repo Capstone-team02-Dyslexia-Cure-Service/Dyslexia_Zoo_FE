@@ -5,18 +5,26 @@ const useTestStore = create<Question.TestStore>((set) => ({
   testAnswers: [],
 
   //Set function
-  setTestAnswers: (index: number, answer: string) => {
+  setTestAnswers: (id: string, answer: string) => {
     set((state) => {
-      state.testAnswers[index].answer = answer;
+      state.testAnswers.find((answer) => answer.id === id)!.answer = answer;
 
+      console.log(state);
       return {};
     });
   },
-  setIds: (ids: number[]) => {
+
+  setTest: (test: Question.BasicTestResDto) => {
     set((state) => {
-      ids.map((id, index) => {
-        state.testAnswers[index].id = id;
+      test.questions.map((question) => {
+        if (question.type === "WRITEWORD")
+          state.testAnswers.push({
+            id: question.id,
+            type: question.type,
+            answer: "",
+          });
       });
+
       return {};
     });
   },

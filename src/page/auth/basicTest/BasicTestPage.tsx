@@ -7,7 +7,7 @@ const BasicTestPage = () => {
   return (
     <>
       <Background src="/img/basictest_background.png" alt="background" />
-      <WriteWordQuestion content="문제예시" index={0} />
+      <WriteWordQuestion content="문제예시" id={"1"} />
     </>
   );
 };
