@@ -18,9 +18,9 @@ export const SoundButton = ({ content }: { content: string }) => (
 );
 
 export const SubmitButton = ({ onClick }: { onClick: any }) => (
-  <Button onClick={onClick}>
+  <LargeButton onClick={onClick}>
     <SubmitIcon />
-  </Button>
+  </LargeButton>
 );
 
 export const SaveButton = ({ onClick }: { onClick: any }) => (
@@ -43,6 +43,22 @@ const Button = styled(Container)`
   &:hover {
     box-shadow: 0 0 0 0 black;
     margin-bottom: 0px;
+    margin-top: 2px;
+  }
+`;
+
+const LargeButton = styled(Button)`
+  background-color: #0000cd;
+
+  width: 750px;
+
+  border: 3px #0000cd solid;
+
+  margin-bottom: 32px;
+
+  &:hover {
+    box-shadow: 0 0 0 0 black;
+    margin-bottom: 30px;
     margin-top: 2px;
   }
 `;

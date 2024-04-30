@@ -4,12 +4,15 @@ import styled from "@emotion/styled";
 import WriteWordQuestion from "@/component/question/WriteWordQuestion";
 
 import { Background } from "@/component/Background";
+import { BasicTestContainer } from "@/component/Container";
+import { SubmitButton } from "@/component/Button";
+import TTSText from "@/component/TTSText";
 
 import BasicTestService from "@/service/BasicTestService";
 import useTestStore from "@/store/testStore";
 
 const BasicTestPage = () => {
-  const [getTest] = BasicTestService();
+  const [getTest, submitTestAnswers] = BasicTestService();
   const testContent = useTestStore((state) => state.testContent);
 
   useEffect(() => {
@@ -19,13 +22,30 @@ const BasicTestPage = () => {
   return (
     <>
       <Background src="/img/basictest_background.png" alt="background" />
-      {testContent
-        ? testContent.questions.map(({ id, type, content }) => {
-            return type === "WRITEWORD" ? (
-              <WriteWordQuestion content={content} id={id} />
-            ) : null;
-          })
-        : null}
+      <BasicTestContainer>
+        <TTSText
+          text={"너에 관해서 알려줘!"}
+          style={{
+            fontSize: "60px",
+            fontWeight: "bold",
+            color: "white",
+            marginBottom: "20px",
+          }}
+        />
+        {testContent
+          ? testContent.questions.map(({ id, type, content }) => {
+              return type === "WRITEWORD" ? (
+                <WriteWordQuestion key={id} content={content} id={id} />
+              ) : null;
+            })
+          : null}
+        <SubmitButton
+          onClick={() => {
+            submitTestAnswers();
+          }}
+        />
+      </BasicTestContainer>
+      <></>
     </>
   );
 };

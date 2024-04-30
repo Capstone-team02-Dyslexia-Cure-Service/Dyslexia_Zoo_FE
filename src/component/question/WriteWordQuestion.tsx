@@ -25,9 +25,9 @@ const WriteWordQuestion = ({
   return (
     <QuestionContainer onSubmit={handleSubmit(onSubmit)}>
       <TTSText
-        text={"단어를 듣고 흰 칸에 올바른 철자로 작성해주세요!"}
+        text={"단어를 듣고 흰 칸에 올바른 철자로 작성해줘!"}
         style={{
-          fontSize: "30px",
+          fontSize: "33px",
           fontWeight: "bold",
           color: "white",
           marginBottom: "12px",

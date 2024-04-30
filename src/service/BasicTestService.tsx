@@ -7,6 +7,7 @@ const BasicTestService = () => {
   const URL = "/api/v1/basicTest";
 
   const setTest = useTestStore((state) => state.setTest);
+  const testAnswers = useTestStore((state) => state.testAnswers);
 
   const getTest = async () => {
     const {
@@ -16,7 +17,11 @@ const BasicTestService = () => {
     setTest({ id: id, questions: questions });
   };
 
-  return [getTest];
+  const submitTestAnswers = async () => {
+    console.log(testAnswers);
+  };
+
+  return [getTest, submitTestAnswers];
 };
 
 export default BasicTestService;

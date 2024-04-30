@@ -17,15 +17,12 @@ const useTestStore = create<Question.TestStore>((set) => ({
     set((state) => {
       state.testAnswers.find((answer) => answer.id === id)!.answer = answer;
 
-      console.log(state);
       return {};
     });
   },
 
   setTest: (test: Question.BasicTestResDto) => {
     set((state) => {
-      console.log(test.questions);
-
       state.testContent = test;
       test.questions.map((question) => {
         if (question.type === "WRITEWORD")

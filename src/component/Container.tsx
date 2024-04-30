@@ -21,10 +21,20 @@ export const QuestionContainer = styled.form`
   align-items: center;
 
   width: 750px;
-  height: 240px;
+  height: 220px;
 
   border: 3px #0000cd solid;
   border-radius: 5px;
 
   background-color: #0000cd;
+
+  margin-bottom: 30px;
+`;
+
+export const BasicTestContainer = styled(Container)`
+  position: absolute;
+
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%, 0%);
 `;
