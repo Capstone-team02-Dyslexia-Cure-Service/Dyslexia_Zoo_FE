@@ -27,6 +27,7 @@ declare namespace Question {
   //문자 쓰기만 가정하고 설계됨. -> ( | )[]으로 변경 예정
   //문자 쓰기만 가정하고 설계됨. -> answer type 변경 예정
   export interface TestStore {
+    testContent: BasicTestResDto | undefined;
     testAnswers: ReadWordQuestionAnswer[];
     setTest: (test: BasicTestResDto) => void;
     setTestAnswers: (id: string, answer: string) => void;

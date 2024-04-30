@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Background = styled.img`
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
 

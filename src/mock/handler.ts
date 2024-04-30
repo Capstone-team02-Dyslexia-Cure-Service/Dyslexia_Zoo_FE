@@ -13,7 +13,7 @@ const getBasicTest: ResponseResolver = () => {
 
 const handlers = [
   //basic test
-  http.get("/api/v1/basicTest", getBasicTest),
+  http.get("VITE_SERVER_URL/api/v1/basicTest", getBasicTest),
 ];
 
 export default handlers;

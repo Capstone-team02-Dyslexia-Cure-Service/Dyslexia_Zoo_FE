@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import styled from "@emotion/styled";
@@ -16,25 +15,12 @@ const WriteWordQuestion = ({
   content: string;
   id: string;
 }) => {
-  const { testAnswers, setTest, setTestAnswers } = useTestStore(
-    (state) => state
-  );
+  const setTestAnswers = useTestStore((state) => state.setTestAnswers);
 
   const { register, handleSubmit } = useForm<Question.ReadWordQuestionFrom>();
   const onSubmit: SubmitHandler<Question.ReadWordQuestionFrom> = (data) => {
     setTestAnswers(id, data.answer);
   };
-
-  useEffect(() => {
-    setTest({
-      id: "11",
-      questions: [{ id: "1", type: "WRITEWORD", content: "content" }],
-    });
-  }, []);
-
-  useEffect(() => {
-    console.log(testAnswers);
-  }, [testAnswers]);
 
   return (
     <QuestionContainer onSubmit={handleSubmit(onSubmit)}>
