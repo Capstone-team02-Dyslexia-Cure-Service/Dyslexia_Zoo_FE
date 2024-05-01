@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 import AnimalPanel from "./AnimalPanel";
 
-const Penguin = ({ state }: { state: "NORMAL" }) => {
+const Penguin = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showControlPanel, setShowControlPanel] = useState(false);
 
@@ -20,26 +20,18 @@ const Penguin = ({ state }: { state: "NORMAL" }) => {
 
   return (
     <>
-      {state ? (
-        <>
-          <Img
-            src="/img/penguin.png"
-            alt="Penguin"
-            onMouseDown={handleMouseDown}
-          />
-          {showControlPanel && (
-            <AnimalPanel
-              mouseX={mousePosition.x}
-              mouseY={mousePosition.y}
-              name={"이름"}
-              info={
-                "간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명"
-              }
-              onClose={handleClosePanel}
-            />
-          )}
-        </>
-      ) : null}
+      <Img src="/img/penguin.png" alt="Penguin" onMouseDown={handleMouseDown} />
+      {showControlPanel && (
+        <AnimalPanel
+          mouseX={mousePosition.x}
+          mouseY={mousePosition.y}
+          name={"이름"}
+          info={
+            "간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명"
+          }
+          onClose={handleClosePanel}
+        />
+      )}
     </>
   );
 };
