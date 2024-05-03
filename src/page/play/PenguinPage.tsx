@@ -6,6 +6,7 @@ import { keyframes } from "@emotion/react";
 import { Background } from "@/component/Background";
 import { FixContainer } from "@/component/Container";
 import TTSText from "@/component/TTSText";
+import WriteWordQuestion from "@/component/question/WriteWordQuestion";
 
 const PenguinPage = () => {
   const [state, set] = useState(false);
@@ -32,9 +33,20 @@ const PenguinPage = () => {
           />
         )}
       </FixContainer>
+      <Question>
+        <WriteWordQuestion content="예시 문제" id="123" />
+      </Question>
     </>
   );
 };
+
+const Question = styled.div`
+  position: absolute;
+
+  transform: translate(-50%, 0%);
+  top: 63%;
+  left: 74%;
+`;
 
 const move = keyframes`
   0% {
