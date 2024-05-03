@@ -11,7 +11,7 @@ const BasicTestPage = () => {
   return (
     <>
       <Background src="/img/home_background.png" alt="background" />
-      <Penguin state={"NORMAL"} />
+      <Penguin />
     </>
   );
 };

@@ -9,12 +9,14 @@ const AnimalPanel = ({
   mouseY,
   name,
   info,
+  animal,
   onClose,
 }: {
   mouseX: number;
   mouseY: number;
   name: string;
   info: string;
+  animal: string;
   onClose: () => void;
 }) => {
   return (

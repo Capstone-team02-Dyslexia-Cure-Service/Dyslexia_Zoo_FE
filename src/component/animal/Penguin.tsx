@@ -29,6 +29,7 @@ const Penguin = () => {
           info={
             "간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명"
           }
+          animal="PENGUIN"
           onClose={handleClosePanel}
         />
       )}
