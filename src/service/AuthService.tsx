@@ -1,23 +1,22 @@
 import { AxiosResponse } from "axios";
 
-import { API, setAccess, storeRefresh } from "@/config/axios";
+import { API, setAccess } from "@/config/axios";
 
 const AuthService = () => {
   const URL = "api/v1/user";
 
   const signin = async (body: User.SignInReqDto) => {
     const {
-      data: { accessToken, refreshToken },
+      data: { id },
     } = (await API.post(
       `${URL}/sign-in`,
       body
     )) as AxiosResponse<User.SignInResDto>;
 
-    setAccess(accessToken);
-    storeRefresh(refreshToken);
+    setAccess(id);
   };
 
-  return [signin];
+  return { signin };
 };
 
 export default AuthService;

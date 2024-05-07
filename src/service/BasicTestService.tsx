@@ -21,7 +21,7 @@ const BasicTestService = () => {
     console.log(testAnswers);
   };
 
-  return [getTest, submitTestAnswers];
+  return { getTest, submitTestAnswers };
 };
 
 export default BasicTestService;

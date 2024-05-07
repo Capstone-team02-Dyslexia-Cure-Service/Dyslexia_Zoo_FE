@@ -87,6 +87,8 @@ const Penguin = styled.img`
   left: 0%;
 
   width: 200px;
+
+  z-index: 10;
 `;
 
 const MovePenguin = styled(Penguin)`

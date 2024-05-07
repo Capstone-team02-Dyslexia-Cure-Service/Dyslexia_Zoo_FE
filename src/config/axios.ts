@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 export const API = axios.create({
   baseURL: import.meta.env.VITE_SERVER_URL,
@@ -7,6 +7,8 @@ export const API = axios.create({
 //Auth
 export const setAccess = (token: string): unknown =>
   (API.defaults.headers["Authorization"] = token);
+
+/* 
 export const resetAccess = (): unknown =>
   delete API.defaults.headers["Authorization"];
 export const getAccess = (): string =>
@@ -24,3 +26,4 @@ export const removeRefresh = (): void => {
 export const getRefresh = (): string | null => {
   return localStorage.getItem(storageRefreshKey);
 };
+ */

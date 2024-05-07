@@ -12,7 +12,7 @@ import BasicTestService from "@/service/BasicTestService";
 import useTestStore from "@/store/testStore";
 
 const BasicTestPage = () => {
-  const [getTest, submitTestAnswers] = BasicTestService();
+  const { getTest, submitTestAnswers } = BasicTestService();
   const testContent = useTestStore((state) => state.testContent);
 
   useEffect(() => {

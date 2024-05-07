@@ -5,6 +5,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import TTSText from "@/component/TTSText";
 
+import AuthService from "@/service/AuthService";
+
 const SignInPage = () => {
   const { control, handleSubmit } = useForm<User.SignInReqDto>({
     defaultValues: {
@@ -13,10 +15,14 @@ const SignInPage = () => {
     },
   });
 
-  const onSubmit = () => {};
+  const { signin } = AuthService();
+
+  const onSubmit = (data: User.SignInReqDto) => {
+    signin(data);
+  };
+
   return (
     <>
-      <TTSText text={"텍스트"} />
       <SunImg src="/img/sun.png" alt="signin_logo" />
       <SignInForm onSubmit={handleSubmit(onSubmit)}>
         <Controller
