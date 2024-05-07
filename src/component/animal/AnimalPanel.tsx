@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
 
 import { Container } from "../Container";
 
@@ -9,16 +10,17 @@ const AnimalPanel = ({
   mouseY,
   name,
   info,
-  animal,
+  path,
   onClose,
 }: {
   mouseX: number;
   mouseY: number;
   name: string;
   info: string;
-  animal: "PENGUIN";
+  path: string;
   onClose: () => void;
 }) => {
+  const navigate = useNavigate();
   return (
     <PanelContainer
       style={{
@@ -48,7 +50,13 @@ const AnimalPanel = ({
           fontSize: "13px",
         }}
       />
-      <Button>놀아 주기</Button>
+      <Button
+        onClick={() => {
+          navigate(path);
+        }}
+      >
+        놀아 주기
+      </Button>
       <Button>먹이 주기</Button>
     </PanelContainer>
   );

@@ -4,6 +4,7 @@ import { keyframes } from "@emotion/react";
 import React, { useState } from "react";
 
 import AnimalPanel from "./AnimalPanel";
+import { PAGE_URL } from "@/config/path";
 
 const Penguin = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -29,7 +30,7 @@ const Penguin = () => {
           info={
             "간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명"
           }
-          animal="PENGUIN"
+          path={PAGE_URL.Penguin}
           onClose={handleClosePanel}
         />
       )}
