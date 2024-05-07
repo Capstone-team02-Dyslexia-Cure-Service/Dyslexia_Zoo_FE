@@ -24,6 +24,7 @@ const useTestStore = create<Question.TestStore>((set) => ({
   setTest: (test: Question.BasicTestResDto) => {
     set((state) => {
       state.testContent = test;
+      state.testAnswers = [];
       test.questions.map((question) => {
         if (question.type === "WRITEWORD")
           state.testAnswers.push({

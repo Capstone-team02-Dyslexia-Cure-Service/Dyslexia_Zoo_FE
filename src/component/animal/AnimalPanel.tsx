@@ -16,7 +16,7 @@ const AnimalPanel = ({
   mouseY: number;
   name: string;
   info: string;
-  animal: string;
+  animal: "PENGUIN";
   onClose: () => void;
 }) => {
   return (

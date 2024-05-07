@@ -7,19 +7,24 @@ import { QuestionContainer, RowContainer } from "../Container";
 import { SoundButton, SaveButton } from "../Button";
 
 import useTestStore from "@/store/testStore";
+import PlayService from "@/service/PlayService";
 
 const WriteWordQuestion = ({
   content,
   id,
+  type,
 }: {
   content: string;
   id: string;
+  type: "TEST" | "PLAY";
 }) => {
   const setTestAnswers = useTestStore((state) => state.setTestAnswers);
+  const { submitTestAnswers } = PlayService();
 
   const { register, handleSubmit } = useForm<Question.ReadWordQuestionFrom>();
   const onSubmit: SubmitHandler<Question.ReadWordQuestionFrom> = (data) => {
     setTestAnswers(id, data.answer);
+    if (type == "PLAY") submitTestAnswers();
   };
 
   return (

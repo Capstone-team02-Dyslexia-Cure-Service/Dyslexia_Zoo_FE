@@ -8,12 +8,35 @@ import { FixContainer } from "@/component/Container";
 import TTSText from "@/component/TTSText";
 import WriteWordQuestion from "@/component/question/WriteWordQuestion";
 
+import PlayService from "@/service/PlayService";
+import useTestStore from "@/store/testStore";
+
 const PenguinPage = () => {
   const [state, set] = useState(false);
+  const { getTest } = PlayService();
+  const testContent = useTestStore((state) => state.testContent);
+
+  useEffect(() => {
+    getTest();
+  }, []);
 
   return (
     <>
       <Background src="/img/penguin_background.png" alt="background" />
+      <TTSText
+        text={"문제를 해결하고, 펭귄과 놀아봐!!"}
+        style={{
+          position: "absolute",
+          top: "20px",
+          left: "50%",
+          transform: "translate(-50%, 0%)",
+          fontSize: "50px",
+          fontWeight: "bold",
+          color: "black",
+          zIndex: "10",
+        }}
+      />
+
       <FixContainer>
         {state ? (
           <MovePenguin
@@ -33,9 +56,15 @@ const PenguinPage = () => {
           />
         )}
       </FixContainer>
-      <Question>
-        <WriteWordQuestion content="예시 문제" id="123" />
-      </Question>
+      {testContent ? (
+        <Question>
+          <WriteWordQuestion
+            content={testContent.questions[0].content}
+            id={testContent.questions[0].id}
+            type="PLAY"
+          />
+        </Question>
+      ) : null}
     </>
   );
 };

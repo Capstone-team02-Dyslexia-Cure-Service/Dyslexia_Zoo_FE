@@ -35,7 +35,12 @@ const BasicTestPage = () => {
         {testContent
           ? testContent.questions.map(({ id, type, content }) => {
               return type === "WRITEWORD" ? (
-                <WriteWordQuestion key={id} content={content} id={id} />
+                <WriteWordQuestion
+                  key={id}
+                  content={content}
+                  id={id}
+                  type="TEST"
+                />
               ) : null;
             })
           : null}

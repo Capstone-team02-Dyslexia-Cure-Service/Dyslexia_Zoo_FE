@@ -17,9 +17,17 @@ const getBasicTest: ResponseResolver = () => {
   });
 };
 
+const getPlayQuestion: ResponseResolver = () => {
+  return HttpResponse.json<Question.BasicTestResDto>({
+    id: "2",
+    questions: [{ id: "2", type: "WRITEWORD", content: "강민규" }],
+  });
+};
+
 const handlers = [
   //basic test
   http.get("VITE_SERVER_URL/api/v1/basicTest", getBasicTest),
+  http.get("VITE_SERVER_URL/api/v1/play", getPlayQuestion),
 ];
 
 export default handlers;
