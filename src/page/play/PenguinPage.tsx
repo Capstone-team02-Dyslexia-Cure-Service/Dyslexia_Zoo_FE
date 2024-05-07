@@ -7,6 +7,7 @@ import { Background } from "@/component/Background";
 import { FixContainer } from "@/component/Container";
 import TTSText from "@/component/TTSText";
 import WriteWordQuestion from "@/component/question/WriteWordQuestion";
+import { HomeButton } from "@/component/Button";
 
 import PlayService from "@/service/PlayService";
 import useTestStore from "@/store/testStore";
@@ -22,6 +23,7 @@ const PenguinPage = () => {
 
   return (
     <>
+      <HomeButton />
       <Background src="/img/penguin_background.png" alt="background" />
       <TTSText
         text={"문제를 해결하고, 펭귄과 놀아봐!!"}
