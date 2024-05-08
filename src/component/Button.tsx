@@ -142,7 +142,7 @@ const StoreIcon = styled(LocalShippingIcon)`
 const StatisticIcon = styled(EqualizerIcon)`
   position: absolute;
   bottom: 17px;
-  right: 125px;
+  right: 150px;
 
   color: white;
   font-size: 90px;
