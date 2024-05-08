@@ -6,6 +6,7 @@ export enum PAGE_URL {
 
   Home = "/home",
   Store = "/store",
+  Statistic = "/statistic",
 
   BasicTest = "/basicTest",
 

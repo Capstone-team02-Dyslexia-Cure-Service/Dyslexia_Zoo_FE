@@ -4,11 +4,13 @@ import styled from "@emotion/styled";
 
 import { Background } from "@/component/Background";
 import TTSText from "@/component/TTSText";
+import { HomeButton } from "@/component/Button";
 
 const StorePage = () => {
   return (
     <>
       <Background src="/img/store_background.png" alt="background" />
+      <HomeButton />
       <TTSText
         text={"테스트를 도전하고, 새로운 동물을 얻어봐!!"}
         style={{

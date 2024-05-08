@@ -5,6 +5,8 @@ import HeadphonesIcon from "@mui/icons-material/Headphones";
 import CheckIcon from "@mui/icons-material/Check";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
 
 import { speech } from "./function/speech";
 
@@ -41,6 +43,28 @@ export const HomeButton = () => {
         navigate(PAGE_URL.Home);
       }}
     ></HomeIcon>
+  );
+};
+
+export const StoreButton = () => {
+  const navigate = useNavigate();
+  return (
+    <StoreIcon
+      onClick={() => {
+        navigate(PAGE_URL.Store);
+      }}
+    ></StoreIcon>
+  );
+};
+
+export const StatisticButton = () => {
+  const navigate = useNavigate();
+  return (
+    <StatisticIcon
+      onClick={() => {
+        navigate(PAGE_URL.Statistic);
+      }}
+    ></StatisticIcon>
   );
 };
 
@@ -100,6 +124,28 @@ const HomeIcon = styled(ArrowBackIosNewIcon)`
 
   color: black;
   font-size: 60px;
+
+  z-index: 10;
+`;
+
+const StoreIcon = styled(LocalShippingIcon)`
+  position: absolute;
+  bottom: 17px;
+  right: 35px;
+
+  color: white;
+  font-size: 90px;
+
+  z-index: 10;
+`;
+
+const StatisticIcon = styled(EqualizerIcon)`
+  position: absolute;
+  bottom: 17px;
+  right: 125px;
+
+  color: white;
+  font-size: 90px;
 
   z-index: 10;
 `;

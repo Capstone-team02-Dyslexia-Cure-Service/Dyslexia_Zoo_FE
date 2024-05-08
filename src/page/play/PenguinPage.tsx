@@ -23,8 +23,8 @@ const PenguinPage = () => {
 
   return (
     <>
-      <HomeButton />
       <Background src="/img/penguin_background.png" alt="background" />
+      <HomeButton />
       <TTSText
         text={"문제를 해결하고, 펭귄과 놀아봐!!"}
         style={{
