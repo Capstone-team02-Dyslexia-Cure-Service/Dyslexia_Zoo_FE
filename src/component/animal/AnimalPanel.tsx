@@ -34,6 +34,7 @@ const AnimalPanel = ({
         style={{
           fontSize: "30px",
           fontWeight: "bold",
+          marginTop: "-4px",
         }}
       />
       <TTSText
@@ -44,8 +45,8 @@ const AnimalPanel = ({
 
           wordBreak: "break-all",
 
-          marginBottom: "10px",
-          marginTop: "5px",
+          marginBottom: "15px",
+          marginTop: "7px",
 
           fontSize: "18px",
         }}
@@ -98,7 +99,7 @@ const Close = styled.button`
 
   border: 0px;
 
-  top: 14px;
+  top: 8px;
   right: 6px;
 
   font-size: 20px;

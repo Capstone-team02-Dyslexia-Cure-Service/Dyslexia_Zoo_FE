@@ -5,6 +5,7 @@ export enum PAGE_URL {
   NoPermission = "/auth/noPermission",
 
   Home = "/home",
+  Store = "/store",
 
   BasicTest = "/basicTest",
 
