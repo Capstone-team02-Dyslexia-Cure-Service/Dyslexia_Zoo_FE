@@ -16,10 +16,15 @@ declare namespace User {
   } 
   */
 
+  //Variable
+  export type StatisticData = { day: string; score: number }[];
+
   //Store
   export interface userStore {
     isSignIn: boolean;
-    userId: string;
-    signIn: (id: string) => void;
+    name: string;
+    statisticData: StatisticData;
+    setName: (name: string) => void;
+    setStatisticData: (data: StatisticData) => void;
   }
 }

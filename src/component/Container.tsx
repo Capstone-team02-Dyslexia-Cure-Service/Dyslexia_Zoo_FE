@@ -31,6 +31,28 @@ export const QuestionContainer = styled.form`
   margin-bottom: 30px;
 `;
 
+export const GraphContainer = styled.div`
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 750px;
+  height: 400px;
+
+  border: 0px #0000cd solid;
+  border-radius: 5px;
+
+  background-color: white;
+
+  margin-bottom: 30px;
+`;
+
 export const BasicTestContainer = styled(Container)`
   position: absolute;
 
