@@ -12,6 +12,7 @@ import useUserState from "@/store/userStore";
 const StatisticPage = () => {
   const statisticData = useUserState((state) => state.statisticData);
   const setStatisticData = useUserState((state) => state.setStatisticData);
+  const name = useUserState((state) => state.name);
 
   useEffect(() => {
     setStatisticData([
@@ -31,7 +32,7 @@ const StatisticPage = () => {
       <HomeButton />
       <GraphContainer>
         <TTSText
-          text={""}
+          text={`${name}의 성장 그래프`}
           style={{
             fontSize: "33px",
             fontWeight: "bold",
@@ -40,7 +41,7 @@ const StatisticPage = () => {
           }}
         />
         <Chart width={700} height={300} data={statisticData}>
-          <Line type="monotone" dataKey="score" stroke="#8884d8" />
+          <Line type="monotone" dataKey="score" stroke="#0000cd" />
           <XAxis dataKey="day" />
           <YAxis dataKey="score" />
         </Chart>
