@@ -28,7 +28,7 @@ const Penguin = () => {
           mouseY={mousePosition.y}
           name={"펭귄"}
           info={
-            "2024년에 처음으로 한국으로 왔다. Dyslexia Zoo에서 다이빙을 연습하며 즐겁게 살아가고 있다."
+            "2024년에 처음 한국으로 왔다. Dyslexia Zoo에서 다이빙을 연습하며 즐겁게 살아가고 있다."
           }
           path={PAGE_URL.Penguin}
           onClose={handleClosePanel}

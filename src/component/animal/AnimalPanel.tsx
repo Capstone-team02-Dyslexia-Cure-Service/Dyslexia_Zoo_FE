@@ -24,7 +24,7 @@ const AnimalPanel = ({
   return (
     <PanelContainer
       style={{
-        top: `${mouseY - 260}px`,
+        top: `${mouseY - 200}px`,
         left: `${mouseX}px`,
       }}
     >
@@ -40,15 +40,16 @@ const AnimalPanel = ({
       <TTSText
         text={info}
         style={{
-          width: "100%",
+          width: "98%",
           height: "90px",
 
           wordBreak: "break-all",
 
-          marginBottom: "15px",
-          marginTop: "7px",
+          marginBottom: "14px",
+          marginTop: "10px",
 
-          fontSize: "18px",
+          fontSize: "17px",
+          textAlign: "center",
         }}
       />
       <Button
@@ -69,7 +70,7 @@ const PanelContainer = styled(Container)`
   background: white;
 
   width: 250px;
-  height: 260px;
+  height: 200px;
 
   border: 0x solid black;
   border-radius: 5px;
