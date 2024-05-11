@@ -3,7 +3,7 @@ import { create } from "zustand";
 const useUserState = create<User.userStore>((set) => ({
   //State
   isSignIn: true,
-  name: "",
+  name: "강민규",
   statisticData: [],
 
   //Set function

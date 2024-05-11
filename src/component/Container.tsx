@@ -43,10 +43,10 @@ export const GraphContainer = styled.div`
   align-items: center;
 
   width: 750px;
-  height: 400px;
+  height: 440px;
 
   border: 0px #0000cd solid;
-  border-radius: 5px;
+  border-radius: 10px;
 
   background-color: white;
 

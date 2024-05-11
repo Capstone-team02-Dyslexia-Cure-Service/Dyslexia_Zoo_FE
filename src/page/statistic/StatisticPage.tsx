@@ -34,10 +34,17 @@ const StatisticPage = () => {
         <TTSText
           text={`${name}의 성장 그래프`}
           style={{
-            fontSize: "33px",
+            fontSize: "40px",
             fontWeight: "bold",
-            color: "#0000cd",
-            marginBottom: "12px",
+            color: "#6565af",
+            marginBottom: "5px",
+          }}
+        />
+        <TTSText
+          text={`문제 풀이 결과와 교육을 기반으로 하루의 향상 정도를 수치화했습니다.`}
+          style={{
+            fontSize: "18px",
+            color: "#6565afc3",
           }}
         />
         <Chart width={700} height={300} data={statisticData}>
@@ -51,8 +58,8 @@ const StatisticPage = () => {
 };
 
 const Chart = styled(LineChart)`
-  margin-right: 60px;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-right: 50px;
 `;
 
 export default StatisticPage;
