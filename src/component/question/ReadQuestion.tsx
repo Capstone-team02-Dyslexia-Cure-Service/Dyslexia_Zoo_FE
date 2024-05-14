@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 
 import TTSText from "@/component/TTSText";
 import { QuestionContainer, RowContainer } from "../Container";
-import { SoundButton, SaveButton } from "../Button";
+import { StartRecordButton, StopRecordButton, SaveButton } from "../Button";
 
 import useTestStore from "@/store/testStore";
 import PlayService from "@/service/PlayService";
@@ -28,9 +28,9 @@ const ReadQuestion = ({
   };
 
   return (
-    <QuestionContainer onSubmit={handleSubmit(onSubmit)}>
+    <StyleQuestionContainer onSubmit={handleSubmit(onSubmit)}>
       <TTSText
-        text={"단어를 듣고 흰 칸에 올바른 철자로 작성해줘!"}
+        text={"버튼을 누르고 아래 단어를 정확하게 발음해줘!"}
         style={{
           fontSize: "33px",
           fontWeight: "bold",
@@ -39,22 +39,30 @@ const ReadQuestion = ({
         }}
       />
       <RowContainer>
-        <SoundButton content={content} />
-        <AnswerInput {...register("answer")} />
+        <StartRecordButton onClick={() => {}} />
+        <Content>{content}</Content>
         <SaveButton onClick={handleSubmit(onSubmit)} />
       </RowContainer>
-    </QuestionContainer>
+    </StyleQuestionContainer>
   );
 };
 
-const AnswerInput = styled.input`
+const StyleQuestionContainer = styled(QuestionContainer)`
+  background-color: #1f1fbd;
+  border-color: #181896;
+`;
+
+const Content = styled.div`
   background-color: white;
 
-  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 420px;
   height: 110px;
 
   border: 0px white solid;
-  border-left: 5px white solid;
   border-radius: 7px;
 
   margin-left: 27px;
@@ -63,6 +71,7 @@ const AnswerInput = styled.input`
   outline: none;
 
   font-size: 45px;
+  font-weight: bold;
 `;
 
 export default ReadQuestion;

@@ -14,7 +14,7 @@ const rtcSession: RecordRTC.Options = {
   timeSlice: 1000,
 };
 
-export const recorder = async () => {
+export const recorder = () => {
   //const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   //const recorder = new RecordRTCPromisesHandler(stream, rtcSession);
 
@@ -24,9 +24,9 @@ export const recorder = async () => {
 
   //navigator.mediaDevices.getUserMedia({ audio: true });
 
-  let audioRecorder: RecordRTC;
+  //let audioRecorder: RecordRTC;
 
-  const startRecorder = () => {
+  const startRecorder = (audioRecorder: RecordRTC) => {
     // getUserMedia로 오디오 스트림(나의 음성) 가져오기
     navigator.mediaDevices
       .getUserMedia({ audio: true })
@@ -42,7 +42,7 @@ export const recorder = async () => {
       });
   };
 
-  const stopRecorder = () => {
+  const stopRecorder = (audioRecorder: RecordRTC) => {
     console.log("stop");
     // 녹음 중지
     audioRecorder.stopRecording(function () {

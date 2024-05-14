@@ -28,7 +28,7 @@ const WriteWordQuestion = ({
   };
 
   return (
-    <QuestionContainer onSubmit={handleSubmit(onSubmit)}>
+    <StyleQuestionContainer onSubmit={handleSubmit(onSubmit)}>
       <TTSText
         text={"단어를 듣고 흰 칸에 올바른 철자로 작성해줘!"}
         style={{
@@ -43,9 +43,14 @@ const WriteWordQuestion = ({
         <AnswerInput {...register("answer")} />
         <SaveButton onClick={handleSubmit(onSubmit)} />
       </RowContainer>
-    </QuestionContainer>
+    </StyleQuestionContainer>
   );
 };
+
+const StyleQuestionContainer = styled(QuestionContainer)`
+  background-color: #2121da;
+  border-color: #1d1dbd;
+`;
 
 const AnswerInput = styled.input`
   background-color: white;
@@ -63,6 +68,7 @@ const AnswerInput = styled.input`
   outline: none;
 
   font-size: 45px;
+  font-weight: bold;
 `;
 
 export default WriteWordQuestion;

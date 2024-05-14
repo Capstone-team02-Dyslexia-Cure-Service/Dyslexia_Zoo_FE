@@ -6,7 +6,7 @@ import { keyframes } from "@emotion/react";
 import { Background } from "@/component/Background";
 import { FixContainer } from "@/component/Container";
 import TTSText from "@/component/TTSText";
-import ReadWordQuestion from "@/component/question/ReadWordQuestion";
+import ReadWordQuestion from "@/component/question/ReadQuestion";
 import { HomeButton } from "@/component/Button";
 
 import PlayService from "@/service/PlayService";
