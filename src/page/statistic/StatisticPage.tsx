@@ -41,7 +41,7 @@ const StatisticPage = () => {
           }}
         />
         <TTSText
-          text={`문제 풀이 결과와 교육을 기반으로 하루의 향상 정도를 수치화했습니다.`}
+          text={`문제 풀이 결과를 기반으로 하루의 향상 정도를 수치화했습니다.`}
           style={{
             fontSize: "18px",
             color: "#6565afc3",
