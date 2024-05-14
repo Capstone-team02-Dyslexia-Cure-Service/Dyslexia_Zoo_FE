@@ -9,7 +9,7 @@ import { SoundButton, SaveButton } from "../Button";
 import useTestStore from "@/store/testStore";
 import PlayService from "@/service/PlayService";
 
-const WriteWordQuestion = ({
+const ReadQuestion = ({
   content,
   id,
   type,
@@ -65,4 +65,4 @@ const AnswerInput = styled.input`
   font-size: 45px;
 `;
 
-export default WriteWordQuestion;
+export default ReadQuestion;

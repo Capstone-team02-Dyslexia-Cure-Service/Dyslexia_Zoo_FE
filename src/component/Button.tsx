@@ -7,6 +7,8 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
+import MicIcon from "@mui/icons-material/Mic";
+import StopIcon from "@mui/icons-material/Stop";
 
 import { speech } from "./function/speech";
 
@@ -32,6 +34,18 @@ export const SubmitButton = ({ onClick }: { onClick: any }) => (
 export const SaveButton = ({ onClick }: { onClick: any }) => (
   <Button onClick={onClick}>
     <SaveIcon />
+  </Button>
+);
+
+export const StartRecordButton = ({ onClick }: { onClick: any }) => (
+  <Button onClick={onClick}>
+    <StartRecordIcon />
+  </Button>
+);
+
+export const StopRecordButton = ({ onClick }: { onClick: any }) => (
+  <Button onClick={onClick}>
+    <StopRecordIcon />
   </Button>
 );
 
@@ -103,6 +117,16 @@ const LargeButton = styled(Button)`
 `;
 
 const SoundIcon = styled(HeadphonesIcon)`
+  color: white;
+  font-size: 100px;
+`;
+
+const StartRecordIcon = styled(MicIcon)`
+  color: white;
+  font-size: 100px;
+`;
+
+const StopRecordIcon = styled(StopIcon)`
   color: white;
   font-size: 100px;
 `;
