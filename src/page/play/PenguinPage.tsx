@@ -6,7 +6,7 @@ import { keyframes } from "@emotion/react";
 import { Background } from "@/component/Background";
 import { FixContainer } from "@/component/Container";
 import TTSText from "@/component/TTSText";
-import WriteWordQuestion from "@/component/question/WriteWordQuestion";
+import ReadWordQuestion from "@/component/question/ReadWordQuestion";
 import { HomeButton } from "@/component/Button";
 
 import PlayService from "@/service/PlayService";
@@ -60,7 +60,7 @@ const PenguinPage = () => {
       </FixContainer>
       {testContent ? (
         <Question>
-          <WriteWordQuestion
+          <ReadWordQuestion
             content={testContent.questions[0].content}
             id={testContent.questions[0].id}
             type="PLAY"
