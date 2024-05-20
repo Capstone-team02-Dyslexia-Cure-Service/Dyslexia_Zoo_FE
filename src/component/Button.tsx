@@ -117,7 +117,7 @@ const WhiteButton = styled(Container)`
   height: 110px;
 
   border-radius: 5px;
-  margin-bottom: 2px;
+  margin: 30px 16px 0px 16px;
 
   box-shadow: 6px 8px 2px 0 black;
 
@@ -125,8 +125,7 @@ const WhiteButton = styled(Container)`
 
   &:hover {
     box-shadow: 0 0 0 0 black;
-    margin-bottom: 0px;
-    margin-top: 2px;
+    margin: 32px 16px -2px 16px;
   }
 `;
 

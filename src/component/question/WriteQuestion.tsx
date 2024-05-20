@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-
+import hangul from "hangul-js";
 import styled from "@emotion/styled";
 
 import TTSText from "@/component/TTSText";
@@ -8,7 +8,8 @@ import { SoundButton, SaveButton, ExButton } from "../Button";
 
 import useTestStore from "@/store/testStore";
 import PlayService from "@/service/PlayService";
-import hangul from "hangul-js";
+
+import { shuffle } from "../function/arrayRandom";
 
 const WriteWordQuestion = ({
   content,
@@ -31,8 +32,7 @@ const WriteWordQuestion = ({
     if (type == "PLAY") submitTestAnswers();
   };
 
-  console.log(hangul.disassemble(content));
-  console.log(hangul.assemble(["ㄱ", "ㅇ", "ㄴ", "ㅏ", "ㄷ", "ㅏ"]));
+  const selectInput: string[] = [];
 
   const StyleQuestionContainer = !easy
     ? styled(QuestionContainer)`
@@ -61,13 +61,19 @@ const WriteWordQuestion = ({
         <AnswerInput {...register("answer")} />
         <SaveButton onClick={handleSubmit(onSubmit)} />
       </RowContainer>
-      {easy
-        ? hangul
-            .disassemble(content)
-            .map((value) => (
-              <ExButton value={value} onClick={() => {}}></ExButton>
-            ))
-        : null}
+      {easy ? (
+        <RowContainer>
+          {shuffle(hangul.disassemble(content)).map((value) => (
+            <ExButton
+              value={value}
+              onClick={() => {
+                selectInput.push(value);
+                setValue("answer", hangul.assemble(selectInput));
+              }}
+            ></ExButton>
+          ))}
+        </RowContainer>
+      ) : null}
     </StyleQuestionContainer>
   );
 };

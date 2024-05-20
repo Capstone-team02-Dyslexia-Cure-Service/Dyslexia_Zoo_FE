@@ -12,6 +12,10 @@ export const RowContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  flex-wrap: wrap;
+
+  width: 95%;
 `;
 
 export const QuestionContainer = styled.form`
