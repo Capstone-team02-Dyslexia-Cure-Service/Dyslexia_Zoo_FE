@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 
-import styled from "@emotion/styled";
 import WriteWordQuestion from "@/component/question/WriteQuestion";
 
 import { Background } from "@/component/Background";

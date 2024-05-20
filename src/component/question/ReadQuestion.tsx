@@ -49,7 +49,7 @@ const ReadQuestion = ({
 
 const StyleQuestionContainer = styled(QuestionContainer)`
   background-color: #1f1fbd;
-  border-color: #181896;
+  border-color: #1f1fbd;
 `;
 
 const Content = styled.div`

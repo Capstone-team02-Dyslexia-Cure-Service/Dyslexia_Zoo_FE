@@ -49,7 +49,7 @@ const WriteWordQuestion = ({
 
 const StyleQuestionContainer = styled(QuestionContainer)`
   background-color: #2121da;
-  border-color: #1d1dbd;
+  border-color: #2121da;
 `;
 
 const AnswerInput = styled.input`
