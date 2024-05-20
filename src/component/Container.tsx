@@ -15,7 +15,7 @@ export const RowContainer = styled.div`
 
   flex-wrap: wrap;
 
-  width: 95%;
+  width: 98%;
 `;
 
 export const QuestionContainer = styled.form`

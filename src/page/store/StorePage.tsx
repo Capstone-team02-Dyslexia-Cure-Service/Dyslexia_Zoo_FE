@@ -7,6 +7,8 @@ import TTSText from "@/component/TTSText";
 import { HomeButton } from "@/component/Button";
 
 const StorePage = () => {
+  const test = ["monkey"];
+
   return (
     <>
       <Background src="/img/store_background.png" alt="background" />
@@ -26,9 +28,21 @@ const StorePage = () => {
         }}
       />
       <StoreGrid>
-        <AnimalStoreImg src="/img/dolphin_store.png" alt="dolphin_store" />
-        <AnimalStoreImg src="/img/monkey_store.png" alt="monkey_store" />
-        <AnimalStoreImg src="/img/seal_store.png" alt="seal_store" />
+        {test.find((animal) => animal === "dolphin") ? (
+          <OffAnimalStoreImg src="/img/dolphin_store.png" alt="dolphin_store" />
+        ) : (
+          <AnimalStoreImg src="/img/dolphin_store.png" alt="dolphin_store" />
+        )}
+        {test.find((animal) => animal === "monkey") ? (
+          <OffAnimalStoreImg src="/img/monkey_store.png" alt="monkey_store" />
+        ) : (
+          <AnimalStoreImg src="/img/monkey_store.png" alt="monkey_store" />
+        )}
+        {test.find((animal) => animal === "seal") ? (
+          <OffAnimalStoreImg src="/img/seal_store.png" alt="seal_store" />
+        ) : (
+          <AnimalStoreImg src="/img/seal_store.png" alt="seal_store" />
+        )}
       </StoreGrid>
     </>
   );
@@ -62,6 +76,17 @@ const AnimalStoreImg = styled.img`
 
     margin-bottom: 22px;
     margin-top: 10px;
+  }
+`;
+
+const OffAnimalStoreImg = styled(AnimalStoreImg)`
+  filter: brightness(0.4);
+
+  margin-bottom: 22px;
+  margin-top: 10px;
+
+  &:hover {
+    filter: brightness(0.4);
   }
 `;
 
