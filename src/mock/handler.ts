@@ -26,8 +26,8 @@ const getPlayQuestion: ResponseResolver = () => {
 
 const handlers = [
   //basic test
-  http.get("VITE_SERVER_URL/api/v1/basicTest", getBasicTest),
-  http.get("VITE_SERVER_URL/api/v1/play", getPlayQuestion),
+  http.get(import.meta.env.VITE_SERVER_URL + "/api/v1/basicTest", getBasicTest),
+  http.get(import.meta.env.VITE_SERVER_URL + "/api/v1/play", getPlayQuestion),
 ];
 
 export default handlers;

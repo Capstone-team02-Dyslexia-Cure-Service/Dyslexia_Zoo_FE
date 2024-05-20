@@ -2,7 +2,7 @@ declare namespace Question {
   //Basic
   export interface ReadWordQuestionAnswer {
     id: sting;
-    type: "WRITEWORD";
+    type: "WRITEWORD"; //제거 예정
     answer: string;
   }
 

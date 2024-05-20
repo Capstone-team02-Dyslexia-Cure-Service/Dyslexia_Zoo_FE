@@ -10,7 +10,7 @@ import AuthService from "@/service/AuthService";
 const SignInPage = () => {
   const { control, handleSubmit } = useForm<User.SignInReqDto>({
     defaultValues: {
-      name: "",
+      email: "",
       password: "",
     },
   });
@@ -26,7 +26,7 @@ const SignInPage = () => {
       <SunImg src="/img/sun.png" alt="signin_logo" />
       <SignInForm onSubmit={handleSubmit(onSubmit)}>
         <Controller
-          name="name"
+          name="email"
           control={control}
           render={({ field }) => (
             <StyleInput

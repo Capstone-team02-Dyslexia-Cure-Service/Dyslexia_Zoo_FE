@@ -9,14 +9,14 @@ const AuthService = () => {
 
   const signin = async (body: User.SignInReqDto) => {
     const {
-      data: { id },
+      data: { id, name },
     } = (await API.post(
       `${URL}/signin`,
       body
     )) as AxiosResponse<User.SignInResDto>;
 
     setAccess(id);
-    setName(body.name);
+    setName(name);
   };
 
   return { signin };

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import PageRouter from "./PageRouter";
 
-/* async function enableMocking() {
+async function enableMocking() {
   if (process.env.NODE_ENV !== "development") {
     return;
   }
@@ -13,6 +13,6 @@ import PageRouter from "./PageRouter";
 }
 enableMocking().then(() => {
   ReactDOM.createRoot(document.getElementById("root")!).render(<PageRouter />);
-}); */
+});
 
-ReactDOM.createRoot(document.getElementById("root")!).render(<PageRouter />);
+//ReactDOM.createRoot(document.getElementById("root")!).render(<PageRouter />);

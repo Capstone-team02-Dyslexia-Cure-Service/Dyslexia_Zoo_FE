@@ -39,6 +39,7 @@ const BasicTestPage = () => {
                   content={content}
                   id={id}
                   type="TEST"
+                  easy
                 />
               ) : null;
             })

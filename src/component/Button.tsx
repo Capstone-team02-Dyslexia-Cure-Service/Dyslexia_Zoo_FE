@@ -82,6 +82,16 @@ export const StatisticButton = () => {
   );
 };
 
+export const ExButton = ({
+  value,
+  onClick,
+}: {
+  value: string;
+  onClick: any;
+}) => {
+  return <WhiteButton onClick={onClick}>{value}</WhiteButton>;
+};
+
 const Button = styled(Container)`
   background-color: #3232ff;
 
@@ -92,6 +102,26 @@ const Button = styled(Container)`
   margin-bottom: 2px;
 
   box-shadow: 6px 8px 2px 0 black;
+
+  &:hover {
+    box-shadow: 0 0 0 0 black;
+    margin-bottom: 0px;
+    margin-top: 2px;
+  }
+`;
+
+const WhiteButton = styled(Container)`
+  background-color: white;
+
+  width: 110px;
+  height: 110px;
+
+  border-radius: 5px;
+  margin-bottom: 2px;
+
+  box-shadow: 6px 8px 2px 0 black;
+
+  font-size: 100px;
 
   &:hover {
     box-shadow: 0 0 0 0 black;
