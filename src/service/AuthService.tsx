@@ -1,4 +1,6 @@
 import { AxiosResponse } from "axios";
+import { PAGE_URL } from "@/config/path";
+import { useNavigate } from "react-router";
 
 import { API, setAccess } from "@/config/axios";
 import useUserState from "@/store/userStore";
@@ -6,10 +8,11 @@ import useUserState from "@/store/userStore";
 const AuthService = () => {
   const URL = "api/v1/member";
   const setName = useUserState((state) => state.setName);
+  const navigate = useNavigate();
 
   const signin = async (body: User.SignInReqDto) => {
     const {
-      data: { id, name },
+      data: { id, name, level },
     } = (await API.post(
       `${URL}/signin`,
       body
@@ -17,6 +20,9 @@ const AuthService = () => {
 
     setAccess(id);
     setName(name);
+
+    if (level === "NOT_EVALUATED") navigate(PAGE_URL.BasicTest);
+    else navigate(PAGE_URL.Home);
   };
 
   return { signin };

@@ -11,6 +11,13 @@ export const API = axios.create({
 export const setAccess = (token: string): unknown =>
   (API.defaults.headers["Authorization"] = token);
 
+API.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    console.log(error);
+  }
+);
+
 /* 
 export const resetAccess = (): unknown =>
   delete API.defaults.headers["Authorization"];
