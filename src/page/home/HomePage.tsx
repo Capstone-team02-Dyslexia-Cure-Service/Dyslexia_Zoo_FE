@@ -12,11 +12,15 @@ import useAnimalState from "@/store/animalStore";
 
 const BasicTestPage = () => {
   const animals = useAnimalState((state) => state.animals);
-  const setAnimal = useAnimalState((state) => state.setAnimal);
+  const setAnimal = useAnimalState((state) => state.setAnimal); //remove
+  const setAnimals = useAnimalState((state) => state.setAnimals); // remove
   const [now, setNow] = useState<Date>(new Date());
 
   useEffect(() => {
     setAnimal("penguin", "2024-05-21T16:50:24.298Z");
+    setAnimals([
+      { name: "penguin", hungryTimeString: "2024-05-20T16:50:24.298Z" },
+    ]);
   }, []);
 
   useEffect(() => {

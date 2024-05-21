@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 
-import { API } from "@/config/axios";
+import { API, FORMAPI } from "@/config/axios";
 import useTestStore from "@/store/testStore";
 
 const BasicTestService = () => {
@@ -18,6 +18,10 @@ const BasicTestService = () => {
   };
 
   const submitTestAnswers = async () => {
+    const formData = new FormData();
+    testAnswers.map((testAnswer) => {
+      formData.append(testAnswer.id, testAnswer.answer);
+    });
     console.log(testAnswers);
   };
 

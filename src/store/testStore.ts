@@ -29,7 +29,6 @@ const useTestStore = create<Question.TestStore>((set) => ({
         if (question.type === "WRITEWORD")
           state.testAnswers.push({
             id: question.id,
-            type: question.type,
             answer: "",
           });
       });
