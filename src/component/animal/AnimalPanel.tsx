@@ -12,6 +12,7 @@ const AnimalPanel = ({
   info,
   path,
   onClose,
+  isHungry,
 }: {
   mouseX: number;
   mouseY: number;
@@ -19,13 +20,14 @@ const AnimalPanel = ({
   info: string;
   path: string;
   onClose: () => void;
+  isHungry?: boolean;
 }) => {
   const navigate = useNavigate();
   return (
     <PanelContainer
       style={{
-        top: `${mouseY - 200}px`,
-        left: `${mouseX}px`,
+        top: `${mouseY - 270}px`,
+        left: `${mouseX + 50}px`,
       }}
     >
       <Close onClick={onClose}>X</Close>
@@ -52,13 +54,17 @@ const AnimalPanel = ({
           textAlign: "center",
         }}
       />
-      <Button
-        onClick={() => {
-          navigate(path);
-        }}
-      >
-        놀아 주기
-      </Button>
+      {isHungry ? (
+        <DisableButton>배고파서 놀 수 없습니다..</DisableButton>
+      ) : (
+        <Button
+          onClick={() => {
+            navigate(path);
+          }}
+        >
+          놀아 주기
+        </Button>
+      )}
       <Button>먹이 주기</Button>
     </PanelContainer>
   );
@@ -91,6 +97,10 @@ const Button = styled.button`
 
   border: 0px;
   border-radius: 5px;
+`;
+
+const DisableButton = styled(Button)`
+  background-color: gray;
 `;
 
 const Close = styled.button`

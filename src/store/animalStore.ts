@@ -3,7 +3,7 @@ import { create } from "zustand";
 const useAnimalState = create<Animal.animalsStore>((set) => ({
   //State
   animals: [
-    { name: "penguin", hungryTime: new Date(new Date("2024-06-21T12:30:30")) },
+    { name: "penguin", hungryTime: new Date(new Date("2024-04-21T12:30:30")) },
   ],
 
   //Set function

@@ -1,7 +1,7 @@
+import { useState, useRef } from "react";
+
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-
-import React, { useState } from "react";
 
 import AnimalPanel from "./AnimalPanel";
 import { PAGE_URL } from "@/config/path";
@@ -34,10 +34,28 @@ const Penguin = ({ isHungry }: { isHungry?: boolean }) => {
       infinite;
   `;
 
+  const StopImg = styled.img`
+    position: absolute;
+
+    top: ${mousePosition.y - 80}px;
+    left: ${mousePosition.x - 40}px;
+
+    width: 100px;
+    height: 110px;
+  `;
+
   return (
     <>
-      <Img src="/img/penguin.png" alt="Penguin" onMouseDown={handleMouseDown} />
-      {isHungry ? <HungrySign /> : null}
+      {showControlPanel ? (
+        <StopImg src="/img/penguin.png" alt="Penguin" />
+      ) : (
+        <Img
+          src="/img/penguin.png"
+          alt="Penguin"
+          onMouseDown={handleMouseDown}
+        />
+      )}
+      {isHungry && !showControlPanel ? <HungrySign /> : null}
       {showControlPanel && (
         <AnimalPanel
           mouseX={mousePosition.x}
@@ -48,6 +66,7 @@ const Penguin = ({ isHungry }: { isHungry?: boolean }) => {
           }
           path={PAGE_URL.Penguin}
           onClose={handleClosePanel}
+          isHungry={isHungry}
         />
       )}
     </>
@@ -115,8 +134,8 @@ const HungrySign = styled(PriorityHighIcon)`
   font-size: 50px;
   color: red;
 
-  top: 73%;
-  left: 55%;
+  top: 72%;
+  left: 56%;
 
   animation: ${signHungry} 2s 0s infinite;
 `;
