@@ -6,8 +6,10 @@ import { Background } from "@/component/Background";
 import TTSText from "@/component/TTSText";
 import { HomeButton } from "@/component/Button";
 
+import useAnimalState from "@/store/animalStore";
+
 const StorePage = () => {
-  const test = ["monkey"];
+  const animals = useAnimalState((state) => state.animals);
 
   return (
     <>
@@ -28,17 +30,17 @@ const StorePage = () => {
         }}
       />
       <StoreGrid>
-        {test.find((animal) => animal === "dolphin") ? (
+        {animals.find((animal) => animal.name === "dolphin") ? (
           <OffAnimalStoreImg src="/img/dolphin_store.png" alt="dolphin_store" />
         ) : (
           <AnimalStoreImg src="/img/dolphin_store.png" alt="dolphin_store" />
         )}
-        {test.find((animal) => animal === "monkey") ? (
+        {animals.find((animal) => animal.name === "monkey") ? (
           <OffAnimalStoreImg src="/img/monkey_store.png" alt="monkey_store" />
         ) : (
           <AnimalStoreImg src="/img/monkey_store.png" alt="monkey_store" />
         )}
-        {test.find((animal) => animal === "seal") ? (
+        {animals.find((animal) => animal.name === "seal") ? (
           <OffAnimalStoreImg src="/img/seal_store.png" alt="seal_store" />
         ) : (
           <AnimalStoreImg src="/img/seal_store.png" alt="seal_store" />
