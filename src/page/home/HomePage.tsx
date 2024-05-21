@@ -12,7 +12,12 @@ import useAnimalState from "@/store/animalStore";
 
 const BasicTestPage = () => {
   const animals = useAnimalState((state) => state.animals);
+  const setAnimal = useAnimalState((state) => state.setAnimal);
   const [now, setNow] = useState<Date>(new Date());
+
+  useEffect(() => {
+    setAnimal("penguin", "2024-05-21T16:50:24.298Z");
+  }, []);
 
   useEffect(() => {
     console.log(new Date("2023-05-21T12:30:30"));

@@ -2,19 +2,30 @@ import { create } from "zustand";
 
 const useAnimalState = create<Animal.animalsStore>((set) => ({
   //State
-  animals: [
-    { name: "penguin", hungryTime: new Date(new Date("2024-07-21T12:30:30")) },
-  ],
+  animals: [],
 
   //Set function
-  setAnimals: (animals) => {
-    set(() => ({ animals: animals }));
+  setAnimal: (name, hungryTimeString) => {
+    set((state) => {
+      if (state.animals.find((animal) => animal.name === name))
+        state.animals.find((animal) => animal.name === name)!.hungryTime =
+          new Date(hungryTimeString.split(".")[0]);
+      else {
+        state.animals.push({
+          name: name,
+          hungryTime: new Date(hungryTimeString.split(".")[0]),
+        });
+      }
+
+      return {};
+    });
   },
 
-  setAnimal: (name, hungryTime) => {
+  setAnimals: (animalsPara) => {
     set((state) => {
-      state.animals.find((animal) => animal.name === name)!.hungryTime =
-        hungryTime;
+      animalsPara.map((animalPara) => {
+        state.setAnimal(animalPara.name, animalPara.hungryTimeString);
+      });
 
       return {};
     });

@@ -2,12 +2,13 @@ declare namespace Animal {
   //DTO
 
   //Variable
-  export type animals = { name: string; hungryTime: Date }[];
+  export type Animals = { name: string; hungryTime: Date }[];
+  export type AnimalsPara = { name: string; hungryTimeString: string }[];
 
   //Store
   export interface animalsStore {
-    animals: animals;
-    setAnimals: (animals) => void;
-    setAnimal: (name: string, hungryTime: Date) => void;
+    animals: Animals;
+    setAnimals: (animalsPara: AnimalsPara) => void;
+    setAnimal: (name: string, hungryTimeString: string) => void;
   }
 }
