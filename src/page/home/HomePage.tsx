@@ -25,7 +25,7 @@ const BasicTestPage = () => {
         }}
       />
       <Background src="/img/home_background.png" alt="background" />
-      <Penguin />
+      <Penguin isHungry />
       <StoreButton />
       <StatisticButton />
     </>

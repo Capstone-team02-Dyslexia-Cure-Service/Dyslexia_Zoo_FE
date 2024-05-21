@@ -6,7 +6,9 @@ import React, { useState } from "react";
 import AnimalPanel from "./AnimalPanel";
 import { PAGE_URL } from "@/config/path";
 
-const Penguin = () => {
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+
+const Penguin = ({ isHungry }: { isHungry?: boolean }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showControlPanel, setShowControlPanel] = useState(false);
 
@@ -19,9 +21,23 @@ const Penguin = () => {
     setShowControlPanel(false);
   };
 
+  const Img = styled.img`
+    position: absolute;
+
+    top: 75%;
+    left: 52%;
+
+    width: 100px;
+    height: 110px;
+
+    animation: ${isHungry ? hungry : move} ${isHungry ? "2s" : "10s"} 0s
+      infinite;
+  `;
+
   return (
     <>
       <Img src="/img/penguin.png" alt="Penguin" onMouseDown={handleMouseDown} />
+      {isHungry ? <HungrySign /> : null}
       {showControlPanel && (
         <AnimalPanel
           mouseX={mousePosition.x}
@@ -68,15 +84,41 @@ const move = keyframes`
   }
 `;
 
-const Img = styled.img`
+const hungry = keyframes`
+  0% {
+    height: 110px;
+  }
+  50%{
+    margin-top: 15px;
+    height: 95px;
+  }
+  100% {
+    height: 110px;
+  }
+`;
+
+const signHungry = keyframes`
+  0% {
+    font-size: 50px;
+  }
+  50%{
+    margin-top: 14px;
+    font-size: 40px;
+  }
+  100% {
+    font-size: 50px;
+  }
+`;
+
+const HungrySign = styled(PriorityHighIcon)`
   position: absolute;
+  font-size: 50px;
+  color: red;
 
-  top: 75%;
-  left: 52%;
+  top: 73%;
+  left: 55%;
 
-  width: 100px;
-
-  animation: ${move} 10s 0s infinite;
+  animation: ${signHungry} 2s 0s infinite;
 `;
 
 export default Penguin;
