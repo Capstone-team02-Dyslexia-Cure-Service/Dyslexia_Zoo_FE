@@ -121,7 +121,8 @@ const WhiteButton = styled(Container)`
 
   box-shadow: 6px 8px 2px 0 black;
 
-  font-size: 100px;
+  font-size: 75px;
+  font-weight: bold;
 
   &:hover {
     box-shadow: 0 0 0 0 black;

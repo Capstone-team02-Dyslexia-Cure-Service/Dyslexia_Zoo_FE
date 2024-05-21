@@ -7,16 +7,25 @@ export const API = axios.create({
   },
 });
 
-//Auth
-export const setAccess = (token: string): unknown =>
-  (API.defaults.headers["Authorization"] = token);
+export const FORMAPI = axios.create({
+  baseURL: import.meta.env.VITE_SERVER_URL,
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
 
-API.interceptors.response.use(
+//Auth
+export const setAccess = (token: string): void => {
+  API.defaults.headers["Authorization"] = token;
+  FORMAPI.defaults.headers["Authorization"] = token;
+};
+
+/* API.interceptors.response.use(
   (response) => response,
   async (error) => {
     console.log(error);
   }
-);
+); */
 
 /* 
 export const resetAccess = (): unknown =>
