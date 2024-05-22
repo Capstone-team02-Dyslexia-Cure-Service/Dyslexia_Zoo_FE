@@ -22,7 +22,7 @@ const BasicTestPage = () => {
   useEffect(() => {
     setAnimal("penguin", "2024-05-21T16:50:24.298Z");
     setAnimals([
-      { name: "penguin", hungryTimeString: "2024-05-22T16:50:24.298Z" },
+      { name: "dolphin", hungryTimeString: "2024-05-22T16:50:24.298Z" },
     ]);
   }, []);
 
