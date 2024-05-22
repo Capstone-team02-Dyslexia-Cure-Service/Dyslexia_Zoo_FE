@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 
 import AnimalPanel from "./AnimalPanel";
-import { PAGE_URL } from "@/config/path";
+import { PAGE_URL } from "@/shared/configs/path";
 
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 

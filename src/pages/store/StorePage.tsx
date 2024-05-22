@@ -6,7 +6,7 @@ import { Background } from "@/entities/Background";
 import TTSText from "@/entities/TTSText";
 import { HomeButton } from "@/entities/Button";
 
-import useAnimalState from "@/hooks/useAnimalState";
+import useAnimalState from "@/shared/hooks/useAnimalState";
 
 const StorePage = () => {
   const animals = useAnimalState((state) => state.animals);

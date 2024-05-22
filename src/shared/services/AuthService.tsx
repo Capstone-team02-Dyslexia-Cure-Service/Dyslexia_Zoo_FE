@@ -1,9 +1,9 @@
 import { AxiosResponse } from "axios";
-import { PAGE_URL } from "@/config/path";
+import { PAGE_URL } from "@/shared/configs/path";
 import { useNavigate } from "react-router";
 
-import { API, setAccess } from "@/config/axios";
-import useUserState from "@/hooks/useUserStore";
+import { API, setAccess } from "@/shared/configs/axios";
+import useUserState from "@/shared/hooks/useUserStore";
 
 const AuthService = () => {
   const URL = "api/v1/member";

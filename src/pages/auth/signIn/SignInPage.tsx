@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import TTSText from "@/entities/TTSText";
 
-import AuthService from "@/service/AuthService";
+import AuthService from "@/shared/services/AuthService";
 
 const SignInPage = () => {
   const { control, handleSubmit } = useForm<User.SignInReqDto>({

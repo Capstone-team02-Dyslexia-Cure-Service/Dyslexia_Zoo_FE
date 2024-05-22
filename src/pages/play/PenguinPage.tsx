@@ -6,11 +6,11 @@ import { keyframes } from "@emotion/react";
 import { Background } from "@/entities/Background";
 import { FixContainer } from "@/entities/Container";
 import TTSText from "@/entities/TTSText";
-import ReadWordQuestion from "@/entities/question/ReadQuestion";
+import ReadWordQuestion from "@/widgets/question/ReadQuestion";
 import { HomeButton } from "@/entities/Button";
 
-import PlayService from "@/service/PlayService";
-import useTestStore from "@/hooks/useTestState";
+import PlayService from "@/shared/services/PlayService";
+import useTestStore from "@/shared/hooks/useTestState";
 
 const PenguinPage = () => {
   const [state, set] = useState(false);

@@ -1,10 +1,10 @@
 import { AxiosResponse } from "axios";
 
-import { API } from "@/config/axios";
-import useTestStore from "@/hooks/useTestState";
+import { API, FORMAPI } from "@/shared/configs/axios";
+import useTestStore from "@/shared/hooks/useTestState";
 
-const PlayService = () => {
-  const URL = "/api/v1/play";
+const TestService = () => {
+  const URL = "/api/v1/test";
 
   const setTest = useTestStore((state) => state.setTest);
   const testAnswers = useTestStore((state) => state.testAnswers);
@@ -18,10 +18,12 @@ const PlayService = () => {
   };
 
   const submitTestAnswers = async () => {
-    console.log(testAnswers);
+    const { data } = await FORMAPI.post(`${URL}`, testAnswers);
+
+    //정답 전시 구현 필요
   };
 
   return { getTest, submitTestAnswers };
 };
 
-export default PlayService;
+export default TestService;

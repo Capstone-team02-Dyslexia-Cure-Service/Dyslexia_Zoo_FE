@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { speech } from "./function/speech";
+import { speech } from "../utils/speech";
 
 const TTSText = ({
   text,

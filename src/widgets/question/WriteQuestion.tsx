@@ -3,13 +3,13 @@ import hangul from "hangul-js";
 import styled from "@emotion/styled";
 
 import TTSText from "@/entities/TTSText";
-import { QuestionContainer, RowContainer } from "../Container";
-import { SoundButton, SaveButton, ExButton } from "../Button";
+import { QuestionContainer, RowContainer } from "../../entities/Container";
+import { SoundButton, SaveButton, ExButton } from "../../entities/Button";
 
-import useTestStore from "@/hooks/useTestState";
-import PlayService from "@/service/PlayService";
+import useTestStore from "@/shared/hooks/useTestState";
+import PlayService from "@/shared/services/PlayService";
 
-import { shuffle } from "../function/arrayRandom";
+import { shuffle } from "../../utils/arrayRandom";
 
 const WriteWordQuestion = ({
   content,
