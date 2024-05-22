@@ -3,7 +3,7 @@ import { create } from "zustand";
 const useTestStore = create<Question.TestStore>((set) => ({
   //State
   testContent: undefined,
-  testAnswers: [],
+  testAnswers: undefined,
 
   //Set function
   setTestContent: (test: Question.BasicTestResDto) => {
@@ -13,9 +13,9 @@ const useTestStore = create<Question.TestStore>((set) => ({
     });
   },
 
-  setTestAnswers: (id: string, answer: string) => {
+  setTestAnswers: (id: string, answer: string | File) => {
     set((state) => {
-      state.testAnswers.find((answer) => answer.id === id)!.answer = answer;
+      state.testAnswers && state.testAnswers.set(id, answer);
 
       return {};
     });
@@ -24,14 +24,12 @@ const useTestStore = create<Question.TestStore>((set) => ({
   setTest: (test: Question.BasicTestResDto) => {
     set((state) => {
       state.testContent = test;
-      state.testAnswers = [];
-      test.questions.map((question) => {
-        if (question.type === "WRITEWORD")
-          state.testAnswers.push({
-            id: question.id,
-            answer: "",
-          });
-      });
+
+      state.testAnswers = new FormData();
+      test.questions.map(
+        (question) =>
+          state.testAnswers && state.testAnswers.append(question.id, "")
+      );
 
       return {};
     });

@@ -7,7 +7,7 @@ import { BasicTestContainer } from "@/component/Container";
 import { SubmitButton } from "@/component/Button";
 import TTSText from "@/component/TTSText";
 
-import BasicTestService from "@/service/BasicTestService";
+import BasicTestService from "@/service/TestService";
 import useTestStore from "@/store/testStore";
 
 const BasicTestPage = () => {

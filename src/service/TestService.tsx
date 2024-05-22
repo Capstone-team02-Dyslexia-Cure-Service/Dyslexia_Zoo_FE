@@ -3,8 +3,8 @@ import { AxiosResponse } from "axios";
 import { API, FORMAPI } from "@/config/axios";
 import useTestStore from "@/store/testStore";
 
-const BasicTestService = () => {
-  const URL = "/api/v1/basicTest";
+const TestService = () => {
+  const URL = "/api/v1/test";
 
   const setTest = useTestStore((state) => state.setTest);
   const testAnswers = useTestStore((state) => state.testAnswers);
@@ -18,14 +18,12 @@ const BasicTestService = () => {
   };
 
   const submitTestAnswers = async () => {
-    const formData = new FormData();
-    testAnswers.map((testAnswer) => {
-      formData.append(testAnswer.id, testAnswer.answer);
-    });
-    console.log(testAnswers);
+    const { data } = await FORMAPI.post(`${URL}`, testAnswers);
+
+    //정답 전시 구현 필요
   };
 
   return { getTest, submitTestAnswers };
 };
 
-export default BasicTestService;
+export default TestService;

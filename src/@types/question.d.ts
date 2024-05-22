@@ -1,9 +1,9 @@
 declare namespace Question {
   //Basic
-  export interface ReadWordQuestionAnswer {
+  /*   export interface ReadWordQuestionAnswer {
     id: sting;
     answer: string;
-  }
+  } */
 
   //DTO
   export interface BasicTestResDto {
@@ -27,8 +27,8 @@ declare namespace Question {
   //문자 쓰기만 가정하고 설계됨. -> answer type 변경 예정
   export interface TestStore {
     testContent: BasicTestResDto | undefined;
-    testAnswers: ReadWordQuestionAnswer[];
+    testAnswers: FormData | undefined;
     setTest: (test: BasicTestResDto) => void;
-    setTestAnswers: (id: string, answer: string) => void;
+    setTestAnswers: (id: string, answer: string | File) => void;
   }
 }
