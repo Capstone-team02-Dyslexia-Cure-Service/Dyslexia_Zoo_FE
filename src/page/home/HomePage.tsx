@@ -7,6 +7,7 @@ import TTSText from "@/component/TTSText";
 import { StoreButton, StatisticButton } from "@/component/Button";
 
 import Penguin from "@/component/animal/Penguin";
+import Animal from "@/component/animal/Animal";
 
 import useAnimalState from "@/store/animalStore";
 
@@ -19,7 +20,7 @@ const BasicTestPage = () => {
   useEffect(() => {
     setAnimal("penguin", "2024-05-21T16:50:24.298Z");
     setAnimals([
-      { name: "penguin", hungryTimeString: "2024-05-20T16:50:24.298Z" },
+      { name: "penguin", hungryTimeString: "2024-05-22T16:50:24.298Z" },
     ]);
   }, []);
 
