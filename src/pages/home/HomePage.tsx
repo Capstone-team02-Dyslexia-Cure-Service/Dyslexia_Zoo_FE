@@ -6,9 +6,7 @@ import { Background } from "@/entities/Background";
 import TTSText from "@/entities/TTSText";
 import { StoreButton, StatisticButton } from "@/entities/Button";
 
-import Penguin from "@/widgets/animal/Penguin";
-import Animal from "@/widgets/animal/Animal";
-import { PenguinMove } from "@/widgets/animal/AnimalMove";
+import { Animal, PenguinMove } from "@/widgets";
 
 import useAnimalState from "@/shared/hooks/useAnimalState";
 import { PAGE_URL } from "@/shared/configs/path";

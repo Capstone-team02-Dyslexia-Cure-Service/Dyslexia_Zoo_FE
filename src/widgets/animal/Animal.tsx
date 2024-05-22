@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "@emotion/styled";
 import { keyframes, Keyframes } from "@emotion/react";
 
-import AnimalPanel from "./AnimalPanel";
+import { AnimalPanel } from "@/widgets";
 
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 
@@ -23,7 +23,7 @@ type Prop = {
   isHungry?: boolean;
 };
 
-const Animal = ({
+export const Animal = ({
   name,
   info,
   playPath,
@@ -129,5 +129,3 @@ const Animal = ({
     </>
   );
 };
-
-export default Animal;

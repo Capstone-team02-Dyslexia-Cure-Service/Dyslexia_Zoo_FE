@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import WriteWordQuestion from "@/widgets/question/WriteQuestion";
+import { WriteQuestion } from "@/widgets";
 
 import { Background } from "@/entities/Background";
 import { BasicTestContainer } from "@/entities/Container";
@@ -34,7 +34,7 @@ const BasicTestPage = () => {
         {testContent
           ? testContent.questions.map(({ id, type, content }) => {
               return type === "WRITEWORD" ? (
-                <WriteWordQuestion
+                <WriteQuestion
                   key={id}
                   content={content}
                   id={id}

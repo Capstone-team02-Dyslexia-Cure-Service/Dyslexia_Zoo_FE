@@ -11,7 +11,7 @@ import PlayService from "@/shared/services/PlayService";
 
 import { shuffle } from "../../utils/arrayRandom";
 
-const WriteWordQuestion = ({
+export const WriteQuestion = ({
   content,
   id,
   type,
@@ -96,5 +96,3 @@ const AnswerInput = styled.input`
   font-size: 45px;
   font-weight: bold;
 `;
-
-export default WriteWordQuestion;

@@ -13,7 +13,7 @@ import {
 import useTestStore from "@/shared/hooks/useTestState";
 import PlayService from "@/shared/services/PlayService";
 
-const ReadQuestion = ({
+export const ReadQuestion = ({
   content,
   id,
   type,
@@ -77,5 +77,3 @@ const Content = styled.div`
   font-size: 45px;
   font-weight: bold;
 `;
-
-export default ReadQuestion;

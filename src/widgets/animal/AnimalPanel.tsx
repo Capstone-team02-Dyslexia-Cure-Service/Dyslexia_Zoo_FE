@@ -5,7 +5,7 @@ import { Container } from "../../entities/Container";
 
 import TTSText from "../../entities/TTSText";
 
-const AnimalPanel = ({
+export const AnimalPanel = ({
   mouseX,
   mouseY,
   name,
@@ -116,5 +116,3 @@ const Close = styled.button`
   font-size: 20px;
   font-weight: bold;
 `;
-
-export default AnimalPanel;
