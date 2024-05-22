@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 
-import { Background } from "@/component/Background";
-import { FixContainer } from "@/component/Container";
-import TTSText from "@/component/TTSText";
-import ReadWordQuestion from "@/component/question/ReadQuestion";
-import { HomeButton } from "@/component/Button";
+import { Background } from "@/entities/Background";
+import { FixContainer } from "@/entities/Container";
+import TTSText from "@/entities/TTSText";
+import ReadWordQuestion from "@/entities/question/ReadQuestion";
+import { HomeButton } from "@/entities/Button";
 
 import PlayService from "@/service/PlayService";
 import useTestStore from "@/hooks/useTestState";

@@ -3,7 +3,7 @@ import { BrowserRouter as RootRouter } from "react-router-dom";
 
 import AuthRouter from "./AuthRouter";
 
-import Loading from "./component/Loading";
+import Loading from "../entities/Loading";
 
 const PageRouter = () => (
   <Suspense fallback={<Loading />}>

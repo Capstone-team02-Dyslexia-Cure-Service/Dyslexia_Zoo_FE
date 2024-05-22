@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 
-import WriteWordQuestion from "@/component/question/WriteQuestion";
+import WriteWordQuestion from "@/entities/question/WriteQuestion";
 
-import { Background } from "@/component/Background";
-import { BasicTestContainer } from "@/component/Container";
-import { SubmitButton } from "@/component/Button";
-import TTSText from "@/component/TTSText";
+import { Background } from "@/entities/Background";
+import { BasicTestContainer } from "@/entities/Container";
+import { SubmitButton } from "@/entities/Button";
+import TTSText from "@/entities/TTSText";
 
 import BasicTestService from "@/service/TestService";
 import useTestStore from "@/hooks/useTestState";

@@ -2,7 +2,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import styled from "@emotion/styled";
 
-import TTSText from "@/component/TTSText";
+import TTSText from "@/entities/TTSText";
 import { QuestionContainer, RowContainer } from "../Container";
 import { StartRecordButton, StopRecordButton, SaveButton } from "../Button";
 

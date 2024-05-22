@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 
 import styled from "@emotion/styled";
 
-import { Background } from "@/component/Background";
-import TTSText from "@/component/TTSText";
-import { StoreButton, StatisticButton } from "@/component/Button";
+import { Background } from "@/entities/Background";
+import TTSText from "@/entities/TTSText";
+import { StoreButton, StatisticButton } from "@/entities/Button";
 
-import Penguin from "@/component/animal/Penguin";
-import Animal from "@/component/animal/Animal";
-import { PenguinMove } from "@/component/animal/AnimalMove";
+import Penguin from "@/entities/animal/Penguin";
+import Animal from "@/entities/animal/Animal";
+import { PenguinMove } from "@/entities/animal/AnimalMove";
 
 import useAnimalState from "@/hooks/useAnimalState";
 import { PAGE_URL } from "@/config/path";

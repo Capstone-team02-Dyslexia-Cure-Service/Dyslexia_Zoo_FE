@@ -1,15 +1,15 @@
 import { useEffect, lazy } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
 
-import useUserState from "./hooks/useUserStore";
-import { PAGE_URL } from "./config/path";
+import useUserState from "../hooks/useUserStore";
+import { PAGE_URL } from "../config/path";
 
-const SignIn = lazy(() => import("./pages/auth/signIn/SignInPage"));
-const BasicTest = lazy(() => import("./pages/auth/basicTest/BasicTestPage"));
-const Home = lazy(() => import("./pages/home/HomePage"));
-const Penguin = lazy(() => import("./pages/play/PenguinPage"));
-const Store = lazy(() => import("./pages/store/StorePage"));
-const Statistic = lazy(() => import("./pages/statistic/StatisticPage"));
+const SignIn = lazy(() => import("../pages/auth/signIn/SignInPage"));
+const BasicTest = lazy(() => import("../pages/auth/basicTest/BasicTestPage"));
+const Home = lazy(() => import("../pages/home/HomePage"));
+const Penguin = lazy(() => import("../pages/play/PenguinPage"));
+const Store = lazy(() => import("../pages/store/StorePage"));
+const Statistic = lazy(() => import("../pages/statistic/StatisticPage"));
 
 const AuthRouter = () => {
   const isSignIn = useUserState((state) => state.isSignIn);

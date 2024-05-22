@@ -2,9 +2,9 @@ import { useEffect } from "react";
 
 import styled from "@emotion/styled";
 
-import { Background } from "@/component/Background";
-import TTSText from "@/component/TTSText";
-import { HomeButton } from "@/component/Button";
+import { Background } from "@/entities/Background";
+import TTSText from "@/entities/TTSText";
+import { HomeButton } from "@/entities/Button";
 
 import useAnimalState from "@/hooks/useAnimalState";
 

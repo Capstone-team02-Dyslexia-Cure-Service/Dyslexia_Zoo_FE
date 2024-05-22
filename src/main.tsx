@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import PageRouter from "./PageRouter";
+import PageRouter from "./app/PageRouter";
 
 async function enableMocking() {
   if (process.env.NODE_ENV !== "development") {

@@ -3,7 +3,7 @@ import { Controller, useForm } from "react-hook-form";
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import TTSText from "@/component/TTSText";
+import TTSText from "@/entities/TTSText";
 
 import AuthService from "@/service/AuthService";
 
