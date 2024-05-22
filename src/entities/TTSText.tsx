@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { speech } from "../utils/speech";
+import { speech } from "@/utils";
 
-const TTSText = ({
+export const TTSText = ({
   text,
   style,
 }: {
@@ -28,5 +28,3 @@ const Text = styled.div`
   -ms-user-select: none;
   user-select: none;
 `;
-
-export default TTSText;

@@ -3,9 +3,10 @@ import { Controller, useForm } from "react-hook-form";
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import TTSText from "@/entities/TTSText";
 
-import AuthService from "@/shared/services/AuthService";
+import { TTSText } from "@/entities";
+
+import { AuthService } from "@/shared";
 
 const SignInPage = () => {
   const { control, handleSubmit } = useForm<User.SignInReqDto>({

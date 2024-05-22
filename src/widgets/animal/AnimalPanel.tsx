@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 
-import { Container } from "../../entities/Container";
-
-import TTSText from "../../entities/TTSText";
+import { TTSText, Container } from "@/entities";
 
 export const AnimalPanel = ({
   mouseX,

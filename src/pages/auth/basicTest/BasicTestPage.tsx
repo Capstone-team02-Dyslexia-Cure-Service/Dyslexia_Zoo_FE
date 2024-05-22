@@ -2,16 +2,17 @@ import { useEffect } from "react";
 
 import { WriteQuestion } from "@/widgets";
 
-import { Background } from "@/entities/Background";
-import { BasicTestContainer } from "@/entities/Container";
-import { SubmitButton } from "@/entities/Button";
-import TTSText from "@/entities/TTSText";
+import {
+  Background,
+  TTSText,
+  BasicTestContainer,
+  SubmitButton,
+} from "@/entities";
 
-import BasicTestService from "@/shared/services/TestService";
-import useTestStore from "@/shared/hooks/useTestState";
+import { TestService, useTestStore } from "@/shared";
 
 const BasicTestPage = () => {
-  const { getTest, submitTestAnswers } = BasicTestService();
+  const { getTest, submitTestAnswers } = TestService();
   const testContent = useTestStore((state) => state.testContent);
 
   useEffect(() => {

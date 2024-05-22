@@ -2,10 +2,9 @@ import { AxiosResponse } from "axios";
 import { PAGE_URL } from "@/shared/configs/path";
 import { useNavigate } from "react-router";
 
-import { API, setAccess } from "@/shared/configs/axios";
-import useUserState from "@/shared/hooks/useUserStore";
+import { useUserState, API, setAccess } from "@/shared";
 
-const AuthService = () => {
+export const AuthService = () => {
   const URL = "api/v1/member";
   const setName = useUserState((state) => state.setName);
   const navigate = useNavigate();
@@ -27,5 +26,3 @@ const AuthService = () => {
 
   return { signin };
 };
-
-export default AuthService;

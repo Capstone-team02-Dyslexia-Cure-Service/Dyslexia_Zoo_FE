@@ -10,7 +10,7 @@ import EqualizerIcon from "@mui/icons-material/Equalizer";
 import MicIcon from "@mui/icons-material/Mic";
 import StopIcon from "@mui/icons-material/Stop";
 
-import { speech } from "../utils/speech";
+import { speech } from "@/utils";
 
 import { Container } from "./Container";
 import { PAGE_URL } from "@/shared/configs/path";

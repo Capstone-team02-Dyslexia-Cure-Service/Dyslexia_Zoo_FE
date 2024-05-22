@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
-const Convas = () => {
+export const Convas = () => {
   // useRef
   const canvasRef = useRef<HTMLCanvasElement>(null);
   // getCtx
@@ -48,5 +48,3 @@ const Canvas = styled.canvas`
   background-color: white;
   border-radius: 5px;
 `;
-
-export default Convas;

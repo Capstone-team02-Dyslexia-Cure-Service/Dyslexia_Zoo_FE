@@ -2,16 +2,16 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import styled from "@emotion/styled";
 
-import TTSText from "@/entities/TTSText";
-import { QuestionContainer, RowContainer } from "../../entities/Container";
 import {
+  TTSText,
+  QuestionContainer,
+  RowContainer,
   StartRecordButton,
   StopRecordButton,
   SaveButton,
-} from "../../entities/Button";
+} from "@/entities";
 
-import useTestStore from "@/shared/hooks/useTestState";
-import PlayService from "@/shared/services/PlayService";
+import { useTestStore, PlayService } from "@/shared";
 
 export const ReadQuestion = ({
   content,

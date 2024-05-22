@@ -2,14 +2,18 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import hangul from "hangul-js";
 import styled from "@emotion/styled";
 
-import TTSText from "@/entities/TTSText";
-import { QuestionContainer, RowContainer } from "../../entities/Container";
-import { SoundButton, SaveButton, ExButton } from "../../entities/Button";
+import {
+  TTSText,
+  QuestionContainer,
+  RowContainer,
+  SoundButton,
+  SaveButton,
+  ExButton,
+} from "@/entities";
 
-import useTestStore from "@/shared/hooks/useTestState";
-import PlayService from "@/shared/services/PlayService";
+import { useTestStore, PlayService } from "@/shared";
 
-import { shuffle } from "../../utils/arrayRandom";
+import { shuffle } from "@/utils";
 
 export const WriteQuestion = ({
   content,

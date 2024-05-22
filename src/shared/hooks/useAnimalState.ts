@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const useAnimalState = create<Animal.animalsStore>((set) => ({
+export const useAnimalState = create<Animal.animalsStore>((set) => ({
   //State
   animals: [],
 
@@ -31,5 +31,3 @@ const useAnimalState = create<Animal.animalsStore>((set) => ({
     });
   },
 }));
-
-export default useAnimalState;

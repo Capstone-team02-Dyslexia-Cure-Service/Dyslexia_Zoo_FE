@@ -1,13 +1,10 @@
+import { useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis } from "recharts";
 import styled from "@emotion/styled";
 
-import { Background } from "@/entities/Background";
-import TTSText from "@/entities/TTSText";
-import { HomeButton } from "@/entities/Button";
-import { GraphContainer } from "@/entities/Container";
-import { useEffect } from "react";
+import { Background, TTSText, HomeButton, GraphContainer } from "@/entities";
 
-import useUserState from "@/shared/hooks/useUserStore";
+import { useUserState } from "@/shared";
 
 const StatisticPage = () => {
   const statisticData = useUserState((state) => state.statisticData);

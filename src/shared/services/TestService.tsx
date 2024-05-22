@@ -1,9 +1,8 @@
 import { AxiosResponse } from "axios";
 
-import { API, FORMAPI } from "@/shared/configs/axios";
-import useTestStore from "@/shared/hooks/useTestState";
+import { API, FORMAPI, useTestStore } from "@/shared";
 
-const TestService = () => {
+export const TestService = () => {
   const URL = "/api/v1/test";
 
   const setTest = useTestStore((state) => state.setTest);
@@ -25,5 +24,3 @@ const TestService = () => {
 
   return { getTest, submitTestAnswers };
 };
-
-export default TestService;

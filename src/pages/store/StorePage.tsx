@@ -2,11 +2,9 @@ import { useEffect } from "react";
 
 import styled from "@emotion/styled";
 
-import { Background } from "@/entities/Background";
-import TTSText from "@/entities/TTSText";
-import { HomeButton } from "@/entities/Button";
+import { Background, TTSText, HomeButton } from "@/entities";
 
-import useAnimalState from "@/shared/hooks/useAnimalState";
+import { useAnimalState } from "@/shared";
 
 const StorePage = () => {
   const animals = useAnimalState((state) => state.animals);

@@ -1,9 +1,8 @@
 import { AxiosResponse } from "axios";
 
-import { API } from "@/shared/configs/axios";
-import useTestStore from "@/shared/hooks/useTestState";
+import { API, useTestStore } from "@/shared";
 
-const PlayService = () => {
+export const PlayService = () => {
   const URL = "/api/v1/play";
 
   const setTest = useTestStore((state) => state.setTest);
@@ -23,5 +22,3 @@ const PlayService = () => {
 
   return { getTest, submitTestAnswers };
 };
-
-export default PlayService;

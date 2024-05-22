@@ -2,14 +2,11 @@ import { useEffect, useState } from "react";
 
 import styled from "@emotion/styled";
 
-import { Background } from "@/entities/Background";
-import TTSText from "@/entities/TTSText";
-import { StoreButton, StatisticButton } from "@/entities/Button";
+import { Background, TTSText, StoreButton, StatisticButton } from "@/entities";
 
 import { Animal, PenguinMove } from "@/widgets";
 
-import useAnimalState from "@/shared/hooks/useAnimalState";
-import { PAGE_URL } from "@/shared/configs/path";
+import { PAGE_URL, useAnimalState } from "@/shared";
 
 const BasicTestPage = () => {
   const animals = useAnimalState((state) => state.animals);

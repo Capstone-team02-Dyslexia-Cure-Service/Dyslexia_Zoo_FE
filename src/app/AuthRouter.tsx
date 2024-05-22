@@ -1,8 +1,7 @@
 import { useEffect, lazy } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
 
-import useUserState from "../shared/hooks/useUserStore";
-import { PAGE_URL } from "../shared/configs/path";
+import { useUserState, PAGE_URL } from "../shared";
 
 const SignIn = lazy(() => import("../pages/auth/signIn/SignInPage"));
 const BasicTest = lazy(() => import("../pages/auth/basicTest/BasicTestPage"));

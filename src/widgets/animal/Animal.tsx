@@ -1,11 +1,10 @@
 import { useState } from "react";
 
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 import styled from "@emotion/styled";
 import { keyframes, Keyframes } from "@emotion/react";
 
 import { AnimalPanel } from "@/widgets";
-
-import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 
 type Prop = {
   name: string;
