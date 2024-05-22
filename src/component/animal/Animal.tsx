@@ -79,7 +79,7 @@ const Animal = ({
     color: red;
 
     top: ${top - 3}%;
-    left: ${left - 4}%;
+    left: ${left + 4}%;
 
     animation: ${signHungry} 2s 0s infinite;
   `;
