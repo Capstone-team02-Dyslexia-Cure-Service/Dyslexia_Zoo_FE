@@ -10,7 +10,7 @@ import ReadWordQuestion from "@/component/question/ReadQuestion";
 import { HomeButton } from "@/component/Button";
 
 import PlayService from "@/service/PlayService";
-import useTestStore from "@/store/testStore";
+import useTestStore from "@/hooks/useTestState";
 
 const PenguinPage = () => {
   const [state, set] = useState(false);

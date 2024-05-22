@@ -6,7 +6,7 @@ import { Background } from "@/component/Background";
 import TTSText from "@/component/TTSText";
 import { HomeButton } from "@/component/Button";
 
-import useAnimalState from "@/store/animalStore";
+import useAnimalState from "@/hooks/useAnimalState";
 
 const StorePage = () => {
   const animals = useAnimalState((state) => state.animals);

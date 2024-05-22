@@ -3,7 +3,7 @@ import { PAGE_URL } from "@/config/path";
 import { useNavigate } from "react-router";
 
 import { API, setAccess } from "@/config/axios";
-import useUserState from "@/store/userStore";
+import useUserState from "@/hooks/useUserStore";
 
 const AuthService = () => {
   const URL = "api/v1/member";

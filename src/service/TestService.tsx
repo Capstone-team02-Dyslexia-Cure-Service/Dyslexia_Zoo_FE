@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 
 import { API, FORMAPI } from "@/config/axios";
-import useTestStore from "@/store/testStore";
+import useTestStore from "@/hooks/useTestState";
 
 const TestService = () => {
   const URL = "/api/v1/test";

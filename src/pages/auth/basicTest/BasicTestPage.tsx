@@ -8,7 +8,7 @@ import { SubmitButton } from "@/component/Button";
 import TTSText from "@/component/TTSText";
 
 import BasicTestService from "@/service/TestService";
-import useTestStore from "@/store/testStore";
+import useTestStore from "@/hooks/useTestState";
 
 const BasicTestPage = () => {
   const { getTest, submitTestAnswers } = BasicTestService();

@@ -6,7 +6,7 @@ import TTSText from "@/component/TTSText";
 import { QuestionContainer, RowContainer } from "../Container";
 import { StartRecordButton, StopRecordButton, SaveButton } from "../Button";
 
-import useTestStore from "@/store/testStore";
+import useTestStore from "@/hooks/useTestState";
 import PlayService from "@/service/PlayService";
 
 const ReadQuestion = ({

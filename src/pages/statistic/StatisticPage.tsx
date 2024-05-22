@@ -7,7 +7,7 @@ import { HomeButton } from "@/component/Button";
 import { GraphContainer } from "@/component/Container";
 import { useEffect } from "react";
 
-import useUserState from "@/store/userStore";
+import useUserState from "@/hooks/useUserStore";
 
 const StatisticPage = () => {
   const statisticData = useUserState((state) => state.statisticData);

@@ -6,7 +6,7 @@ import TTSText from "@/component/TTSText";
 import { QuestionContainer, RowContainer } from "../Container";
 import { SoundButton, SaveButton, ExButton } from "../Button";
 
-import useTestStore from "@/store/testStore";
+import useTestStore from "@/hooks/useTestState";
 import PlayService from "@/service/PlayService";
 
 import { shuffle } from "../function/arrayRandom";

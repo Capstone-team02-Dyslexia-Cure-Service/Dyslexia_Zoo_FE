@@ -10,7 +10,7 @@ import Penguin from "@/component/animal/Penguin";
 import Animal from "@/component/animal/Animal";
 import { PenguinMove } from "@/component/animal/AnimalMove";
 
-import useAnimalState from "@/store/animalStore";
+import useAnimalState from "@/hooks/useAnimalState";
 import { PAGE_URL } from "@/config/path";
 
 const BasicTestPage = () => {
