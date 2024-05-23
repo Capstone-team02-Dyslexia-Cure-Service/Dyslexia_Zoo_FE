@@ -1,9 +1,11 @@
 declare namespace Question {
   //Basic
-  /*   export interface ReadWordQuestionAnswer {
+  type QuestionType = "SELECTWORD" | "READWORD" | "WRITEWORD" | "READSENTENSE";
+
+  export interface TestAnswerInfo {
     id: sting;
-    answer: string;
-  } */
+    type: QuestionType;
+  }
 
   //DTO
   export interface BasicTestResDto {
@@ -13,7 +15,7 @@ declare namespace Question {
 
   export interface QuestionResDto {
     id: string;
-    type: "READWORD" | "WRITEWORD" | "READSENTENSE";
+    type: QuestionType;
     content: string;
   }
 
@@ -23,12 +25,15 @@ declare namespace Question {
   }
 
   //Store
-  //문자 쓰기만 가정하고 설계됨. -> ( | )[]으로 변경 예정
-  //문자 쓰기만 가정하고 설계됨. -> answer type 변경 예정
   export interface TestStore {
     testContent: BasicTestResDto | undefined;
-    testAnswers: FormData | undefined;
+    testAnswers: (File | string)[];
+    testAnswersInfo: TestAnswerInfo[];
     setTest: (test: BasicTestResDto) => void;
-    setTestAnswers: (id: string, answer: string | File) => void;
+    setTestAnswers: (
+      id: string,
+      type: QuestionType,
+      answer: string | File
+    ) => void;
   }
 }

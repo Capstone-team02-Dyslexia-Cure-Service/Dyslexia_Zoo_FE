@@ -3,19 +3,22 @@ import { create } from "zustand";
 export const useTestStore = create<Question.TestStore>((set) => ({
   //State
   testContent: undefined,
-  testAnswers: undefined,
+  testAnswersInfo: [],
+  testAnswers: [],
 
   //Set function
-  setTestContent: (test: Question.BasicTestResDto) => {
+  setTestAnswers: (id, type, answer) => {
     set((state) => {
-      state.testContent = test;
-      return {};
-    });
-  },
+      const findIndex = state.testAnswersInfo.findIndex(
+        (answerInfo) => answerInfo.id === id && answerInfo.type === type
+      );
+      if (findIndex !== -1) {
+        state.testAnswersInfo.splice(findIndex, 1);
+        state.testAnswers.splice(findIndex, 1);
+      }
 
-  setTestAnswers: (id: string, answer: string | File) => {
-    set((state) => {
-      state.testAnswers && state.testAnswers.set(id, answer);
+      state.testAnswersInfo.push({ id: id, type: type });
+      state.testAnswers.push(answer);
 
       return {};
     });
@@ -24,13 +27,8 @@ export const useTestStore = create<Question.TestStore>((set) => ({
   setTest: (test: Question.BasicTestResDto) => {
     set((state) => {
       state.testContent = test;
-
-      state.testAnswers = new FormData();
-      test.questions.map(
-        (question) =>
-          state.testAnswers && state.testAnswers.append(question.id, "")
-      );
-
+      state.testAnswers = [];
+      state.testAnswersInfo = [];
       return {};
     });
   },

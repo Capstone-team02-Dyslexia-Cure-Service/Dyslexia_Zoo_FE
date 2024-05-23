@@ -15,9 +15,9 @@ const BasicTestPage = () => {
   const [now, setNow] = useState<Date>(new Date());
 
   useEffect(() => {
-    setAnimal("penguin", "2024-05-21T16:50:24.298Z");
+    setAnimal("penguin", "2025-05-21T16:50:24.298Z");
     setAnimals([
-      { name: "dolphin", hungryTimeString: "2024-05-22T16:50:24.298Z" },
+      { name: "penguin", hungryTimeString: "2025-05-28T16:50:24.298Z" },
     ]);
   }, []);
 

@@ -7,6 +7,7 @@ export const TestService = () => {
 
   const setTest = useTestStore((state) => state.setTest);
   const testAnswers = useTestStore((state) => state.testAnswers);
+  const testAnswersInfo = useTestStore((state) => state.testAnswersInfo);
 
   const getTest = async () => {
     const {
@@ -17,7 +18,18 @@ export const TestService = () => {
   };
 
   const submitTestAnswers = async () => {
-    const { data } = await FORMAPI.post(`${URL}`, testAnswers);
+    const formData = new FormData();
+    formData.append(
+      "info",
+      new Blob([JSON.stringify(testAnswersInfo)], {
+        type: "application/json",
+      })
+    );
+    testAnswers.map((answer, index) => {
+      formData.append(`answer_${index}`, answer);
+    });
+
+    const { data } = await FORMAPI.post(`${URL}`, formData);
 
     //정답 전시 구현 필요
   };
