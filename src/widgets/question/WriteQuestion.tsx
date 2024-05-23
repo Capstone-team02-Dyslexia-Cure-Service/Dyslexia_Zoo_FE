@@ -9,6 +9,7 @@ import {
   SoundButton,
   SaveButton,
   ExButton,
+  DeleteButton,
 } from "@/entities";
 
 import { useTestStore, PlayService } from "@/shared";
@@ -67,6 +68,12 @@ export const WriteQuestion = ({
       </RowContainer>
       {easy ? (
         <RowContainer>
+          <DeleteButton
+            onClick={() => {
+              selectInput.pop();
+              setValue("answer", hangul.assemble(selectInput));
+            }}
+          ></DeleteButton>
           {shuffle(hangul.disassemble(content)).map((value) => (
             <ExButton
               value={value}

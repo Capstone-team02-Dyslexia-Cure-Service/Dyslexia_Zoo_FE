@@ -4,7 +4,7 @@ const getBasicTest: ResponseResolver = () => {
   return HttpResponse.json<Question.BasicTestResDto>({
     id: "1",
     questions: [
-      { id: "2", type: "WRITEWORD", content: "어이없네" },
+      { id: "2", type: "WRITEWORD", content: "고생해라" },
       { id: "3", type: "WRITEWORD", content: "정상제" },
       { id: "4", type: "WRITEWORD", content: "박세준" },
       { id: "5", type: "WRITEWORD", content: "강민규" },

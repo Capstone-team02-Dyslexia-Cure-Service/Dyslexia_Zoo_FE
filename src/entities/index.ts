@@ -9,6 +9,7 @@ export {
   StoreButton,
   StatisticButton,
   ExButton,
+  DeleteButton,
 } from "./Button";
 export {
   Container,

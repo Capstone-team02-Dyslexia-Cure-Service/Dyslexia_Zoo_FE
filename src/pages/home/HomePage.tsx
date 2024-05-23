@@ -8,7 +8,7 @@ import { Animal, PenguinMove } from "@/widgets";
 
 import { PAGE_URL, useAnimalState } from "@/shared";
 
-const BasicTestPage = () => {
+const HomePage = () => {
   const animals = useAnimalState((state) => state.animals);
   const setAnimal = useAnimalState((state) => state.setAnimal); //remove
   const setAnimals = useAnimalState((state) => state.setAnimals); // remove
@@ -17,7 +17,7 @@ const BasicTestPage = () => {
   useEffect(() => {
     setAnimal("penguin", "2025-05-21T16:50:24.298Z");
     setAnimals([
-      { name: "penguin", hungryTimeString: "2025-05-28T16:50:24.298Z" },
+      { name: "penguin", hungryTimeString: "2025-05-21T16:50:24.298Z" },
     ]);
   }, []);
 
@@ -40,7 +40,10 @@ const BasicTestPage = () => {
           left={52}
           width={100}
           height={110}
-          isHungry
+          isHungry={
+            animals.find((animal) => animal.name === "penguin")!.hungryTime <
+            now
+          }
         />
       ) : null}
       <StoreButton />
@@ -49,4 +52,4 @@ const BasicTestPage = () => {
   );
 };
 
-export default BasicTestPage;
+export default HomePage;

@@ -9,6 +9,7 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import MicIcon from "@mui/icons-material/Mic";
 import StopIcon from "@mui/icons-material/Stop";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import { speech } from "@/utils";
 
@@ -92,6 +93,14 @@ export const ExButton = ({
   return <WhiteButton onClick={onClick}>{value}</WhiteButton>;
 };
 
+export const DeleteButton = ({ onClick }: { onClick: any }) => {
+  return (
+    <WhiteButton onClick={onClick}>
+      <DeleteIcon />
+    </WhiteButton>
+  );
+};
+
 const Button = styled(Container)`
   background-color: #3232ff;
 
@@ -144,6 +153,11 @@ const LargeButton = styled(Button)`
     margin-bottom: 30px;
     margin-top: 2px;
   }
+`;
+
+const DeleteIcon = styled(ArrowBackIcon)`
+  color: red;
+  font-size: 75px;
 `;
 
 const SoundIcon = styled(HeadphonesIcon)`
