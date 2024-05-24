@@ -1,5 +1,5 @@
 import { useEffect, lazy } from "react";
-import { useNavigate, Routes, Route } from "react-router-dom";
+import { useNavigate, Routes, Route, Navigate } from "react-router-dom";
 
 import { useUserState, PAGE_URL } from "../shared";
 
@@ -21,6 +21,7 @@ const AuthRouter = () => {
   return (
     <>
       <Routes>
+        <Route index element={<Navigate to={PAGE_URL.SignIn} replace />} />
         <Route path={PAGE_URL.SignIn} element={<SignIn />} />
         <Route path={PAGE_URL.BasicTest} element={<BasicTest />} />
 

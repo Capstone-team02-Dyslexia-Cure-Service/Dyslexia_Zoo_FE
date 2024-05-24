@@ -17,7 +17,7 @@ const HomePage = () => {
   useEffect(() => {
     setAnimal("penguin", "2025-05-21T16:50:24.298Z");
     setAnimals([
-      { name: "penguin", hungryTimeString: "2025-05-21T16:50:24.298Z" },
+      { name: "dolphin", hungryTimeString: "2025-05-21T16:50:24.298Z" },
     ]);
   }, []);
 
