@@ -11,4 +11,5 @@ export enum PAGE_URL {
   BasicTest = "/basicTest",
 
   Penguin = "/penguin",
+  Dolphin = "/dolphin",
 }

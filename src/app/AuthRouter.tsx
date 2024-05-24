@@ -9,6 +9,7 @@ const Home = lazy(() => import("../pages/home/HomePage"));
 const Penguin = lazy(() => import("../pages/play/PenguinPage"));
 const Store = lazy(() => import("../pages/store/StorePage"));
 const Statistic = lazy(() => import("../pages/statistic/StatisticPage"));
+const Dolphin = lazy(() => import("../pages/play/DolphinPage"));
 
 const AuthRouter = () => {
   const isSignIn = useUserState((state) => state.isSignIn);
@@ -29,7 +30,7 @@ const AuthRouter = () => {
         <Route path={PAGE_URL.Store} element={<Store />} />
         <Route path={PAGE_URL.Statistic} element={<Statistic />} />
 
-        <Route path={PAGE_URL.Penguin} element={<Penguin />} />
+        <Route path={PAGE_URL.Dolphin} element={<Dolphin />} />
       </Routes>
     </>
   );

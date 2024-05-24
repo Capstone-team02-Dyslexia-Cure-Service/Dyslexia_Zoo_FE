@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 
 import { Background, TTSText, StoreButton, StatisticButton } from "@/entities";
 
-import { Animal, PenguinMove } from "@/widgets";
+import { Animal, PenguinMove, DolphinMove } from "@/widgets";
 
 import { PAGE_URL, useAnimalState } from "@/shared";
 
@@ -36,10 +36,27 @@ const HomePage = () => {
           playPath={PAGE_URL.Penguin}
           imgPath="/img/penguin.png"
           move={PenguinMove}
-          top={75}
+          top={70}
           left={52}
-          width={100}
-          height={110}
+          width={120}
+          height={130}
+          isHungry={
+            animals.find((animal) => animal.name === "penguin")!.hungryTime <
+            now
+          }
+        />
+      ) : null}
+      {animals.find((animal) => animal.name === "dolphin") ? (
+        <Animal
+          name="돌고래"
+          info="2024년에 처음 한국으로 왔다. Dyslexia Zoo에서 묘기를 부리며 즐겁게 살아가고 있다."
+          playPath={PAGE_URL.Dolphin}
+          imgPath="/img/dolphin.png"
+          move={DolphinMove}
+          top={65}
+          left={20}
+          width={150}
+          height={160}
           isHungry={
             animals.find((animal) => animal.name === "penguin")!.hungryTime <
             now
