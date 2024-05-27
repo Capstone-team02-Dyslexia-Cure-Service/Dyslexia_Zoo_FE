@@ -22,12 +22,16 @@ export const WriteQuestion = ({
   questionType,
   type,
   easy,
+  color,
+  buttonColor,
 }: {
   content: string;
   id: string;
   questionType: Question.QuestionType;
   type: "TEST" | "PLAY";
   easy?: boolean;
+  color?: string;
+  buttonColor?: string;
 }) => {
   const setTestAnswers = useTestStore((state) => state.setTestAnswers);
   const { submitTestAnswers } = PlayService();
@@ -43,12 +47,12 @@ export const WriteQuestion = ({
 
   const StyleQuestionContainer = !easy
     ? styled(QuestionContainer)`
-        background-color: #2121da;
-        border-color: #2121da;
+        background-color: ${color ? color : `#2121da`};
+        border-color: ${color ? color : `#2121da`};
       `
     : styled(QuestionContainer)`
-        background-color: #2121da;
-        border-color: #2121da;
+        background-color: ${color ? color : `#2121da`};
+        border-color: ${color ? color : `#2121da`};
         height: 520px;
       `;
 
@@ -64,9 +68,9 @@ export const WriteQuestion = ({
         }}
       />
       <RowContainer>
-        <SoundButton content={content} />
-        <AnswerInput {...register("answer")} />
-        <SaveButton onClick={handleSubmit(onSubmit)} />
+        <SoundButton content={content} color={buttonColor} />
+        <AnswerInput color={buttonColor} {...register("answer")} />
+        <SaveButton color={buttonColor} onClick={handleSubmit(onSubmit)} />
       </RowContainer>
       {easy ? (
         <RowContainer>

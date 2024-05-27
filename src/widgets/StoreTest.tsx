@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 
 import { WriteQuestion } from "./question/WriteQuestion";
+import { ReadQuestion } from "./question/ReadQuestion";
 
 export const StoreTest = () => {
   return (
@@ -18,22 +19,17 @@ export const StoreTest = () => {
                 questionType={"SELECTWORD"}
                 type="TEST"
                 easy
+                color="#ff4444"
+                buttonColor="#ff1515"
               />
-              <WriteQuestion
+              <ReadQuestion
                 key={"1"}
                 content={"강민규"}
                 id={"1"}
                 questionType={"SELECTWORD"}
                 type="TEST"
-                easy
-              />
-              <WriteQuestion
-                key={"1"}
-                content={"강민규"}
-                id={"1"}
-                questionType={"SELECTWORD"}
-                type="TEST"
-                easy
+                color="#ff4444"
+                buttonColor="#ff1515"
               />
             </TestContainer>
           </TestBox>

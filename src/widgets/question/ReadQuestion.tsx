@@ -20,11 +20,15 @@ export const ReadQuestion = ({
   id,
   questionType,
   type,
+  color,
+  buttonColor,
 }: {
   content: string;
   id: string;
   questionType: Question.QuestionType;
   type: "TEST" | "PLAY";
+  color?: string;
+  buttonColor?: string;
 }) => {
   const setTestAnswers = useTestStore((state) => state.setTestAnswers);
   const { submitTestAnswers } = PlayService();
@@ -41,6 +45,11 @@ export const ReadQuestion = ({
     if (type == "PLAY") submitTestAnswers();
   };
 
+  const StyleQuestionContainer = styled(QuestionContainer)`
+    background-color: ${color ? color : `#1f1fbd`};
+    border-color: ${color ? color : `#1f1fbd`};
+  `;
+
   return (
     <StyleQuestionContainer onSubmit={handleSubmit(onSubmit)}>
       <TTSText
@@ -55,6 +64,7 @@ export const ReadQuestion = ({
       <RowContainer>
         {!recording ? (
           <StartRecordButton
+            color={buttonColor}
             onClick={() => {
               startRecorder(audioRecorder.current);
               setRecording(true);
@@ -62,6 +72,7 @@ export const ReadQuestion = ({
           />
         ) : (
           <StopRecordButton
+            color={buttonColor}
             onClick={() => {
               stopRecorder(audioRecorder.current, recordResult);
               setRecording(false);
@@ -69,16 +80,11 @@ export const ReadQuestion = ({
           />
         )}
         <Content>{content}</Content>
-        <SaveButton onClick={handleSubmit(onSubmit)} />
+        <SaveButton color={buttonColor} onClick={handleSubmit(onSubmit)} />
       </RowContainer>
     </StyleQuestionContainer>
   );
 };
-
-const StyleQuestionContainer = styled(QuestionContainer)`
-  background-color: #1f1fbd;
-  border-color: #1f1fbd;
-`;
 
 const Content = styled.div`
   background-color: white;

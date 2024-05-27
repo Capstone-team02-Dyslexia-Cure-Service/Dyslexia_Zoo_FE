@@ -16,8 +16,14 @@ import { speech } from "@/utils";
 import { Container } from "./Container";
 import { PAGE_URL } from "@/shared/configs/path";
 
-export const SoundButton = ({ content }: { content: string }) => (
-  <Button>
+export const SoundButton = ({
+  content,
+  color,
+}: {
+  content: string;
+  color?: string;
+}) => (
+  <Button style={color ? { background: color } : undefined}>
     <SoundIcon
       onClick={() => {
         speech(content);
@@ -26,26 +32,53 @@ export const SoundButton = ({ content }: { content: string }) => (
   </Button>
 );
 
-export const SubmitButton = ({ onClick }: { onClick: any }) => (
-  <LargeButton onClick={onClick}>
+export const SubmitButton = ({
+  onClick,
+  color,
+}: {
+  onClick: any;
+  color?: string;
+}) => (
+  <LargeButton
+    onClick={onClick}
+    style={color ? { background: color } : undefined}
+  >
     <SubmitIcon />
   </LargeButton>
 );
 
-export const SaveButton = ({ onClick }: { onClick: any }) => (
-  <Button onClick={onClick}>
+export const SaveButton = ({
+  onClick,
+  color,
+}: {
+  onClick: any;
+  color?: string;
+}) => (
+  <Button onClick={onClick} style={color ? { background: color } : undefined}>
     <SaveIcon />
   </Button>
 );
 
-export const StartRecordButton = ({ onClick }: { onClick: any }) => (
-  <Button onClick={onClick}>
+export const StartRecordButton = ({
+  onClick,
+  color,
+}: {
+  onClick: any;
+  color?: string;
+}) => (
+  <Button onClick={onClick} style={color ? { background: color } : undefined}>
     <StartRecordIcon />
   </Button>
 );
 
-export const StopRecordButton = ({ onClick }: { onClick: any }) => (
-  <Button onClick={onClick}>
+export const StopRecordButton = ({
+  onClick,
+  color,
+}: {
+  onClick: any;
+  color?: string;
+}) => (
+  <Button onClick={onClick} style={color ? { background: color } : undefined}>
     <StopRecordIcon />
   </Button>
 );
