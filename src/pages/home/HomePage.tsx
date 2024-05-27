@@ -1,28 +1,21 @@
 import { useEffect, useState } from "react";
 
-import styled from "@emotion/styled";
-
-import { Background, TTSText, StoreButton, StatisticButton } from "@/entities";
+import { Background, StoreButton, StatisticButton } from "@/entities";
 
 import { Animal, PenguinMove, DolphinMove } from "@/widgets";
 
-import { PAGE_URL, useAnimalState } from "@/shared";
+import { PAGE_URL, useAnimalState, AnimalService } from "@/shared";
 
 const HomePage = () => {
   const animals = useAnimalState((state) => state.animals);
-  const setAnimal = useAnimalState((state) => state.setAnimal); //remove
-  const setAnimals = useAnimalState((state) => state.setAnimals); // remove
   const [now, setNow] = useState<Date>(new Date());
+  const { loadAnimals } = AnimalService();
 
   useEffect(() => {
-    setAnimal("penguin", "2025-05-21T16:50:24.298Z");
-    setAnimals([
-      { name: "dolphin", hungryTimeString: "2025-05-21T16:50:24.298Z" },
-    ]);
+    loadAnimals();
   }, []);
 
   useEffect(() => {
-    console.log(new Date("2023-05-21T12:30:30"));
     setNow(new Date());
   }, [animals]);
 

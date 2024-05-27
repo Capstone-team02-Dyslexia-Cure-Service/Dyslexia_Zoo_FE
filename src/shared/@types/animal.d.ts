@@ -1,5 +1,6 @@
 declare namespace Animal {
   //DTO
+  export type LoadAnimalsResDto = { name: string; hungryTimeString: string }[];
 
   //Variable
   export type Animals = { name: string; hungryTime: Date }[];

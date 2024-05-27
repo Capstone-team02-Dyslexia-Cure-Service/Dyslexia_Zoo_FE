@@ -20,7 +20,7 @@ export const AuthService = () => {
     setAccess(id);
     setName(name);
 
-    if (level === "NOT_EVALUATED") navigate(PAGE_URL.BasicTest);
+    if (!level || level === "NOT_EVALUATED") navigate(PAGE_URL.BasicTest);
     else navigate(PAGE_URL.Home);
   };
 

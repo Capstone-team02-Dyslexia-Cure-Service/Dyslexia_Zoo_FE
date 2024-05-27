@@ -74,55 +74,56 @@ const DolphinPage = () => {
 const Question = styled.div`
   position: absolute;
 
-  transform: translate(-50%, 0%);
+  transform: translate(50%, 0%);
   top: 63%;
-  left: 74%;
+  right: 74%;
 `;
 
 const move = keyframes`
   0% {
-    transform: rotate(0deg);
+    top: 60%;
+    left: 70%;
     animation-timing-function: linear;
   }
   10% {
-    transform: rotate(60deg);
+    top: 50%;
+    left: 68%;
+    animation-timing-function: linear;
+
+  }
+  20% {
+    top: 40%;
+    left: 65%;
     animation-timing-function: linear;
   }
   30% {
-    transform: rotate(60deg);
+    top: 30%;
+    left: 40%;
     animation-timing-function: linear;
   }
   40% {
-    top: 0%;
-    left: 60%;
-    transform: rotate(150deg);
-    animation-timing-function: linear;
-  }
-  65% {
-    top: 10%;
-    left: 70%;
-    transform: rotate(200deg);
+    top: 40%;
+    left: 30%;
     animation-timing-function: linear;
   }
   100% {
-    top: 120%;
-    left: 76%;
-    transform: rotate(470deg);
+    top: 60%;
+    left: 20%;
     animation-timing-function: linear;
   }
 `;
 
 const Dolphin = styled.img`
   position: absolute;
-  top: 23%;
-  left: 43%;
+  top: 60%;
+  left: 70%;
 
   width: 200px;
 
   z-index: 10;
 `;
 
-const MoveDolphin = styled(Penguin)`
+const MoveDolphin = styled(Dolphin)`
   animation: ${move} 4s 0s;
 `;
 

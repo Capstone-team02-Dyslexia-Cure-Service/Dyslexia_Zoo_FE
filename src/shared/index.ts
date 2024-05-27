@@ -8,3 +8,4 @@ export { useUserState } from "./hooks/useUserStore";
 export { AuthService } from "./services/AuthService";
 export { PlayService } from "./services/PlayService";
 export { TestService } from "./services/TestService";
+export { AnimalService } from "./services/AnimalService";

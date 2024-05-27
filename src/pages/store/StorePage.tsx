@@ -4,10 +4,15 @@ import styled from "@emotion/styled";
 
 import { Background, TTSText, HomeButton } from "@/entities";
 
-import { useAnimalState } from "@/shared";
+import { useAnimalState, AnimalService } from "@/shared";
 
 const StorePage = () => {
   const animals = useAnimalState((state) => state.animals);
+  const { loadAnimals } = AnimalService();
+
+  useEffect(() => {
+    loadAnimals();
+  }, []);
 
   return (
     <>
