@@ -4,3 +4,5 @@ export { AnimalPanel } from "./animal/AnimalPanel";
 
 export { ReadQuestion } from "./question/ReadQuestion";
 export { WriteQuestion } from "./question/WriteQuestion";
+
+export { StoreTest } from "./StoreTest";

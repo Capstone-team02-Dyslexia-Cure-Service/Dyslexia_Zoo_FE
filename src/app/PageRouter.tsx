@@ -2,12 +2,14 @@ import { Suspense } from "react";
 import { BrowserRouter as RootRouter } from "react-router-dom";
 
 import AuthRouter from "./AuthRouter";
+import AppStyles from "./AppStyles";
 
 import { Loading } from "@/entities";
 
 const PageRouter = () => (
   <Suspense fallback={<Loading />}>
     <RootRouter>
+      <AppStyles />
       <AuthRouter />
     </RootRouter>
   </Suspense>

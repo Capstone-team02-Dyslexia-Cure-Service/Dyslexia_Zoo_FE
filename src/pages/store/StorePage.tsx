@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import * as Styles from "./Styles";
 
 import { Background, TTSText, HomeButton } from "@/entities";
 import { useAnimalState, AnimalService } from "@/shared";
+import { StoreTest } from "@/widgets";
 
 const StorePage = () => {
   const animals = useAnimalState((state) => state.animals);
   const { loadAnimals } = AnimalService();
+  const [onTest, setOnTest] = useState(false);
 
   useEffect(() => {
     //loadAnimals();
@@ -17,6 +19,7 @@ const StorePage = () => {
     <>
       <Background src="/img/store_background.png" alt="background" />
       <HomeButton />
+      {onTest ? <StoreTest /> : null}
       <TTSText
         text={"테스트를 도전하고, 새로운 동물을 얻어봐!!"}
         style={{
@@ -31,38 +34,46 @@ const StorePage = () => {
           zIndex: "10",
         }}
       />
-      <Styles.StoreGrid>
-        {animals.find((animal) => animal.name === "dolphin") ? (
-          <Styles.OffAnimalStoreImg
-            src="/img/dolphin_store.png"
-            alt="dolphin_store"
-          />
-        ) : (
-          <Styles.AnimalStoreImg
-            src="/img/dolphin_store.png"
-            alt="dolphin_store"
-          />
-        )}
-        {animals.find((animal) => animal.name === "monkey") ? (
-          <Styles.OffAnimalStoreImg
-            src="/img/monkey_store.png"
-            alt="monkey_store"
-          />
-        ) : (
-          <Styles.AnimalStoreImg
-            src="/img/monkey_store.png"
-            alt="monkey_store"
-          />
-        )}
-        {animals.find((animal) => animal.name === "seal") ? (
-          <Styles.OffAnimalStoreImg
-            src="/img/seal_store.png"
-            alt="seal_store"
-          />
-        ) : (
-          <Styles.AnimalStoreImg src="/img/seal_store.png" alt="seal_store" />
-        )}
-      </Styles.StoreGrid>
+      {-0 ? null : (
+        <Styles.StoreGrid>
+          {animals.find((animal) => animal.name === "dolphin") ? (
+            <Styles.OffAnimalStoreImg
+              src="/img/dolphin_store.png"
+              alt="dolphin_store"
+            />
+          ) : (
+            <Styles.AnimalStoreImg
+              src="/img/dolphin_store.png"
+              alt="dolphin_store"
+              onClick={() => setOnTest(true)}
+            />
+          )}
+          {animals.find((animal) => animal.name === "monkey") ? (
+            <Styles.OffAnimalStoreImg
+              src="/img/monkey_store.png"
+              alt="monkey_store"
+            />
+          ) : (
+            <Styles.AnimalStoreImg
+              src="/img/monkey_store.png"
+              alt="monkey_store"
+              onClick={() => setOnTest(true)}
+            />
+          )}
+          {animals.find((animal) => animal.name === "seal") ? (
+            <Styles.OffAnimalStoreImg
+              src="/img/seal_store.png"
+              alt="seal_store"
+            />
+          ) : (
+            <Styles.AnimalStoreImg
+              src="/img/seal_store.png"
+              alt="seal_store"
+              onClick={() => setOnTest(true)}
+            />
+          )}
+        </Styles.StoreGrid>
+      )}
     </>
   );
 };
