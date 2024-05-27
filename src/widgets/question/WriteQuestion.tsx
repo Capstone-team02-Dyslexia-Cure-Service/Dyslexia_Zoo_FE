@@ -19,11 +19,13 @@ import { shuffle } from "@/utils";
 export const WriteQuestion = ({
   content,
   id,
+  questionType,
   type,
   easy,
 }: {
   content: string;
   id: string;
+  questionType: Question.QuestionType;
   type: "TEST" | "PLAY";
   easy?: boolean;
 }) => {
@@ -31,9 +33,9 @@ export const WriteQuestion = ({
   const { submitTestAnswers } = PlayService();
 
   const { register, handleSubmit, setValue } =
-    useForm<Question.ReadWordQuestionFrom>();
-  const onSubmit: SubmitHandler<Question.ReadWordQuestionFrom> = (data) => {
-    setTestAnswers(id, data.answer);
+    useForm<Question.WriteQuestionFrom>();
+  const onSubmit: SubmitHandler<Question.WriteQuestionFrom> = (data) => {
+    setTestAnswers(id, questionType, data.answer);
     if (type == "PLAY") submitTestAnswers();
   };
 

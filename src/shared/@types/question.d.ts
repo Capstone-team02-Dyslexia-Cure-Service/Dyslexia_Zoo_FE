@@ -20,9 +20,11 @@ declare namespace Question {
   }
 
   //Form type
-  export interface ReadWordQuestionFrom {
+  export interface WriteQuestionFrom {
     answer: string;
   }
+
+  export interface ReadQuestionFrom {}
 
   //Store
   export interface TestStore {

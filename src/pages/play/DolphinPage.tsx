@@ -63,6 +63,7 @@ const DolphinPage = () => {
           <ReadQuestion
             content={testContent.questions[0].content}
             id={testContent.questions[0].id}
+            questionType={"WRITEWORD"}
             type="PLAY"
           />
         </Question>

@@ -1,4 +1,6 @@
+import { useState, useRef } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import RecordRTC from "recordrtc";
 
 import styled from "@emotion/styled";
 
@@ -10,24 +12,32 @@ import {
   StopRecordButton,
   SaveButton,
 } from "@/entities";
-
 import { useTestStore, PlayService } from "@/shared";
+import { useRecorder } from "@/utils";
 
 export const ReadQuestion = ({
   content,
   id,
+  questionType,
   type,
 }: {
   content: string;
   id: string;
+  questionType: Question.QuestionType;
   type: "TEST" | "PLAY";
 }) => {
   const setTestAnswers = useTestStore((state) => state.setTestAnswers);
   const { submitTestAnswers } = PlayService();
+  const [recording, setRecording] = useState(false);
+  const audioRecorder = useRef<RecordRTC>();
+  const recordResult = useRef<File>();
+  const { startRecorder, stopRecorder } = useRecorder();
 
-  const { register, handleSubmit } = useForm<Question.ReadWordQuestionFrom>();
-  const onSubmit: SubmitHandler<Question.ReadWordQuestionFrom> = (data) => {
-    setTestAnswers(id, data.answer);
+  const { handleSubmit } = useForm<Question.WriteQuestionFrom>();
+
+  const onSubmit: SubmitHandler<Question.ReadQuestionFrom> = () => {
+    recordResult.current &&
+      setTestAnswers(id, questionType, recordResult.current);
     if (type == "PLAY") submitTestAnswers();
   };
 
@@ -43,7 +53,21 @@ export const ReadQuestion = ({
         }}
       />
       <RowContainer>
-        <StartRecordButton onClick={() => {}} />
+        {!recording ? (
+          <StartRecordButton
+            onClick={() => {
+              startRecorder(audioRecorder.current);
+              setRecording(true);
+            }}
+          />
+        ) : (
+          <StopRecordButton
+            onClick={() => {
+              stopRecorder(audioRecorder.current, recordResult);
+              setRecording(false);
+            }}
+          />
+        )}
         <Content>{content}</Content>
         <SaveButton onClick={handleSubmit(onSubmit)} />
       </RowContainer>

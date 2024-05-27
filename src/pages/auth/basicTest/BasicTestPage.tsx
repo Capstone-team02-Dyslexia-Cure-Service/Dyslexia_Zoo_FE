@@ -39,6 +39,7 @@ const BasicTestPage = () => {
                   key={id}
                   content={content}
                   id={id}
+                  questionType={type}
                   type="TEST"
                   easy
                 />
