@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 
-import styled from "@emotion/styled";
+import * as Styles from "./Styles";
 
 import { Background, TTSText, HomeButton } from "@/entities";
-
 import { useAnimalState, AnimalService } from "@/shared";
 
 const StorePage = () => {
@@ -11,7 +10,7 @@ const StorePage = () => {
   const { loadAnimals } = AnimalService();
 
   useEffect(() => {
-    loadAnimals();
+    //loadAnimals();
   }, []);
 
   return (
@@ -32,67 +31,40 @@ const StorePage = () => {
           zIndex: "10",
         }}
       />
-      <StoreGrid>
+      <Styles.StoreGrid>
         {animals.find((animal) => animal.name === "dolphin") ? (
-          <OffAnimalStoreImg src="/img/dolphin_store.png" alt="dolphin_store" />
+          <Styles.OffAnimalStoreImg
+            src="/img/dolphin_store.png"
+            alt="dolphin_store"
+          />
         ) : (
-          <AnimalStoreImg src="/img/dolphin_store.png" alt="dolphin_store" />
+          <Styles.AnimalStoreImg
+            src="/img/dolphin_store.png"
+            alt="dolphin_store"
+          />
         )}
         {animals.find((animal) => animal.name === "monkey") ? (
-          <OffAnimalStoreImg src="/img/monkey_store.png" alt="monkey_store" />
+          <Styles.OffAnimalStoreImg
+            src="/img/monkey_store.png"
+            alt="monkey_store"
+          />
         ) : (
-          <AnimalStoreImg src="/img/monkey_store.png" alt="monkey_store" />
+          <Styles.AnimalStoreImg
+            src="/img/monkey_store.png"
+            alt="monkey_store"
+          />
         )}
         {animals.find((animal) => animal.name === "seal") ? (
-          <OffAnimalStoreImg src="/img/seal_store.png" alt="seal_store" />
+          <Styles.OffAnimalStoreImg
+            src="/img/seal_store.png"
+            alt="seal_store"
+          />
         ) : (
-          <AnimalStoreImg src="/img/seal_store.png" alt="seal_store" />
+          <Styles.AnimalStoreImg src="/img/seal_store.png" alt="seal_store" />
         )}
-      </StoreGrid>
+      </Styles.StoreGrid>
     </>
   );
 };
-
-const StoreGrid = styled.div`
-  position: absolute;
-
-  top: 49%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 70%;
-  height: 50%;
-
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-
-  justify-items: center;
-`;
-
-const AnimalStoreImg = styled.img`
-  width: 270px;
-
-  filter: drop-shadow(0px 10px 0px black);
-
-  margin-bottom: 32px;
-
-  &:hover {
-    filter: drop-shadow(0px 0px 0px black);
-
-    margin-bottom: 22px;
-    margin-top: 10px;
-  }
-`;
-
-const OffAnimalStoreImg = styled(AnimalStoreImg)`
-  filter: brightness(0.4);
-
-  margin-bottom: 22px;
-  margin-top: 10px;
-
-  &:hover {
-    filter: brightness(0.4);
-  }
-`;
 
 export default StorePage;
