@@ -84,32 +84,41 @@ const move = keyframes`
     top: 60%;
     left: 70%;
     animation-timing-function: linear;
+    transform: rotate(60deg);
+
+    opacity: 0;
   }
-  10% {
+  20% {
     top: 50%;
     left: 68%;
     animation-timing-function: linear;
+    transform: rotate(30deg);
 
-  }
-  20% {
-    top: 40%;
-    left: 65%;
-    animation-timing-function: linear;
-  }
-  30% {
-    top: 30%;
-    left: 40%;
-    animation-timing-function: linear;
+    opacity: 1;
   }
   40% {
     top: 40%;
-    left: 30%;
+    left: 65%;
+    animation-timing-function: linear;
+    transform: rotate(0deg);
+  }
+  60% {
+    top: 20%;
+    left: 40%;
+    animation-timing-function: linear;
+    transform: rotate(-60deg);
+  }
+  80% {
+    top: 40%;
+    left: 20%;
     animation-timing-function: linear;
   }
   100% {
     top: 60%;
-    left: 20%;
+    left: 5%;
     animation-timing-function: linear;
+    transform: rotate(-80deg);
+    opacity: 1;
   }
 `;
 
@@ -121,6 +130,9 @@ const Dolphin = styled.img`
   width: 200px;
 
   z-index: 10;
+  transform: rotate(60deg);
+
+  opacity: 0;
 `;
 
 const MoveDolphin = styled(Dolphin)`
