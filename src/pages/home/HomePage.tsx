@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Background, StoreButton, StatisticButton } from "@/entities";
 
-import { Animal, PenguinMove, DolphinMove } from "@/widgets";
+import { Animal, PenguinMove, DolphinMove, HungryStudy } from "@/widgets";
 
 import { PAGE_URL, useAnimalState, AnimalService } from "@/shared";
 
@@ -12,7 +12,7 @@ const HomePage = () => {
   const { loadAnimals } = AnimalService();
 
   useEffect(() => {
-    loadAnimals();
+    //loadAnimals();
   }, []);
 
   useEffect(() => {
@@ -22,6 +22,7 @@ const HomePage = () => {
   return (
     <>
       <Background src="/img/home_background.png" alt="background" />
+      <HungryStudy url="" />
       {animals.find((animal) => animal.name === "penguin") ? (
         <Animal
           name="펭귄"
