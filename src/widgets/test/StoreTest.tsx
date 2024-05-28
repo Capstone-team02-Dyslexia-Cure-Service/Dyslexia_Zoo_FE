@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 
-import { WriteQuestion } from "./question/WriteQuestion";
-import { ReadQuestion } from "./question/ReadQuestion";
+import { WriteQuestion } from "../question/WriteQuestion";
+import { ReadQuestion } from "../question/ReadQuestion";
 
 export const StoreTest = () => {
   return (
