@@ -12,7 +12,7 @@ import {
   StopRecordButton,
   SaveButton,
 } from "@/entities";
-import { useTestStore, PlayService } from "@/shared";
+import { useTestState, PlayService } from "@/shared";
 import { useRecorder } from "@/utils";
 
 export const ReadQuestion = ({
@@ -24,13 +24,13 @@ export const ReadQuestion = ({
   buttonColor,
 }: {
   content: string;
-  id: string;
+  id: number;
   questionType: Question.QuestionType;
   type: "TEST" | "PLAY";
   color?: string;
   buttonColor?: string;
 }) => {
-  const setTestAnswers = useTestStore((state) => state.setTestAnswers);
+  const setTestAnswers = useTestState((state) => state.setTestAnswers);
   const { submitTestAnswers } = PlayService();
   const [recording, setRecording] = useState(false);
   const audioRecorder = useRef<RecordRTC>();

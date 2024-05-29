@@ -15,7 +15,7 @@ export const FORMAPI = axios.create({
 });
 
 //Auth
-export const setAccess = (token: string): void => {
+export const setAccess = (token: number): void => {
   API.defaults.headers["Authorization"] = token;
   FORMAPI.defaults.headers["Authorization"] = token;
 };

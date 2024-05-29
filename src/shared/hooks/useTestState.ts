@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const useTestStore = create<Question.TestStore>((set) => ({
+export const useTestState = create<Question.TestStore>((set) => ({
   //State
   testContent: undefined,
   testAnswersInfo: [],

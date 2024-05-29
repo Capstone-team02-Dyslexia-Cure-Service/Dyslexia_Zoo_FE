@@ -9,11 +9,11 @@ import {
   SubmitButton,
 } from "@/entities";
 
-import { TestService, useTestStore } from "@/shared";
+import { TestService, useTestState } from "@/shared";
 
 const BasicTestPage = () => {
   const { getTest, submitTestAnswers } = TestService();
-  const testContent = useTestStore((state) => state.testContent);
+  const testContent = useTestState((state) => state.testContent);
 
   useEffect(() => {
     getTest();

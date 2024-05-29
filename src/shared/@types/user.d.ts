@@ -6,7 +6,7 @@ declare namespace User {
   }
 
   export interface SignInResDto {
-    id: string;
+    id: number;
     name: string;
     level: stiring;
   }

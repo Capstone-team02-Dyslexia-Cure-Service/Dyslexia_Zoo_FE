@@ -12,7 +12,7 @@ import {
   DeleteButton,
 } from "@/entities";
 
-import { useTestStore, PlayService } from "@/shared";
+import { useTestState, PlayService } from "@/shared";
 
 import { shuffle } from "@/utils";
 
@@ -26,14 +26,14 @@ export const WriteQuestion = ({
   buttonColor,
 }: {
   content: string;
-  id: string;
+  id: number;
   questionType: Question.QuestionType;
   type: "TEST" | "PLAY";
   easy?: boolean;
   color?: string;
   buttonColor?: string;
 }) => {
-  const setTestAnswers = useTestStore((state) => state.setTestAnswers);
+  const setTestAnswers = useTestState((state) => state.setTestAnswers);
   const { submitTestAnswers } = PlayService();
 
   const { register, handleSubmit, setValue } =

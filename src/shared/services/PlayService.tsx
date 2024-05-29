@@ -1,12 +1,12 @@
 import { AxiosResponse } from "axios";
 
-import { API, useTestStore } from "@/shared";
+import { API, useTestState } from "@/shared";
 
 export const PlayService = () => {
   const URL = "/api/v1/play";
 
-  const setTest = useTestStore((state) => state.setTest);
-  const testAnswers = useTestStore((state) => state.testAnswers);
+  const setTest = useTestState((state) => state.setTest);
+  const testAnswers = useTestState((state) => state.testAnswers);
 
   const getTest = async () => {
     const {

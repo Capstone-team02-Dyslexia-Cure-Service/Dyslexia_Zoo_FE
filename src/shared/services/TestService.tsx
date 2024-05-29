@@ -1,13 +1,13 @@
 import { AxiosResponse } from "axios";
 
-import { API, FORMAPI, useTestStore } from "@/shared";
+import { API, FORMAPI, useTestState } from "@/shared";
 
 export const TestService = () => {
   const URL = "/api/v1/test";
 
-  const setTest = useTestStore((state) => state.setTest);
-  const testAnswers = useTestStore((state) => state.testAnswers);
-  const testAnswersInfo = useTestStore((state) => state.testAnswersInfo);
+  const setTest = useTestState((state) => state.setTest);
+  const testAnswers = useTestState((state) => state.testAnswers);
+  const testAnswersInfo = useTestState((state) => state.testAnswersInfo);
 
   const getTest = async () => {
     const {

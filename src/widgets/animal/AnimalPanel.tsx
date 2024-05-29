@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { TTSText, Container } from "@/entities";
 
+//배고픔 Service 구현해서 연결, setOnHungryStudy
+
 export const AnimalPanel = ({
   mouseX,
   mouseY,

@@ -36,7 +36,7 @@ const StorePage = () => {
       />
       {-0 ? null : (
         <Styles.StoreGrid>
-          {animals.find((animal) => animal.name === "dolphin") ? (
+          {animals.find((animal) => animal.animalType === "DOLPHIN") ? (
             <Styles.OffAnimalStoreImg
               src="/img/dolphin_store.png"
               alt="dolphin_store"
@@ -48,7 +48,7 @@ const StorePage = () => {
               onClick={() => setOnTest(true)}
             />
           )}
-          {animals.find((animal) => animal.name === "monkey") ? (
+          {animals.find((animal) => animal.animalType === "MONKEY") ? (
             <Styles.OffAnimalStoreImg
               src="/img/monkey_store.png"
               alt="monkey_store"
@@ -60,7 +60,7 @@ const StorePage = () => {
               onClick={() => setOnTest(true)}
             />
           )}
-          {animals.find((animal) => animal.name === "seal") ? (
+          {animals.find((animal) => animal.animalType === "SEAL") ? (
             <Styles.OffAnimalStoreImg
               src="/img/seal_store.png"
               alt="seal_store"

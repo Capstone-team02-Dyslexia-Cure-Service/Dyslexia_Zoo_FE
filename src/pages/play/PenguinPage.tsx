@@ -7,12 +7,12 @@ import { Background, FixContainer, TTSText, HomeButton } from "@/entities";
 
 import { ReadQuestion } from "@/widgets";
 
-import { PlayService, useTestStore } from "@/shared";
+import { PlayService, useTestState } from "@/shared";
 
 const PenguinPage = () => {
   const [state, set] = useState(false);
   const { getTest } = PlayService();
-  const testContent = useTestStore((state) => state.testContent);
+  const testContent = useTestState((state) => state.testContent);
 
   useEffect(() => {
     getTest();
@@ -40,7 +40,7 @@ const PenguinPage = () => {
         {state ? (
           <MovePenguin
             src="/img/penguin_play.png"
-            alt="Penguin"
+            alt="PENGUIN"
             onClick={() => {
               set(true);
             }}
@@ -48,7 +48,7 @@ const PenguinPage = () => {
         ) : (
           <Penguin
             src="/img/penguin_play.png"
-            alt="Penguin"
+            alt="PENGUIN"
             onClick={() => {
               set(true);
             }}

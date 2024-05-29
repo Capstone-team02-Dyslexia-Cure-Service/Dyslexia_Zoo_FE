@@ -1,19 +1,22 @@
 import { create } from "zustand";
 
-export const useAnimalState = create<Animal.animalsStore>((set) => ({
+export const useAnimalState = create<Animal.AnimalsStore>((set) => ({
   //State
   animals: [],
 
   //Set function
-  setAnimal: (name, hungryTimeString) => {
+  setAnimal: (id, animalType, nickname, hungryTimer) => {
     set((state) => {
-      if (state.animals.find((animal) => animal.name === name))
-        state.animals.find((animal) => animal.name === name)!.hungryTime =
-          new Date(hungryTimeString.split(".")[0]);
+      if (state.animals.find((animal) => animal.id === id))
+        state.animals.find((animal) => animal.id === id)!.hungryTime = new Date(
+          hungryTimer.split(".")[0]
+        );
       else {
         state.animals.push({
-          name: name,
-          hungryTime: new Date(hungryTimeString.split(".")[0]),
+          id: id,
+          animalType: animalType,
+          nickname: nickname,
+          hungryTime: new Date(hungryTimer.split(".")[0]),
         });
       }
 
@@ -24,7 +27,12 @@ export const useAnimalState = create<Animal.animalsStore>((set) => ({
   setAnimals: (animalsPara) => {
     set((state) => {
       animalsPara.map((animalPara) => {
-        state.setAnimal(animalPara.name, animalPara.hungryTimeString);
+        state.setAnimal(
+          animalPara.id,
+          animalPara.animalType,
+          animalPara.nickname,
+          animalPara.hungryTimer
+        );
       });
 
       return {};
