@@ -7,6 +7,7 @@ import { keyframes, Keyframes } from "@emotion/react";
 import { AnimalPanel } from "@/widgets";
 
 type Prop = {
+  id: number;
   name: string;
   info: string;
   playPath: string;
@@ -23,6 +24,7 @@ type Prop = {
 };
 
 export const Animal = ({
+  id,
   name,
   info,
   playPath,
@@ -116,6 +118,7 @@ export const Animal = ({
       {isHungry && !showControlPanel ? <HungrySign /> : null}
       {showControlPanel && (
         <AnimalPanel
+          id={id}
           mouseX={mousePosition.x}
           mouseY={mousePosition.y}
           name={name}

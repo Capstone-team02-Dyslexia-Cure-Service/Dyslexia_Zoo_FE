@@ -7,10 +7,17 @@ declare namespace Animal {
     hungryTimer: string;
   }[];
 
-  export interface GetStudyContentResDto {
+  export type GetStudyContentResDto = {
     content: string;
-    url: string;
-  }
+    videoPath: string;
+  }[];
+
+  export type AnimalFeedDto = {
+    id: number;
+    animalType: AnimalType;
+    nickname: string;
+    hungryTimer: string;
+  };
 
   //Variable
   export type Animals = {
@@ -19,12 +26,14 @@ declare namespace Animal {
     nickname: string;
     hungryTime: Date;
   }[];
+
   export type AnimalsPara = {
     id: number;
     animalType: AnimalType;
     nickname: string;
     hungryTimer: string;
   }[];
+
   export type AnimalType = "DOLPHIN" | "PENGUIN" | "MONKEY" | "SEAL";
 
   //Store
@@ -41,6 +50,11 @@ declare namespace Animal {
   export interface StudyStore {
     content: string | false;
     url: string | false;
-    setStudy: (data: GetStudyContentResDto) => void;
+    id: number | false;
+    setStudy: (data: {
+      content: string | false;
+      url: string | false;
+      id: number | false;
+    }) => void;
   }
 }

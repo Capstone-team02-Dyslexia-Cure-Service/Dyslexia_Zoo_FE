@@ -2,10 +2,12 @@ import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 
 import { TTSText, Container } from "@/entities";
+import { StudyService } from "@/shared";
 
 //배고픔 Service 구현해서 연결, setOnHungryStudy
 
 export const AnimalPanel = ({
+  id,
   mouseX,
   mouseY,
   name,
@@ -14,6 +16,7 @@ export const AnimalPanel = ({
   onClose,
   isHungry,
 }: {
+  id: number;
   mouseX: number;
   mouseY: number;
   name: string;
@@ -22,6 +25,7 @@ export const AnimalPanel = ({
   onClose: () => void;
   isHungry?: boolean;
 }) => {
+  const { getStudyContent } = StudyService();
   const navigate = useNavigate();
   return (
     <PanelContainer
@@ -65,7 +69,14 @@ export const AnimalPanel = ({
           놀아 주기
         </Button>
       )}
-      <Button>먹이 주기</Button>
+      <Button
+        onClick={() => {
+          getStudyContent(id);
+          onClose();
+        }}
+      >
+        먹이 주기
+      </Button>
     </PanelContainer>
   );
 };

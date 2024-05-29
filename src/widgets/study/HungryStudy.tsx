@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
-import { StudyService } from "@/shared";
-import { useEffect, useState } from "react";
+import { useStudyState, StudyService } from "@/shared";
 
 //영상에서 읽는 단어의 Text
 //영상이 끝날 때까지 화면을 못 벗어남
@@ -12,29 +11,25 @@ import { useEffect, useState } from "react";
 //말하기는 속도, 정확도 어는
 //테스트 같은 결과만 점수만
 
-export const HungryStudy = ({
-  url,
-  onEnded,
-}: {
-  url: string;
-  onEnded: () => void;
-}) => {
-  const { GetStudyContent } = StudyService();
-  const [data, setData] = useState<Animal.GetStudyContentResDto | false>(false);
-
-  useEffect(() => {
-    const res = GetStudyContent();
-    res && setData(res);
-  }, []);
+export const HungryStudy = () => {
+  const state = useStudyState((state) => state);
+  const { animalFeed } = StudyService();
 
   return (
     <Background>
       <Wrapper>
         <IntroVideo>
-          <Video autoPlay onEnded={onEnded}>
-            <source src={url} type="video/mp4" />
+          <Video
+            autoPlay
+            onEnded={() => {
+              state.id && animalFeed(state.id);
+              state.setStudy({ url: false, content: false, id: false });
+            }}
+          >
+            {state.url ? <source src={state.url} type="video/mp4" /> : null}
           </Video>
         </IntroVideo>
+        <Content>{state.content}</Content>
       </Wrapper>
     </Background>
   );
@@ -81,4 +76,17 @@ const Video = styled.video`
   height: 100%;
 
   object-fit: cover;
+`;
+
+const Content = styled.div`
+  width: 600px;
+  height: 80px;
+  margin-top: 20px;
+
+  font-size: 30px;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

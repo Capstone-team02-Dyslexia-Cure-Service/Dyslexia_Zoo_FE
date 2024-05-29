@@ -4,16 +4,21 @@ import { Background, StoreButton, StatisticButton } from "@/entities";
 
 import { Animal, PenguinMove, DolphinMove, HungryStudy } from "@/widgets";
 
-import { PAGE_URL, useAnimalState, AnimalService } from "@/shared";
+import {
+  PAGE_URL,
+  useAnimalState,
+  AnimalService,
+  useStudyState,
+} from "@/shared";
 
 const HomePage = () => {
   const animals = useAnimalState((state) => state.animals);
+  const studyMovieUrl = useStudyState((state) => state.url);
   const [now, setNow] = useState<Date>(new Date());
-  const [onHungryStudy, setOnHungryStudy] = useState<false | string>(false);
   const { loadAnimals } = AnimalService();
 
   useEffect(() => {
-    //loadAnimals();
+    loadAnimals();
   }, []);
 
   useEffect(() => {
@@ -23,14 +28,10 @@ const HomePage = () => {
   return (
     <>
       <Background src="/img/home_background.png" alt="background" />
-      {onHungryStudy ? (
-        <HungryStudy
-          url={onHungryStudy}
-          onEnded={() => setOnHungryStudy(false)}
-        />
-      ) : null}
+      {studyMovieUrl ? <HungryStudy /> : null}
       {animals.find((animal) => animal.animalType === "PENGUIN") ? (
         <Animal
+          id={animals.find((animal) => animal.animalType === "PENGUIN")!.id}
           name="펭귄"
           info="2024년에 처음 한국으로 왔다. Dyslexia Zoo에서 다이빙을 연습하며 즐겁게 살아가고 있다."
           playPath={PAGE_URL.Penguin}
@@ -48,6 +49,7 @@ const HomePage = () => {
       ) : null}
       {animals.find((animal) => animal.animalType === "DOLPHIN") ? (
         <Animal
+          id={animals.find((animal) => animal.animalType === "DOLPHIN")!.id}
           name="돌고래"
           info="2024년에 처음 한국으로 왔다. Dyslexia Zoo에서 묘기를 부리며 즐겁게 살아가고 있다."
           playPath={PAGE_URL.Dolphin}

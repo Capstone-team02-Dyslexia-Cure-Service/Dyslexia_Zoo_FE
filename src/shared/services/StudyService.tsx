@@ -1,19 +1,30 @@
 import { AxiosResponse } from "axios";
 
-import { API, useStudyState } from "@/shared";
+import { API, useStudyState, useAnimalState } from "@/shared";
 
 export const StudyService = () => {
-  const URL = "api/v1/study";
+  const URL = "api/v1";
 
-  const { setStudy } = useStudyState();
+  const setStudy = useStudyState((state) => state.setStudy);
+  const setAnimal = useAnimalState((state) => state.setAnimal);
 
-  const GetStudyContent = async () => {
-    const { data } = (await API.get(
-      `${URL}`
-    )) as AxiosResponse<Animal.GetStudyContentResDto>;
+  const getStudyContent = async (id: number) => {
+    const { data } = (await API.get(`${URL}/question/random_edu`, {
+      headers: { numOfQuestions: 1 },
+    })) as AxiosResponse<Animal.GetStudyContentResDto>;
 
-    setStudy(data);
+    setStudy({ url: data[0].videoPath, content: data[0].content, id: id });
   };
 
-  return { GetStudyContent };
+  const animalFeed = async (id: number) => {
+    const {
+      data: { animalType, nickname, hungryTimer },
+    } = (await API.get(`${URL}/question/random_edu`, {
+      headers: { animalId: id },
+    })) as AxiosResponse<Animal.AnimalFeedDto>;
+
+    setAnimal(id, animalType, nickname, hungryTimer);
+  };
+
+  return { getStudyContent, animalFeed };
 };
