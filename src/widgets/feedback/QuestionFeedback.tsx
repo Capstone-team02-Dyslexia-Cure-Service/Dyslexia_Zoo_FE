@@ -1,15 +1,18 @@
 import styled from "@emotion/styled";
 
+import { Container } from "@/entities";
 import { TTSText } from "@/entities";
 
 export const QuestionFeedback = ({
   url,
   speedFeedback,
   accuracyFeedback,
+  onClose,
 }: {
   url: string;
   speedFeedback: string | null;
   accuracyFeedback: string[];
+  onClose: () => void;
 }) => {
   return (
     <Background>
@@ -73,6 +76,7 @@ export const QuestionFeedback = ({
             }}
           />
         ))}
+        <Button onClick={onClose}>다시 한번 도전하기!</Button>
       </Wrapper>
     </Background>
   );
@@ -123,4 +127,28 @@ const Video = styled.video`
   height: 100%;
 
   object-fit: cover;
+`;
+
+const Button = styled(Container)`
+  background-color: #7878fd;
+
+  width: 600px;
+  height: 45px;
+
+  border-radius: 5px;
+
+  margin-top: 10px;
+  margin-bottom: 26px;
+
+  box-shadow: 6px 8px 2px 0 black;
+
+  font-size: 27px;
+  font-weight: bold;
+  color: white;
+
+  &:hover {
+    box-shadow: 0 0 0 0 black;
+    margin-bottom: 20px;
+    margin-top: 16px;
+  }
 `;
