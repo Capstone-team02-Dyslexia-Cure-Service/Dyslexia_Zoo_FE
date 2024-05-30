@@ -22,3 +22,4 @@ export {
 export { Convas } from "./Convas";
 export { Loading } from "./Loading";
 export { TTSText } from "./TTSText";
+export { StatusMessage } from "./StatusMessage";

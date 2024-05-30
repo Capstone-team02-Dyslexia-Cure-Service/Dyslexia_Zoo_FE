@@ -9,6 +9,8 @@ declare namespace User {
     id: number;
     name: string;
     level: stiring;
+
+    data?: { email?: sting };
   }
 
   /*   
@@ -22,11 +24,16 @@ declare namespace User {
   export type StatisticData = { day: string; score: number }[];
 
   //Store
-  export interface userStore {
+  export interface UserStore {
     isSignIn: boolean;
     name: string;
     statisticData: StatisticData;
     setName: (name: string) => void;
     setStatisticData: (data: StatisticData) => void;
+  }
+
+  export interface ApiStore {
+    message: false | string;
+    setMessage: (message: false | string) => void;
   }
 }

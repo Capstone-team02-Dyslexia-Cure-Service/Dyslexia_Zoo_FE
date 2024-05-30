@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const useUserState = create<User.userStore>((set) => ({
+export const useUserState = create<User.UserStore>((set) => ({
   //State
   isSignIn: true,
   name: "강민규",
