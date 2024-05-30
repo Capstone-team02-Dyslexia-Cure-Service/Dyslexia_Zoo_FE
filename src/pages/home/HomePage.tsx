@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 
 import { Background, StoreButton, StatisticButton } from "@/entities";
 
-import { Animal, PenguinMove, DolphinMove, HungryStudy } from "@/widgets";
+import {
+  Animal,
+  PenguinMove,
+  DolphinMove,
+  HungryStudy,
+  QuestionFeedback,
+} from "@/widgets";
 
 import {
   PAGE_URL,
@@ -29,6 +35,11 @@ const HomePage = () => {
     <>
       <Background src="/img/home_background.png" alt="background" />
       {studyMovieUrl ? <HungryStudy /> : null}
+      <QuestionFeedback
+        url=""
+        speedFeedback={"aaaaa"}
+        accuracyFeedback={["aaaaa"]}
+      />
       {animals.find((animal) => animal.animalType === "PENGUIN") ? (
         <Animal
           id={animals.find((animal) => animal.animalType === "PENGUIN")!.id}

@@ -2,8 +2,8 @@ import { create } from "zustand";
 
 export const useUserState = create<User.UserStore>((set) => ({
   //State
-  isSignIn: true,
-  name: "강민규",
+  isSignIn: false,
+  name: "",
   statisticData: [],
 
   //Set function

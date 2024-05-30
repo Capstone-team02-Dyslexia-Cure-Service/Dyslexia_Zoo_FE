@@ -1,7 +1,4 @@
 import { AxiosResponse } from "axios";
-import { PAGE_URL } from "@/shared/configs/path";
-import { useNavigate } from "react-router";
-
 import { useAnimalState, API } from "@/shared";
 
 export const AnimalService = () => {
@@ -9,6 +6,7 @@ export const AnimalService = () => {
   const setAnimals = useAnimalState((state) => state.setAnimals);
 
   const loadAnimals = async () => {
+    console.log(API.defaults.headers["memberId"]);
     const { data } = (await API.get(
       `${URL}`
     )) as AxiosResponse<Animal.LoadAnimalsResDto>;

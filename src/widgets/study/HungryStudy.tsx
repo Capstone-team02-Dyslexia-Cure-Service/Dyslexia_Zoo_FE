@@ -69,6 +69,8 @@ const IntroVideo = styled.div`
 
   width: 600px;
   height: 400px;
+
+  border-radius: 10px 10px 0px 0px;
 `;
 
 const Video = styled.video`
@@ -79,12 +81,14 @@ const Video = styled.video`
 `;
 
 const Content = styled.div`
+  background-color: white;
   width: 600px;
   height: 80px;
-  margin-top: 20px;
+  margin-top: 18px;
 
   font-size: 30px;
   font-weight: bold;
+  border-radius: 0px 0px 10px 10px;
 
   display: flex;
   justify-content: center;
