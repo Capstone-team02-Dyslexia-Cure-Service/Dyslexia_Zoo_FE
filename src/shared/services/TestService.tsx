@@ -3,18 +3,26 @@ import { AxiosResponse } from "axios";
 import { API, FORMAPI, useTestState } from "@/shared";
 
 export const TestService = () => {
-  const URL = "/api/v1/test";
+  const URL = "/api/v1";
 
   const setTest = useTestState((state) => state.setTest);
   const testAnswers = useTestState((state) => state.testAnswers);
   const testAnswersInfo = useTestState((state) => state.testAnswersInfo);
 
   const getTest = async () => {
-    const {
-      data: { id, questions },
-    } = (await API.get(`${URL}`)) as AxiosResponse<Question.BasicTestResDto>;
+    const { data } = (await API.get(`${URL}/question/random_list`, {
+      headers: { numOfQuestions: 9 },
+    })) as AxiosResponse<Question.TestResDto>;
 
-    setTest({ id: id, questions: questions });
+    setTest(data);
+  };
+
+  const getBasicTest = async () => {
+    const { data } = (await API.get(`${URL}/question/random_list`, {
+      headers: { numOfQuestions: 12 },
+    })) as AxiosResponse<Question.TestResDto>;
+
+    setTest(data);
   };
 
   const submitTestAnswers = async () => {
@@ -34,5 +42,5 @@ export const TestService = () => {
     //정답 전시 구현 필요
   };
 
-  return { getTest, submitTestAnswers };
+  return { getTest, submitTestAnswers, getBasicTest };
 };

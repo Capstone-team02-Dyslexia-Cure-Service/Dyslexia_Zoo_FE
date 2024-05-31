@@ -10,21 +10,22 @@ export const useTestState = create<Question.TestStore>((set) => ({
   setTestAnswers: (id, type, answer) => {
     set((state) => {
       const findIndex = state.testAnswersInfo.findIndex(
-        (answerInfo) => answerInfo.id === id && answerInfo.type === type
+        (answerInfo) =>
+          answerInfo.id === id && answerInfo.questionResponseType === type
       );
       if (findIndex !== -1) {
         state.testAnswersInfo.splice(findIndex, 1);
         state.testAnswers.splice(findIndex, 1);
       }
 
-      state.testAnswersInfo.push({ id: id, type: type });
+      state.testAnswersInfo.push({ id: id, questionResponseType: type });
       state.testAnswers.push(answer);
 
       return {};
     });
   },
 
-  setTest: (test: Question.BasicTestResDto) => {
+  setTest: (test: Question.TestResDto) => {
     set((state) => {
       state.testContent = test;
       state.testAnswers = [];

@@ -1,7 +1,7 @@
 import { http, HttpResponse, ResponseResolver } from "msw";
 
 const getBasicTest: ResponseResolver = () => {
-  return HttpResponse.json<Question.BasicTestResDto>({
+  return HttpResponse.json<Question.TestResDto>({
     id: "1",
     questions: [
       { id: "2", type: "WRITEWORD", content: "고생해라" },
@@ -18,7 +18,7 @@ const getBasicTest: ResponseResolver = () => {
 };
 
 const getPlayQuestion: ResponseResolver = () => {
-  return HttpResponse.json<Question.BasicTestResDto>({
+  return HttpResponse.json<Question.TestResDto>({
     id: "2",
     questions: [{ id: "2", type: "WRITEWORD", content: "강민규" }],
   });

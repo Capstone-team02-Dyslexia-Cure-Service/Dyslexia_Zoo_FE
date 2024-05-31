@@ -12,7 +12,7 @@ declare namespace Question {
   }
 
   //DTO
-  export type BasicTestResDto = QuestionResDto[];
+  export type TestResDto = QuestionResDto[];
 
   export interface QuestionResDto {
     id: number;
@@ -29,10 +29,10 @@ declare namespace Question {
 
   //Store
   export interface TestStore {
-    testContent: BasicTestResDto | undefined;
+    testContent: TestResDto | undefined;
     testAnswers: (File | string)[];
     testAnswersInfo: TestAnswerInfo[];
-    setTest: (test: BasicTestResDto) => void;
+    setTest: (test: TestResDto) => void;
     setTestAnswers: (
       id: number,
       type: QuestionType,

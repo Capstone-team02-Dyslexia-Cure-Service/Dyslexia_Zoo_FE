@@ -11,7 +11,7 @@ export const PlayService = () => {
   const getTest = async () => {
     const {
       data: { id, questions },
-    } = (await API.get(`${URL}`)) as AxiosResponse<Question.BasicTestResDto>;
+    } = (await API.get(`${URL}`)) as AxiosResponse<Question.TestResDto>;
 
     setTest({ id: id, questions: questions });
   };
