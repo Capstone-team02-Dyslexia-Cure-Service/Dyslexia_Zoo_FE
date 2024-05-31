@@ -1,21 +1,22 @@
 declare namespace Question {
   //Basic
-  type QuestionType = "SELECTWORD" | "READWORD" | "WRITEWORD" | "READSENTENSE";
+  type QuestionType =
+    | "SELECT_WORD"
+    | "READ_WORD"
+    | "WRITE_WORD"
+    | "READ_SENTENSE";
 
   export interface TestAnswerInfo {
     id: sting;
-    type: QuestionType;
+    questionResponseType: QuestionType;
   }
 
   //DTO
-  export interface BasicTestResDto {
-    id: number;
-    questions: QuestionResDto[];
-  }
+  export type BasicTestResDto = QuestionResDto[];
 
   export interface QuestionResDto {
     id: number;
-    type: QuestionType;
+    questionResponseType: QuestionType;
     content: string;
   }
 
