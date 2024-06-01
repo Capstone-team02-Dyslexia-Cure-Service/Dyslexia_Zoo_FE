@@ -1,16 +1,16 @@
 import { AxiosResponse } from "axios";
 
-import { API, FORMAPI, useTestState } from "@/shared";
+import { API, FORMAPI, useTestState, useLayoutState } from "@/shared";
 
 export const TestService = () => {
-  const URL = "/api/v1";
+  const URL = "api/v1/test";
 
   const setTest = useTestState((state) => state.setTest);
-  const testAnswers = useTestState((state) => state.testAnswers);
-  const testAnswersInfo = useTestState((state) => state.testAnswersInfo);
+
+  const setSuccess = useLayoutState((state) => state.setSuccess);
 
   const getTest = async () => {
-    const { data } = (await API.get(`${URL}/question/random_list`, {
+    const { data } = (await API.get(`${URL}/create`, {
       headers: { numOfQuestions: 9 },
     })) as AxiosResponse<Question.TestResDto>;
 
@@ -18,29 +18,56 @@ export const TestService = () => {
   };
 
   const getBasicTest = async () => {
-    const { data } = (await API.get(`${URL}/question/random_list`, {
+    const { data } = (await API.get(`${URL}/create`, {
       headers: { numOfQuestions: 12 },
     })) as AxiosResponse<Question.TestResDto>;
 
     setTest(data);
   };
 
-  const submitTestAnswers = async () => {
-    const formData = new FormData();
-    formData.append(
-      "info",
-      new Blob([JSON.stringify(testAnswersInfo)], {
-        type: "application/json",
-      })
+  const submitWriteAnswer = async (
+    testId: number,
+    questionId: number,
+    questionResponseType: Question.QuestionType,
+    answer: string
+  ) => {
+    await API.post(
+      `${URL}/interim_submit/write/testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
+      {
+        answer: answer,
+      }
     );
-    testAnswers.map((answer, index) => {
-      formData.append(`answer_${index}`, answer);
-    });
-
-    const { data } = await FORMAPI.post(`${URL}`, formData);
-
-    //정답 전시 구현 필요
   };
 
-  return { getTest, submitTestAnswers, getBasicTest };
+  const submitReadAnswer = async (
+    testId: number,
+    questionId: number,
+    questionResponseType: Question.QuestionType,
+    answer: File
+  ) => {
+    const formData = new FormData();
+    formData.append("answerFile", answer);
+
+    await FORMAPI.post(
+      `${URL}/interim_submit/read/testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
+      formData
+    );
+  };
+
+  const getTestResult = async (testId: number) => {
+    const {
+      data: { isCorrect },
+    } = await API.get(`${URL}/submit/testId=${testId}`);
+
+    if (isCorrect) setSuccess(true);
+    else console.log("!!");
+  };
+
+  return {
+    getTest,
+    getBasicTest,
+    submitReadAnswer,
+    submitWriteAnswer,
+    getTestResult,
+  };
 };

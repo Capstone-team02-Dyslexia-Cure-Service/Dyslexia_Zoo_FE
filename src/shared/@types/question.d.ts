@@ -39,17 +39,12 @@ declare namespace Question {
 
   //Store
   export interface TestStore {
-    testContent: TestResDto | undefined;
-    testAnswers: (File | string)[];
-    testAnswersInfo: TestAnswerInfo[];
-    testFeedback: Feedback | undefined;
-    setTest: (test: TestResDto) => void;
-    setTestAnswers: (
-      id: number,
-      type: QuestionType,
-      answer: string | File
-    ) => void;
-    setTestFeedback: (feedback: Feedback | undefined) => void;
+    testId: number;
+    questions: QuestionResDto[];
+    answers: (File | string | undefined)[];
+
+    setTest: (data: TestResDto) => void;
+    setAnswer: (index: number, data: File | string) => void;
   }
 
   export interface PlayStore {

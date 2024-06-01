@@ -3,40 +3,26 @@ import { immer } from "zustand/middleware/immer";
 
 export const useTestState = create<Question.TestStore>()(
   immer((set) => ({
-    //State
-    testContent: undefined,
-    testAnswersInfo: [],
-    testAnswers: [],
-    testFeedback: undefined,
+    testId: -1,
+    questions: [],
+    answers: [], //file의 경우에만 사용된다.
 
-    //Set function
-    setTestAnswers: (id, type, answer) => {
+    setTest: (data) => {
       set((state) => {
-        const findIndex = state.testAnswersInfo.findIndex(
-          (answerInfo) =>
-            answerInfo.id === id && answerInfo.questionResponseType === type
-        );
-        if (findIndex !== -1) {
-          state.testAnswersInfo.splice(findIndex, 1);
-          state.testAnswers.splice(findIndex, 1);
-        }
+        const newAnswers: undefined[] = [];
+        data.questions.map(() => {
+          newAnswers.push(undefined);
+        });
 
-        state.testAnswersInfo.push({ id: id, questionResponseType: type });
-        state.testAnswers.push(answer);
+        state.testId = data.testId;
+        state.questions = data.questions;
+        state.answers = newAnswers;
       });
     },
 
-    setTest: (test: Question.TestResDto) => {
+    setAnswer: (index, data) => {
       set((state) => {
-        state.testContent = test;
-        state.testAnswers = [];
-        state.testAnswersInfo = [];
-      });
-    },
-
-    setTestFeedback: (feedback) => {
-      set((state) => {
-        state.testFeedback = feedback;
+        state.answers[index] = data;
       });
     },
   }))
