@@ -27,6 +27,7 @@ export const HungryStudy = () => {
             }}
           >
             {state.url ? <source src={state.url} type="video/mp4" /> : null}
+            발음 영상을 가져오고 있어!
           </Video>
         </IntroVideo>
         <Content>{state.content}</Content>
@@ -52,7 +53,7 @@ const Background = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: #000291;
+  background-color: #3627ff;
   width: 650px;
   height: 550px;
 
@@ -68,7 +69,8 @@ const IntroVideo = styled.div`
   width: 600px;
   height: 400px;
 
-  border-radius: 10px 10px 0px 0px;
+  font-size: 20px;
+  color: white;
 `;
 
 const Video = styled.video`
@@ -76,6 +78,8 @@ const Video = styled.video`
   height: 100%;
 
   object-fit: cover;
+
+  border-radius: 10px 10px 0px 0px;
 `;
 
 const Content = styled.div`

@@ -39,8 +39,10 @@ declare namespace User {
     setStatisticData: (data: LoadStatisticDataResDto) => void;
   }
 
-  export interface ApiStore {
+  export interface LayoutStore {
     message: false | string;
+    success: boolean;
     setMessage: (message: false | string) => void;
+    setSuccess: (on: boolean) => void;
   }
 }

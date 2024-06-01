@@ -4,11 +4,12 @@ import { BrowserRouter as RootRouter } from "react-router-dom";
 import AuthRouter from "./AuthRouter";
 import AppStyles from "./AppStyles";
 
-import { Loading, StatusMessage } from "@/entities";
+import { Loading, StatusMessage, Success } from "@/entities";
 
 const PageRouter = () => (
   <Suspense fallback={<Loading />}>
     <StatusMessage />
+    <Success />
     <RootRouter>
       <AppStyles />
       <AuthRouter />

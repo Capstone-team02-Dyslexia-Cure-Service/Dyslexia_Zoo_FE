@@ -1,3 +1,5 @@
+import LoadingComponent from "./ResultLoading";
+
 export { Background } from "./Background";
 export {
   SoundButton,
@@ -20,6 +22,11 @@ export {
   FixContainer,
 } from "./Container";
 export { Convas } from "./Convas";
+
 export { Loading } from "./Loading";
+export { ResultLoading } from "./ResultLoading";
+
+export { Success } from "./Success";
+
 export { TTSText } from "./TTSText";
 export { StatusMessage } from "./StatusMessage";

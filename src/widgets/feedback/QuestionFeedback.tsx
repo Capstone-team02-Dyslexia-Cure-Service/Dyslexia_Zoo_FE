@@ -15,9 +15,10 @@ export const QuestionFeedback = () => {
         <Background>
           <Wrapper>
             <IntroVideo>
-              <Video autoPlay>
+              <Video autoPlay controls>
                 <source src={feedback.url} type="video/mp4" />
               </Video>
+              발음 영상을 가져오고 있어!
             </IntroVideo>
             {feedback.speedFeedback ? (
               <>
@@ -106,7 +107,7 @@ const Background = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: #000291;
+  background-color: #3627ff;
   width: 650px;
 
   display: flex;
@@ -124,7 +125,8 @@ const IntroVideo = styled.div`
   margin-top: 24px;
   margin-bottom: 20px;
 
-  border-radius: 8px;
+  font-size: 20px;
+  color: white;
 `;
 
 const Video = styled.video`
@@ -132,6 +134,8 @@ const Video = styled.video`
   height: 100%;
 
   object-fit: cover;
+
+  border-radius: 8px;
 `;
 
 const Button = styled(Container)`
