@@ -2,41 +2,46 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
 export const useAnimalState = create<Animal.AnimalsStore>()(
-  immer((set) => ({
+  immer((set, get) => ({
     //State
     animals: [],
 
     //Set function
-    setAnimal: (id, animalType, nickname, hungryTimer) => {
-      set((state) => {
-        if (state.animals.find((animal) => animal.id === id))
-          state.animals.find((animal) => animal.id === id)!.hungryTime =
-            new Date(hungryTimer.split(".")[0]);
+    setAnimal: (id, animalType, nickname, hungerTimer) => {
+      set(() => {
+        const animals = [...get().animals];
+
+        if (animals.find((animal) => animal.id === id))
+          animals.find((animal) => animal.id === id)!.hungryTime = new Date(
+            hungerTimer.split(".")[0]
+          );
         else {
-          state.animals.push({
+          animals.push({
             id: id,
             animalType: animalType,
             nickname: nickname,
-            hungryTime: new Date(hungryTimer.split(".")[0]),
+            hungryTime: new Date(hungerTimer.split(".")[0]),
           });
         }
 
-        return {};
+        return { animals: animals };
       });
     },
 
     setAnimals: (animalsPara) => {
       set((state) => {
-        animalsPara.map((animalPara) => {
-          state.setAnimal(
-            animalPara.id,
-            animalPara.animalType,
-            animalPara.nickname,
-            animalPara.hungryTimer
-          );
+        const newAnimals: Animal.Animals = [];
+
+        animalsPara.map((animal) => {
+          newAnimals.push({
+            id: animal.id,
+            animalType: animal.animalType,
+            nickname: animal.nickname,
+            hungryTime: new Date(animal.hungerTimer.split(".")[0]),
+          });
         });
 
-        return {};
+        state.animals = newAnimals;
       });
     },
   }))

@@ -7,7 +7,7 @@ export { useUserState } from "./hooks/useUserState";
 export { useStudyState } from "./hooks/useStudyState";
 export { useApiState } from "./hooks/useApiState";
 
-export { AuthService } from "./services/AuthService";
+export { UserService } from "./services/UserService";
 export { PlayService } from "./services/PlayService";
 export { TestService } from "./services/TestService";
 export { AnimalService } from "./services/AnimalService";

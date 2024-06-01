@@ -31,15 +31,12 @@ const HomePage = () => {
     setNow(new Date());
   }, [animals]);
 
+  console.log(animals);
+
   return (
     <>
       <Background src="/img/home_background.png" alt="background" />
       {studyMovieUrl ? <HungryStudy /> : null}
-      <QuestionFeedback
-        url=""
-        speedFeedback={"aaaaa"}
-        accuracyFeedback={["aaaaa"]}
-      />
       {animals.find((animal) => animal.animalType === "PENGUIN") ? (
         <Animal
           id={animals.find((animal) => animal.animalType === "PENGUIN")!.id}
@@ -71,7 +68,7 @@ const HomePage = () => {
           width={150}
           height={160}
           isHungry={
-            animals.find((animal) => animal.animalType === "PENGUIN")!
+            animals.find((animal) => animal.animalType === "DOLPHIN")!
               .hungryTime < now
           }
         />

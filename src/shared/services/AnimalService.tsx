@@ -6,12 +6,11 @@ export const AnimalService = () => {
   const setAnimals = useAnimalState((state) => state.setAnimals);
 
   const loadAnimals = async () => {
-    console.log(API.defaults.headers["memberId"]);
     const { data } = (await API.get(
       `${URL}`
     )) as AxiosResponse<Animal.LoadAnimalsResDto>;
 
-    setAnimals(data);
+    setAnimals(data.animalResponseDtoList);
   };
 
   return { loadAnimals };

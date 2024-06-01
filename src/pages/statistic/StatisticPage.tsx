@@ -4,23 +4,15 @@ import styled from "@emotion/styled";
 
 import { Background, TTSText, HomeButton, GraphContainer } from "@/entities";
 
-import { useUserState } from "@/shared";
+import { useUserState, UserService } from "@/shared";
 
 const StatisticPage = () => {
   const statisticData = useUserState((state) => state.statisticData);
-  const setStatisticData = useUserState((state) => state.setStatisticData);
+  const { loadStatisticData } = UserService();
   const name = useUserState((state) => state.name);
 
   useEffect(() => {
-    setStatisticData([
-      { day: "5월 5일", score: 10 },
-      { day: "5월 6일", score: 20 },
-      { day: "5월 7일", score: 29 },
-      { day: "5월 8일", score: 10 },
-      { day: "5월 9일", score: 10 },
-      { day: "5월 10일", score: 20 },
-      { day: "5월 11일", score: 29 },
-    ]);
+    loadStatisticData(0, 7);
   }, []);
 
   return (

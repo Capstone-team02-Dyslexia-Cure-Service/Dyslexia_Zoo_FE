@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 
 import { TTSText } from "@/entities";
 
-import { AuthService } from "@/shared";
+import { UserService } from "@/shared";
 
 const SignInPage = () => {
   const { control, handleSubmit } = useForm<User.SignInReqDto>({
@@ -16,7 +16,7 @@ const SignInPage = () => {
     },
   });
 
-  const { signin } = AuthService();
+  const { signin } = UserService();
 
   const onSubmit = (data: User.SignInReqDto) => {
     signin(data);

@@ -1,11 +1,8 @@
 declare namespace Animal {
   //DTO
   export type LoadAnimalsResDto = {
-    id: number;
-    animalType: AnimalType;
-    nickname: string;
-    hungryTimer: string;
-  }[];
+    animalResponseDtoList: AnimalsPara;
+  };
 
   export type GetStudyContentResDto = {
     content: string;
@@ -16,22 +13,24 @@ declare namespace Animal {
     id: number;
     animalType: AnimalType;
     nickname: string;
-    hungryTimer: string;
+    hungerTimer: string;
   };
 
   //Variable
-  export type Animals = {
+  export type Animal = {
     id: number;
     animalType: AnimalType;
     nickname: string;
     hungryTime: Date;
-  }[];
+  };
+
+  export type Animals = Animal[];
 
   export type AnimalsPara = {
     id: number;
     animalType: AnimalType;
     nickname: string;
-    hungryTimer: string;
+    hungerTimer: string;
   }[];
 
   export type AnimalType = "DOLPHIN" | "PENGUIN" | "MONKEY" | "SEAL";
@@ -44,7 +43,7 @@ declare namespace Animal {
       id: number,
       animalType: AnimalType,
       nickname: string,
-      hungryTimer: string
+      hungerTimer: string
     ) => void;
   }
   export interface StudyStore {

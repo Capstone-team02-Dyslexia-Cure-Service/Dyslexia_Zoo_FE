@@ -13,6 +13,13 @@ declare namespace User {
     data?: { email?: sting };
   }
 
+  export type LoadStatisticDataResDto = {
+    id: numeber;
+    achievementDate: string;
+    memberId: number;
+    solvingRecordIdList: number[];
+    score: number;
+  }[];
   /*   
   export interface SignInResDto {
     accessToken: string;
@@ -29,7 +36,7 @@ declare namespace User {
     name: string;
     statisticData: StatisticData;
     setName: (name: string) => void;
-    setStatisticData: (data: StatisticData) => void;
+    setStatisticData: (data: LoadStatisticDataResDto) => void;
   }
 
   export interface ApiStore {

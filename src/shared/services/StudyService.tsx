@@ -18,12 +18,12 @@ export const StudyService = () => {
 
   const animalFeed = async (id: number) => {
     const {
-      data: { animalType, nickname, hungryTimer },
+      data: { animalType, nickname, hungerTimer },
     } = (await API.get(`${URL}/question/random_edu`, {
       headers: { animalId: id },
     })) as AxiosResponse<Animal.AnimalFeedDto>;
 
-    setAnimal(id, animalType, nickname, hungryTimer);
+    setAnimal(id, animalType, nickname, hungerTimer);
   };
 
   return { getStudyContent, animalFeed };

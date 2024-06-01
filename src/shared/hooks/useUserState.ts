@@ -14,7 +14,21 @@ export const useUserState = create<User.UserStore>()(
     },
 
     setStatisticData: (data) => {
-      set(() => ({ statisticData: data }));
+      set(() => {
+        const setData: User.StatisticData = [];
+
+        console.log(data);
+
+        data.map((oneData) => {
+          setData.unshift({
+            day: `${oneData.achievementDate.split("-")[1]}월 ${
+              oneData.achievementDate.split("-")[2]
+            }일`,
+            score: oneData.score,
+          });
+        });
+        ({ statisticData: setData });
+      });
     },
   }))
 );
