@@ -11,11 +11,11 @@ import { PlayService, useTestState } from "@/shared";
 
 const PenguinPage = () => {
   const [state, set] = useState(false);
-  const { getTest } = PlayService();
+  const { getQuestion } = PlayService();
   const testContent = useTestState((state) => state.testContent);
 
   useEffect(() => {
-    getTest();
+    getQuestion();
   }, []);
 
   return (
@@ -58,8 +58,9 @@ const PenguinPage = () => {
       {testContent ? (
         <Question>
           <ReadQuestion
-            content={testContent.questions[0].content}
-            id={testContent.questions[0].id}
+            content={testContent[0].content}
+            id={testContent[0].id}
+            questionType={"WRITE_WORD"}
             type="PLAY"
           />
         </Question>
