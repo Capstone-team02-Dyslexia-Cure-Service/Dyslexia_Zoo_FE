@@ -12,7 +12,14 @@ import {
   StopRecordButton,
   SaveButton,
 } from "@/entities";
-import { useTestState, PlayService } from "@/shared";
+
+import {
+  useTestState,
+  PlayService,
+  usePlayState,
+  useLayoutState,
+} from "@/shared";
+
 import { useRecorder } from "@/utils";
 
 export const ReadQuestion = ({
@@ -30,8 +37,12 @@ export const ReadQuestion = ({
   color?: string;
   buttonColor?: string;
 }) => {
-  const setTestAnswers = useTestState((state) => state.setTestAnswers);
-  const { submitTestAnswers } = PlayService();
+  const setAnswer = usePlayState((state) => state.setAnswer);
+  const answer = usePlayState((state) => state.answer);
+  const { submitQuestion } = PlayService();
+
+  const setMessage = useLayoutState((state) => state.setMessage);
+
   const [recording, setRecording] = useState(false);
   const audioRecorder = useRef<RecordRTC>();
   const { startRecorder, stopRecorder } = useRecorder();
@@ -39,7 +50,9 @@ export const ReadQuestion = ({
   const { handleSubmit } = useForm<Question.WriteQuestionFrom>();
 
   const onSubmit: SubmitHandler<Question.ReadQuestionFrom> = () => {
-    if (type == "PLAY") submitTestAnswers();
+    if (answer === undefined) setMessage("정답을 기록하고 제출해주세요!");
+    else if (type == "PLAY") submitQuestion(id, questionType, answer);
+    else console.log("Test");
   };
 
   const StyleQuestionContainer = styled(QuestionContainer)`
@@ -71,9 +84,13 @@ export const ReadQuestion = ({
           <StopRecordButton
             color={buttonColor}
             onClick={() => {
-              stopRecorder(audioRecorder, (file: File) => {
-                setTestAnswers(id, questionType, file);
-              });
+              if (type === "PLAY")
+                stopRecorder(audioRecorder, (file: File) => {
+                  setAnswer(file);
+                });
+              else {
+                console.log("TEST");
+              }
               setRecording(false);
             }}
           />

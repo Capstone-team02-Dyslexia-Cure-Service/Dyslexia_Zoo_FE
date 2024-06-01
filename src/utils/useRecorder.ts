@@ -71,8 +71,8 @@ export const useRecorder = () => {
       // 녹음된 오디오 데이터를 Blob 객체로 가져오기
       const audioBlob = audioRecorder.current!.getBlob();
 
-      save(convertBlobToFile(audioBlob, "answer"));
-      createAudioElement(window.URL.createObjectURL(audioBlob));
+      save(convertBlobToFile(audioBlob, "answerFile"));
+      //createAudioElement(window.URL.createObjectURL(audioBlob));
     });
   };
 

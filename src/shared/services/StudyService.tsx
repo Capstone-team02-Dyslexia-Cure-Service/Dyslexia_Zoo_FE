@@ -14,7 +14,7 @@ export const StudyService = () => {
     })) as AxiosResponse<Animal.GetStudyContentResDto>;
 
     setStudy({
-      url: "https://dyslexia-bucket.s3.ap-northeast-2.amazonaws.com/prob1.mp4",
+      url: data[0].videoPath,
       content: data[0].content,
       id: id,
     });

@@ -18,10 +18,10 @@ declare namespace Question {
   }
 
   //DTO
-  export type TestResDto = QuestionResDto[];
+  export type TestResDto = { testId: number; questions: QuestionResDto[] };
 
   export interface QuestionResDto {
-    id: number;
+    questionId: number;
     questionResponseType: QuestionType;
     content: string;
   }
@@ -56,9 +56,11 @@ declare namespace Question {
     id: number;
     questionResponseType: QuestionType;
     content: string;
+    answer: File | string | undefined;
     feedback: Feedback | undefined;
 
     setPlay: (data: QuestionResDto) => void;
+    setAnswer: (data: File | string) => void;
     setFeedback: (data: Feedback | undefined) => void;
   }
 }
