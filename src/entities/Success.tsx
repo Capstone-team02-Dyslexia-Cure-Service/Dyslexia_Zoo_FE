@@ -14,7 +14,7 @@ export const Success = () => {
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [success, success]);
+  }, [success]);
 
   return (
     <>

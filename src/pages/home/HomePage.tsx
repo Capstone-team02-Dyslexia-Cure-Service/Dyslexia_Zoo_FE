@@ -29,7 +29,6 @@ const HomePage = () => {
 
   useEffect(() => {
     loadAnimals();
-    setSuccess(true);
   }, []);
 
   useEffect(() => {

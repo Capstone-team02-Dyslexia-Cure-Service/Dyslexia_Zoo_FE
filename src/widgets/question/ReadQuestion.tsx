@@ -34,14 +34,11 @@ export const ReadQuestion = ({
   const { submitTestAnswers } = PlayService();
   const [recording, setRecording] = useState(false);
   const audioRecorder = useRef<RecordRTC>();
-  const recordResult = useRef<File>();
   const { startRecorder, stopRecorder } = useRecorder();
 
   const { handleSubmit } = useForm<Question.WriteQuestionFrom>();
 
   const onSubmit: SubmitHandler<Question.ReadQuestionFrom> = () => {
-    recordResult.current &&
-      setTestAnswers(id, questionType, recordResult.current);
     if (type == "PLAY") submitTestAnswers();
   };
 
@@ -66,7 +63,7 @@ export const ReadQuestion = ({
           <StartRecordButton
             color={buttonColor}
             onClick={() => {
-              startRecorder(audioRecorder.current);
+              startRecorder(audioRecorder);
               setRecording(true);
             }}
           />
@@ -74,7 +71,9 @@ export const ReadQuestion = ({
           <StopRecordButton
             color={buttonColor}
             onClick={() => {
-              stopRecorder(audioRecorder.current, recordResult);
+              stopRecorder(audioRecorder, (file: File) => {
+                setTestAnswers(id, questionType, file);
+              });
               setRecording(false);
             }}
           />
