@@ -31,8 +31,6 @@ const HomePage = () => {
     setNow(new Date());
   }, [animals]);
 
-  console.log(animals);
-
   return (
     <>
       <Background src="/img/home_background.png" alt="background" />

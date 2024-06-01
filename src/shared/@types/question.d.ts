@@ -20,6 +20,12 @@ declare namespace Question {
     content: string;
   }
 
+  export interface Feedback {
+    url: string;
+    speedFeedback: string | null;
+    accuracyFeedback: string;
+  }
+
   //Form type
   export interface WriteQuestionFrom {
     answer: string;
@@ -32,11 +38,13 @@ declare namespace Question {
     testContent: TestResDto | undefined;
     testAnswers: (File | string)[];
     testAnswersInfo: TestAnswerInfo[];
+    testFeedback: Feedback | undefined;
     setTest: (test: TestResDto) => void;
     setTestAnswers: (
       id: number,
       type: QuestionType,
       answer: string | File
     ) => void;
+    setTestFeedback: (feedback: Feedback | undefined) => void;
   }
 }

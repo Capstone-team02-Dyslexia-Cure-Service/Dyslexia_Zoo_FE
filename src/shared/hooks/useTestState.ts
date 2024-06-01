@@ -7,6 +7,7 @@ export const useTestState = create<Question.TestStore>()(
     testContent: undefined,
     testAnswersInfo: [],
     testAnswers: [],
+    testFeedback: undefined,
 
     //Set function
     setTestAnswers: (id, type, answer) => {
@@ -30,6 +31,12 @@ export const useTestState = create<Question.TestStore>()(
         state.testContent = test;
         state.testAnswers = [];
         state.testAnswersInfo = [];
+      });
+    },
+
+    setTestFeedback: (feedback) => {
+      set((state) => {
+        state.testFeedback = feedback;
       });
     },
   }))
