@@ -13,17 +13,21 @@ export const StudyService = () => {
       headers: { numOfQuestions: 1 },
     })) as AxiosResponse<Animal.GetStudyContentResDto>;
 
-    setStudy({ url: data[0].videoPath, content: data[0].content, id: id });
+    setStudy({
+      url: data[0].videoPath,
+      content: data[0].content,
+      id: id,
+    });
   };
 
   const animalFeed = async (id: number) => {
     const {
-      data: { animalType, nickname, hungerTimer },
-    } = (await API.get(`${URL}/question/random_edu`, {
+      data: { animalType, description, nickname, hungerTimer },
+    } = (await API.get(`${URL}/animal/feed`, {
       headers: { animalId: id },
     })) as AxiosResponse<Animal.AnimalFeedDto>;
 
-    setAnimal(id, animalType, nickname, hungerTimer);
+    setAnimal(id, animalType, description, nickname, hungerTimer);
   };
 
   return { getStudyContent, animalFeed };

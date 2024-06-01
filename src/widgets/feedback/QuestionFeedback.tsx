@@ -106,7 +106,7 @@ const Background = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: #6a00ff;
+  background-color: #000291;
   width: 650px;
 
   display: flex;
@@ -118,8 +118,6 @@ const Wrapper = styled.div`
 `;
 
 const IntroVideo = styled.div`
-  background-color: #001eff;
-
   width: 600px;
   height: 200px;
 

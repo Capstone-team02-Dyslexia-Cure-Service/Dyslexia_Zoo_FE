@@ -36,7 +36,7 @@ export const HungryStudy = () => {
 };
 
 const Background = styled.div`
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   top: 0;
   left: 0;
@@ -52,7 +52,7 @@ const Background = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: #6a00ff;
+  background-color: #000291;
   width: 650px;
   height: 550px;
 
@@ -65,8 +65,6 @@ const Wrapper = styled.div`
 `;
 
 const IntroVideo = styled.div`
-  background-color: #001eff;
-
   width: 600px;
   height: 400px;
 

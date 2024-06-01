@@ -9,7 +9,7 @@ export const PlayService = () => {
   const testAnswers = useTestState((state) => state.testAnswers);
 
   const getQuestion = async () => {
-    const { data } = (await API.get(`${URL}/question/ramdom_list`, {
+    const { data } = (await API.get(`${URL}/question/random_list`, {
       headers: {
         numOfQuestions: 1,
       },
