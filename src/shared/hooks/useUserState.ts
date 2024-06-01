@@ -14,10 +14,8 @@ export const useUserState = create<User.UserStore>()(
     },
 
     setStatisticData: (data) => {
-      set(() => {
+      set((state) => {
         const setData: User.StatisticData = [];
-
-        console.log(data);
 
         data.map((oneData) => {
           setData.unshift({
@@ -27,7 +25,7 @@ export const useUserState = create<User.UserStore>()(
             score: oneData.score,
           });
         });
-        ({ statisticData: setData });
+        state.statisticData = setData;
       });
     },
   }))

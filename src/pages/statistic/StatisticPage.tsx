@@ -15,6 +15,8 @@ const StatisticPage = () => {
     loadStatisticData(0, 7);
   }, []);
 
+  console.log(statisticData);
+
   return (
     <>
       <Background src="/img/statistic_background.png" alt="background" />
