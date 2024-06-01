@@ -4,8 +4,7 @@ export { AnimalPanel } from "./animal/AnimalPanel";
 
 export { QuestionFeedback } from "./feedback/QuestionFeedback";
 
-export { ReadQuestion } from "./question/ReadQuestion";
-export { WriteQuestion } from "./question/WriteQuestion";
+export { Question } from "./question/Question";
 
 export { StoreTest } from "./test/StoreTest";
 

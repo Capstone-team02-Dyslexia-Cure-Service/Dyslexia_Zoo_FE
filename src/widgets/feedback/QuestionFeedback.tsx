@@ -3,11 +3,11 @@ import styled from "@emotion/styled";
 import { Container } from "@/entities";
 import { TTSText } from "@/entities";
 
-import { useTestState } from "@/shared";
+import { usePlayState } from "@/shared";
 
 export const QuestionFeedback = () => {
-  const feedback = useTestState((state) => state.testFeedback);
-  const setFeedback = useTestState((state) => state.setTestFeedback);
+  const feedback = usePlayState((state) => state.feedback);
+  const setFeedback = usePlayState((state) => state.setFeedback);
 
   return (
     <>
@@ -16,7 +16,7 @@ export const QuestionFeedback = () => {
           <Wrapper>
             <IntroVideo>
               <Video autoPlay controls>
-                <source src={feedback.url} type="video/mp4" />
+                <source src={feedback.videoPath} type="video/mp4" />
               </Video>
               발음 영상을 가져오고 있어!
             </IntroVideo>

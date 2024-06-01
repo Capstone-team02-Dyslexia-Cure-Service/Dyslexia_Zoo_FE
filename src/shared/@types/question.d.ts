@@ -11,6 +11,12 @@ declare namespace Question {
     questionResponseType: QuestionType;
   }
 
+  export interface Feedback {
+    videoPath: string;
+    speedFeedback: string | null;
+    accuracyFeedback: string;
+  }
+
   //DTO
   export type TestResDto = QuestionResDto[];
 
@@ -20,10 +26,8 @@ declare namespace Question {
     content: string;
   }
 
-  export interface Feedback {
-    url: string;
-    speedFeedback: string | null;
-    accuracyFeedback: string;
+  export interface QuestionSubmitResDto extends Feedback {
+    isCorrect: boolean;
   }
 
   //Form type
@@ -46,5 +50,15 @@ declare namespace Question {
       answer: string | File
     ) => void;
     setTestFeedback: (feedback: Feedback | undefined) => void;
+  }
+
+  export interface PlayStore {
+    id: number;
+    questionResponseType: QuestionType;
+    content: string;
+    feedback: Feedback | undefined;
+
+    setPlay: (data: QuestionResDto) => void;
+    setFeedback: (data: Feedback | undefined) => void;
   }
 }

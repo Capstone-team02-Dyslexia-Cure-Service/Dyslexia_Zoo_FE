@@ -5,14 +5,18 @@ import { keyframes } from "@emotion/react";
 
 import { Background, FixContainer, TTSText, HomeButton } from "@/entities";
 
-import { ReadQuestion } from "@/widgets";
+import { Question } from "@/widgets";
 
-import { PlayService, useTestState } from "@/shared";
+import { PlayService, usePlayState } from "@/shared";
 
 const PenguinPage = () => {
   const [state, set] = useState(false);
   const { getQuestion } = PlayService();
-  const testContent = useTestState((state) => state.testContent);
+  const id = usePlayState((state) => state.id);
+  const questionResponseType = usePlayState(
+    (state) => state.questionResponseType
+  );
+  const content = usePlayState((state) => state.content);
 
   useEffect(() => {
     getQuestion();
@@ -55,21 +59,21 @@ const PenguinPage = () => {
           />
         )}
       </FixContainer>
-      {testContent ? (
-        <Question>
-          <ReadQuestion
-            content={testContent[0].content}
-            id={testContent[0].id}
-            questionType={"WRITE_WORD"}
+      {content ? (
+        <StyleQuestion>
+          <Question
+            content={content}
+            id={id}
+            questionType={questionResponseType}
             type="PLAY"
           />
-        </Question>
+        </StyleQuestion>
       ) : null}
     </>
   );
 };
 
-const Question = styled.div`
+const StyleQuestion = styled.div`
   position: absolute;
 
   transform: translate(-50%, 0%);

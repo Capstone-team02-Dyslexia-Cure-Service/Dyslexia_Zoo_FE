@@ -1,33 +1,36 @@
 import { AxiosResponse } from "axios";
 
-import { API, useTestState, useLayoutState } from "@/shared";
+import { API, FORMAPI, usePlayState, useLayoutState } from "@/shared";
 
 export const PlayService = () => {
-  const URL = "/api/v1";
+  const URL = "/api/v1/question/one";
 
-  const setTest = useTestState((state) => state.setTest);
-  const testAnswers = useTestState((state) => state.testAnswers);
-  const setMessage = useLayoutState((state) => state.setMessage);
+  const setPlay = usePlayState((state) => state.setPlay);
+  const setFeedback = usePlayState((state) => state.setFeedback);
+  const setSuccess = useLayoutState((state) => state.setSuccess);
 
   const getQuestion = async () => {
-    const { data } = (await API.get(`${URL}/question/random_list`, {
-      headers: {
-        numOfQuestions: 1,
-      },
-    })) as AxiosResponse<Question.TestResDto>;
+    const { data } = (await API.get(
+      `${URL}`
+    )) as AxiosResponse<Question.QuestionResDto>;
 
-    setTest(data);
+    setPlay(data);
   };
 
-  const submitTestAnswers = async () => {
-    console.log(testAnswers);
-    if (testAnswers.length === 0) {
-      setMessage("녹음 이후 제출해주세요!");
-      return;
-    }
+  const submitQuestion = async (file: File) => {
+    const formData = new FormData();
+    formData.append("answerFile", file);
 
-    setMessage("제출 완료!");
+    const {
+      data: { isCorrect, videoPath, speedFeedback, accuracyFeedback },
+    } = (await FORMAPI.post(
+      `${URL}`,
+      formData
+    )) as AxiosResponse<Question.QuestionSubmitResDto>;
+
+    if (isCorrect) setSuccess(true);
+    else setFeedback({ videoPath, speedFeedback, accuracyFeedback });
   };
 
-  return { getQuestion, submitTestAnswers };
+  return { getQuestion, submitQuestion };
 };
