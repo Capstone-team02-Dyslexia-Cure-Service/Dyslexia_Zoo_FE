@@ -21,6 +21,7 @@ const HomePage = () => {
   const animals = useAnimalState((state) => state.animals);
   const studyMovieUrl = useStudyState((state) => state.url);
   const setSuccess = useLayoutState((state) => state.setSuccess);
+  const setFailure = useLayoutState((state) => state.setFailure);
   const [now, setNow] = useState<Date>(new Date());
   const { loadAnimals } = AnimalService();
 
@@ -28,6 +29,7 @@ const HomePage = () => {
   const dolphin = useRef<Animal.Animal>();
 
   useEffect(() => {
+    setFailure(1);
     loadAnimals();
   }, []);
 
