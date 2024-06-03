@@ -1,10 +1,20 @@
+import { useEffect } from "react";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 
-import { WriteQuestion } from "../question/WriteQuestion";
-import { ReadQuestion } from "../question/ReadQuestion";
+import { TTSText, SubmitButton } from "@/entities";
+import { Question } from "@/widgets";
+import { TestService, useTestState } from "@/shared";
 
 export const StoreTest = () => {
+  const { getTest, getTestResult } = TestService();
+  const questions = useTestState((state) => state.questions);
+  const testId = useTestState((state) => state.testId);
+
+  useEffect(() => {
+    getTest();
+  }, []);
+
   return (
     <>
       <Container>
@@ -12,24 +22,42 @@ export const StoreTest = () => {
           <BackGroundImg src="/img/truck.png"></BackGroundImg>
           <TestBox>
             <TestContainer>
-              <WriteQuestion
-                key={"1"}
-                content={"강민규"}
-                id={"1"}
-                questionType={"SELECTWORD"}
-                type="TEST"
-                easy
-                color="#ff4444"
-                buttonColor="#ff1515"
+              <TTSText
+                text={"실력을 뽐내봐!!"}
+                style={{
+                  fontSize: "70px",
+                  fontWeight: "bold",
+                  color: "#ff1515",
+                  marginBottom: "0px",
+                }}
               />
-              <ReadQuestion
-                key={"1"}
-                content={"강민규"}
-                id={"1"}
-                questionType={"SELECTWORD"}
-                type="TEST"
+              <TTSText
+                text={"문제를 하나를 마무리할 때마다 체크 버튼을 눌러줘!"}
+                style={{
+                  fontSize: "30px",
+                  fontWeight: "bold",
+                  color: "black",
+                  marginBottom: "30px",
+                }}
+              />
+              {questions
+                ? questions.map(({ id, questionResponseType, content }) => (
+                    <Question
+                      key={id}
+                      content={content}
+                      id={id}
+                      questionType={questionResponseType}
+                      type="TEST"
+                      color="#ff4444"
+                      buttonColor="#ff1515"
+                    />
+                  ))
+                : null}
+              <SubmitButton
                 color="#ff4444"
-                buttonColor="#ff1515"
+                onClick={() => {
+                  getTestResult(testId);
+                }}
               />
             </TestContainer>
           </TestBox>
@@ -44,7 +72,7 @@ const slideIn = keyframes`
         right: -100%;
     }
     to {
-        right: 50%;
+        right: 70%;
         transform: translateX(50%);
     }
 `;

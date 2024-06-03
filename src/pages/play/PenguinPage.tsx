@@ -5,22 +5,38 @@ import { keyframes } from "@emotion/react";
 
 import { Background, FixContainer, TTSText, HomeButton } from "@/entities";
 
-import { ReadQuestion } from "@/widgets";
+import { Question, QuestionFeedback } from "@/widgets";
 
-import { PlayService, useTestState } from "@/shared";
+import { PlayService, usePlayState, useLayoutState } from "@/shared";
 
 const PenguinPage = () => {
   const [state, set] = useState(false);
-  const { getTest } = PlayService();
-  const testContent = useTestState((state) => state.testContent);
+  const { getQuestion } = PlayService();
+  const id = usePlayState((state) => state.id);
+  const questionResponseType = usePlayState(
+    (state) => state.questionResponseType
+  );
+  const content = usePlayState((state) => state.content);
+  const success = useLayoutState((state) => state.success);
 
   useEffect(() => {
-    getTest();
+    getQuestion();
   }, []);
+
+  useEffect(() => {
+    if (success)
+      setTimeout(() => {
+        set(true);
+        setTimeout(() => {
+          set(false);
+        }, 4000);
+      }, 2000);
+  }, [success]);
 
   return (
     <>
       <Background src="/img/penguin_background.png" alt="background" />
+      <QuestionFeedback />
       <HomeButton />
       <TTSText
         text={"문제를 해결하고, 펭귄과 놀아봐!!"}
@@ -29,7 +45,7 @@ const PenguinPage = () => {
           top: "20px",
           left: "50%",
           transform: "translate(-50%, 0%)",
-          fontSize: "50px",
+          fontSize: "40px",
           fontWeight: "bold",
           color: "black",
           zIndex: "10",
@@ -38,42 +54,31 @@ const PenguinPage = () => {
 
       <FixContainer>
         {state ? (
-          <MovePenguin
-            src="/img/penguin_play.png"
-            alt="PENGUIN"
-            onClick={() => {
-              set(true);
-            }}
-          />
+          <MovePenguin src="/img/penguin_play.png" alt="PENGUIN" />
         ) : (
-          <Penguin
-            src="/img/penguin_play.png"
-            alt="PENGUIN"
-            onClick={() => {
-              set(true);
-            }}
-          />
+          <Penguin src="/img/penguin_play.png" alt="PENGUIN" />
         )}
       </FixContainer>
-      {testContent ? (
-        <Question>
-          <ReadQuestion
-            content={testContent.questions[0].content}
-            id={testContent.questions[0].id}
+      {content ? (
+        <StyleQuestion>
+          <Question
+            content={content}
+            id={id}
+            questionType={questionResponseType}
             type="PLAY"
           />
-        </Question>
+        </StyleQuestion>
       ) : null}
     </>
   );
 };
 
-const Question = styled.div`
+const StyleQuestion = styled.div`
   position: absolute;
 
-  transform: translate(-50%, 0%);
-  top: 63%;
-  left: 74%;
+  transform: translate(0%, 0%);
+  bottom: 0px;
+  right: 35px;
 `;
 
 const move = keyframes`

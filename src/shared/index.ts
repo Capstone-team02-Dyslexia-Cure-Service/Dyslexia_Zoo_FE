@@ -5,7 +5,8 @@ export { useAnimalState } from "./hooks/useAnimalState";
 export { useTestState } from "./hooks/useTestState";
 export { useUserState } from "./hooks/useUserState";
 export { useStudyState } from "./hooks/useStudyState";
-export { useApiState } from "./hooks/useApiState";
+export { useLayoutState } from "./hooks/useLayoutState";
+export { usePlayState } from "./hooks/usePlayState";
 
 export { UserService } from "./services/UserService";
 export { PlayService } from "./services/PlayService";

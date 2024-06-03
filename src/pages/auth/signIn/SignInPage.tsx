@@ -4,8 +4,6 @@ import { Controller, useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-import { TTSText } from "@/entities";
-
 import { UserService } from "@/shared";
 
 const SignInPage = () => {
@@ -111,7 +109,7 @@ const SunImg = styled.img`
   top: 40%;
   transform: translate(50%, -50%);
 
-  width: 36%;
+  width: 50%;
   aspect-ratio: 1;
 
   z-index: 1;

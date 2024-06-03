@@ -11,13 +11,26 @@ declare namespace Question {
     questionResponseType: QuestionType;
   }
 
+  export interface Feedback {
+    videoPath: string;
+    speedFeedback: string | null;
+    accuracyFeedback: string;
+  }
+
   //DTO
-  export type TestResDto = QuestionResDto[];
+  export type TestResDto = { testId: number; questions: QuestionResDto[] };
 
   export interface QuestionResDto {
     id: number;
     questionResponseType: QuestionType;
     content: string;
+  }
+
+  export interface QuestionSubmitResDto {
+    answerVideoFilePath: string;
+    speedFeedback: string | null;
+    accuracyFeedback: string;
+    isCorrect: boolean;
   }
 
   //Form type
@@ -29,14 +42,23 @@ declare namespace Question {
 
   //Store
   export interface TestStore {
-    testContent: TestResDto | undefined;
-    testAnswers: (File | string)[];
-    testAnswersInfo: TestAnswerInfo[];
-    setTest: (test: TestResDto) => void;
-    setTestAnswers: (
-      id: number,
-      type: QuestionType,
-      answer: string | File
-    ) => void;
+    testId: number;
+    questions: QuestionResDto[];
+    answers: (File | string | undefined)[];
+
+    setTest: (data: TestResDto) => void;
+    setAnswer: (index: number, data: File | string) => void;
+  }
+
+  export interface PlayStore {
+    id: number;
+    questionResponseType: QuestionType;
+    content: string;
+    answer: File | string | undefined;
+    feedback: Feedback | undefined;
+
+    setPlay: (data: QuestionResDto) => void;
+    setAnswer: (data: File | string) => void;
+    setFeedback: (data: Feedback | undefined) => void;
   }
 }

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useRef } from "react";
 
 import { useStudyState, StudyService } from "@/shared";
 
@@ -14,6 +15,10 @@ import { useStudyState, StudyService } from "@/shared";
 export const HungryStudy = () => {
   const state = useStudyState((state) => state);
   const { animalFeed } = StudyService();
+  const count = useRef(0);
+  const handleLoadedMetadata = (event: any) => {
+    event.target.playbackRate = 0.6;
+  };
 
   return (
     <Background>
@@ -21,9 +26,15 @@ export const HungryStudy = () => {
         <IntroVideo>
           <Video
             autoPlay
-            onEnded={() => {
-              state.id && animalFeed(state.id);
-              state.setStudy({ url: false, content: false, id: false });
+            onLoadedMetadata={handleLoadedMetadata}
+            onEnded={(event: any) => {
+              count.current++;
+              event.target.play();
+              if (count.current > 2) {
+                state.id && animalFeed(state.id);
+                state.setStudy({ url: false, content: false, id: false });
+                count.current = 0;
+              }
             }}
           >
             {state.url ? <source src={state.url} type="video/mp4" /> : null}
@@ -36,7 +47,7 @@ export const HungryStudy = () => {
 };
 
 const Background = styled.div`
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   top: 0;
   left: 0;
@@ -52,7 +63,7 @@ const Background = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: #6a00ff;
+  background-color: #3627ff;
   width: 650px;
   height: 550px;
 
@@ -65,12 +76,14 @@ const Wrapper = styled.div`
 `;
 
 const IntroVideo = styled.div`
-  background-color: #001eff;
-
   width: 600px;
   height: 400px;
 
+  font-size: 20px;
+  color: white;
   border-radius: 10px 10px 0px 0px;
+
+  overflow: hidden;
 `;
 
 const Video = styled.video`
@@ -78,6 +91,8 @@ const Video = styled.video`
   height: 100%;
 
   object-fit: cover;
+
+  transform: scale(1.5);
 `;
 
 const Content = styled.div`

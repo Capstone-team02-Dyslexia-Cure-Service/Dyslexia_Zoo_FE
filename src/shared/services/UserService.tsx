@@ -2,13 +2,15 @@ import { AxiosResponse } from "axios";
 import { PAGE_URL } from "@/shared/configs/path";
 import { useNavigate } from "react-router";
 
-import { useUserState, useApiState, API, setAccess } from "@/shared";
+import { useUserState, useLayoutState, API, setAccess } from "@/shared";
 
 export const UserService = () => {
   const URL = "api/v1";
   const setName = useUserState((state) => state.setName);
   const navigate = useNavigate();
-  const setMessage = useApiState((state) => state.setMessage);
+
+  const setMessage = useLayoutState((state) => state.setMessage);
+
   const setStatisticData = useUserState((state) => state.setStatisticData);
 
   const signin = async (body: User.SignInReqDto) => {

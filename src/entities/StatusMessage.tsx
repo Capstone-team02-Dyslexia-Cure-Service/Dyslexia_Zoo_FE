@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import styled from "@emotion/styled";
-import { useApiState } from "@/shared";
+import { useLayoutState } from "@/shared";
 
 export const StatusMessage = () => {
-  const { message, setMessage } = useApiState();
+  const { message, setMessage } = useLayoutState();
 
   useEffect(() => {
     const timer = setTimeout(() => {

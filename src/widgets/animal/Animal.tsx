@@ -102,7 +102,7 @@ export const Animal = ({
     position: absolute;
 
     top: ${mousePosition.y - 80}px;
-    left: ${mousePosition.x - 40}px;
+    left: ${mousePosition.x - 60}px;
 
     width: ${width}px;
     height: ${height}px;

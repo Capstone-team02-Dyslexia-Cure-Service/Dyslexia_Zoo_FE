@@ -7,7 +7,7 @@ export const useAnimalState = create<Animal.AnimalsStore>()(
     animals: [],
 
     //Set function
-    setAnimal: (id, animalType, nickname, hungerTimer) => {
+    setAnimal: (id, animalType, description, nickname, hungerTimer) => {
       set(() => {
         const animals = [...get().animals];
 
@@ -19,6 +19,7 @@ export const useAnimalState = create<Animal.AnimalsStore>()(
           animals.push({
             id: id,
             animalType: animalType,
+            description: description,
             nickname: nickname,
             hungryTime: new Date(hungerTimer.split(".")[0]),
           });
@@ -36,6 +37,7 @@ export const useAnimalState = create<Animal.AnimalsStore>()(
           newAnimals.push({
             id: animal.id,
             animalType: animal.animalType,
+            description: animal.description,
             nickname: animal.nickname,
             hungryTime: new Date(animal.hungerTimer.split(".")[0]),
           });

@@ -12,7 +12,9 @@ import {
   StopRecordButton,
   SaveButton,
 } from "@/entities";
-import { useTestState, PlayService } from "@/shared";
+
+import { PlayService, usePlayState, useLayoutState } from "@/shared";
+
 import { useRecorder } from "@/utils";
 
 export const ReadQuestion = ({
@@ -30,19 +32,22 @@ export const ReadQuestion = ({
   color?: string;
   buttonColor?: string;
 }) => {
-  const setTestAnswers = useTestState((state) => state.setTestAnswers);
-  const { submitTestAnswers } = PlayService();
+  const setAnswer = usePlayState((state) => state.setAnswer);
+  const answer = usePlayState((state) => state.answer);
+  const { submitQuestion } = PlayService();
+
+  const setMessage = useLayoutState((state) => state.setMessage);
+
   const [recording, setRecording] = useState(false);
   const audioRecorder = useRef<RecordRTC>();
-  const recordResult = useRef<File>();
   const { startRecorder, stopRecorder } = useRecorder();
 
   const { handleSubmit } = useForm<Question.WriteQuestionFrom>();
 
   const onSubmit: SubmitHandler<Question.ReadQuestionFrom> = () => {
-    recordResult.current &&
-      setTestAnswers(id, questionType, recordResult.current);
-    if (type == "PLAY") submitTestAnswers();
+    if (answer === undefined) setMessage("정답을 기록하고 제출해주세요!");
+    else if (type == "PLAY") submitQuestion(id, questionType, answer);
+    else console.log("Test");
   };
 
   const StyleQuestionContainer = styled(QuestionContainer)`
@@ -66,7 +71,7 @@ export const ReadQuestion = ({
           <StartRecordButton
             color={buttonColor}
             onClick={() => {
-              startRecorder(audioRecorder.current);
+              startRecorder(audioRecorder);
               setRecording(true);
             }}
           />
@@ -74,7 +79,13 @@ export const ReadQuestion = ({
           <StopRecordButton
             color={buttonColor}
             onClick={() => {
-              stopRecorder(audioRecorder.current, recordResult);
+              if (type === "PLAY")
+                stopRecorder(audioRecorder, (file: File) => {
+                  setAnswer(file);
+                });
+              else {
+                console.log("TEST");
+              }
               setRecording(false);
             }}
           />

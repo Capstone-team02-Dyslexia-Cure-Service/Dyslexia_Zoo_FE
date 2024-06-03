@@ -20,6 +20,12 @@ export {
   FixContainer,
 } from "./Container";
 export { Convas } from "./Convas";
+
 export { Loading } from "./Loading";
+export { StateLoading } from "./StateLoading";
+
+export { Failure } from "./Failure";
+export { Success } from "./Success";
+
 export { TTSText } from "./TTSText";
 export { StatusMessage } from "./StatusMessage";

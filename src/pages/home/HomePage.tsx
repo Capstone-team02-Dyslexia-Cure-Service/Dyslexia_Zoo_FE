@@ -1,14 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { Background, StoreButton, StatisticButton } from "@/entities";
 
-import {
-  Animal,
-  PenguinMove,
-  DolphinMove,
-  HungryStudy,
-  QuestionFeedback,
-} from "@/widgets";
+import { Animal, PenguinMove, DolphinMove, HungryStudy } from "@/widgets";
 
 import {
   PAGE_URL,
@@ -19,9 +13,12 @@ import {
 
 const HomePage = () => {
   const animals = useAnimalState((state) => state.animals);
-  const studyMovieUrl = useStudyState((state) => state.url);
+  const studyMovieUrl = useStudyState((state) => state.content);
   const [now, setNow] = useState<Date>(new Date());
   const { loadAnimals } = AnimalService();
+
+  const penguin = useRef<Animal.Animal>();
+  const dolphin = useRef<Animal.Animal>();
 
   useEffect(() => {
     loadAnimals();
@@ -29,19 +26,19 @@ const HomePage = () => {
 
   useEffect(() => {
     setNow(new Date());
+    penguin.current = animals.find((animal) => animal.animalType === "PENGUIN");
+    dolphin.current = animals.find((animal) => animal.animalType === "DOLPHIN");
   }, [animals]);
-
-  console.log(animals);
 
   return (
     <>
       <Background src="/img/home_background.png" alt="background" />
       {studyMovieUrl ? <HungryStudy /> : null}
-      {animals.find((animal) => animal.animalType === "PENGUIN") ? (
+      {penguin.current ? (
         <Animal
-          id={animals.find((animal) => animal.animalType === "PENGUIN")!.id}
-          name="펭귄"
-          info="2024년에 처음 한국으로 왔다. Dyslexia Zoo에서 다이빙을 연습하며 즐겁게 살아가고 있다."
+          id={penguin.current.id}
+          name={penguin.current.nickname}
+          info={penguin.current.description}
           playPath={PAGE_URL.Penguin}
           imgPath="/img/penguin.png"
           move={PenguinMove}
@@ -49,17 +46,14 @@ const HomePage = () => {
           left={52}
           width={120}
           height={130}
-          isHungry={
-            animals.find((animal) => animal.animalType === "PENGUIN")!
-              .hungryTime < now
-          }
+          isHungry={penguin.current.hungryTime < now}
         />
       ) : null}
-      {animals.find((animal) => animal.animalType === "DOLPHIN") ? (
+      {dolphin.current ? (
         <Animal
-          id={animals.find((animal) => animal.animalType === "DOLPHIN")!.id}
-          name="돌고래"
-          info="2024년에 처음 한국으로 왔다. Dyslexia Zoo에서 묘기를 부리며 즐겁게 살아가고 있다."
+          id={dolphin.current.id}
+          name={dolphin.current.nickname}
+          info={dolphin.current.description}
           playPath={PAGE_URL.Dolphin}
           imgPath="/img/dolphin.png"
           move={DolphinMove}
@@ -67,10 +61,7 @@ const HomePage = () => {
           left={20}
           width={150}
           height={160}
-          isHungry={
-            animals.find((animal) => animal.animalType === "DOLPHIN")!
-              .hungryTime < now
-          }
+          isHungry={dolphin.current.hungryTime < now}
         />
       ) : null}
       <StoreButton />

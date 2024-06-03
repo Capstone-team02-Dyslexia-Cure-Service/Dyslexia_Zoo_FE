@@ -59,7 +59,7 @@ export const AnimalPanel = ({
         }}
       />
       {isHungry ? (
-        <DisableButton>배고파서 놀 수 없습니다..</DisableButton>
+        <DisableButton>배고파서 놀 수 없습니다</DisableButton>
       ) : (
         <Button
           onClick={() => {

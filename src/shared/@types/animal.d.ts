@@ -12,6 +12,7 @@ declare namespace Animal {
   export type AnimalFeedDto = {
     id: number;
     animalType: AnimalType;
+    description: string;
     nickname: string;
     hungerTimer: string;
   };
@@ -20,6 +21,7 @@ declare namespace Animal {
   export type Animal = {
     id: number;
     animalType: AnimalType;
+    description: string;
     nickname: string;
     hungryTime: Date;
   };
@@ -29,6 +31,7 @@ declare namespace Animal {
   export type AnimalsPara = {
     id: number;
     animalType: AnimalType;
+    description: string;
     nickname: string;
     hungerTimer: string;
   }[];
@@ -42,6 +45,7 @@ declare namespace Animal {
     setAnimal: (
       id: number,
       animalType: AnimalType,
+      description: string,
       nickname: string,
       hungerTimer: string
     ) => void;

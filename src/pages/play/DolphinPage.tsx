@@ -5,22 +5,38 @@ import { keyframes } from "@emotion/react";
 
 import { Background, FixContainer, TTSText, HomeButton } from "@/entities";
 
-import { ReadQuestion } from "@/widgets";
+import { Question, QuestionFeedback } from "@/widgets";
 
-import { PlayService, useTestState } from "@/shared";
+import { PlayService, usePlayState, useLayoutState } from "@/shared";
 
 const DolphinPage = () => {
   const [state, set] = useState(false);
-  const { getTest } = PlayService();
-  const testContent = useTestState((state) => state.testContent);
+  const { getQuestion } = PlayService();
+  const id = usePlayState((state) => state.id);
+  const questionResponseType = usePlayState(
+    (state) => state.questionResponseType
+  );
+  const content = usePlayState((state) => state.content);
+  const success = useLayoutState((state) => state.success);
 
   useEffect(() => {
-    getTest();
+    getQuestion();
   }, []);
+
+  useEffect(() => {
+    if (success)
+      setTimeout(() => {
+        set(true);
+        setTimeout(() => {
+          set(false);
+        }, 4000);
+      }, 2000);
+  }, [success]);
 
   return (
     <>
       <Background src="/img/dolphin_background.png" alt="background" />
+      <QuestionFeedback />
       <HomeButton />
       <RingFront src="/img/ring_front.png" alt="ring" />
       <RingBack src="/img/ring_back.png" alt="ring" />
@@ -32,7 +48,7 @@ const DolphinPage = () => {
           left: "50%",
           width: "800px",
           transform: "translate(-50%, 0%)",
-          fontSize: "50px",
+          fontSize: "40px",
           fontWeight: "bold",
           color: "black",
           zIndex: "10",
@@ -41,43 +57,31 @@ const DolphinPage = () => {
 
       <FixContainer>
         {state ? (
-          <MoveDolphin
-            src="/img/dolphin.png"
-            alt="PENGUIN"
-            onClick={() => {
-              set(true);
-            }}
-          />
+          <MoveDolphin src="/img/dolphin.png" alt="PENGUIN" />
         ) : (
-          <Dolphin
-            src="/img/dolphin.png"
-            alt="PENGUIN"
-            onClick={() => {
-              set(true);
-            }}
-          />
+          <Dolphin src="/img/dolphin.png" alt="PENGUIN" />
         )}
       </FixContainer>
-      {testContent ? (
-        <Question>
-          <ReadQuestion
-            content={testContent.questions[0].content}
-            id={testContent.questions[0].id}
-            questionType={"WRITEWORD"}
+      {content ? (
+        <StyleQuestion>
+          <Question
+            content={content}
+            id={id}
+            questionType={questionResponseType}
             type="PLAY"
           />
-        </Question>
+        </StyleQuestion>
       ) : null}
     </>
   );
 };
 
-const Question = styled.div`
+const StyleQuestion = styled.div`
   position: absolute;
 
   transform: translate(50%, 0%);
-  top: 63%;
-  right: 74%;
+  bottom: 0px;
+  left: 35px;
 `;
 
 const move = keyframes`
