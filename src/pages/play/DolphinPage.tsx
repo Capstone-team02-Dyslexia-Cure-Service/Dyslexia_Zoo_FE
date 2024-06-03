@@ -5,7 +5,7 @@ import { keyframes } from "@emotion/react";
 
 import { Background, FixContainer, TTSText, HomeButton } from "@/entities";
 
-import { Question } from "@/widgets";
+import { Question, QuestionFeedback } from "@/widgets";
 
 import { PlayService, usePlayState, useLayoutState } from "@/shared";
 
@@ -36,6 +36,7 @@ const DolphinPage = () => {
   return (
     <>
       <Background src="/img/dolphin_background.png" alt="background" />
+      <QuestionFeedback />
       <HomeButton />
       <RingFront src="/img/ring_front.png" alt="ring" />
       <RingBack src="/img/ring_back.png" alt="ring" />
@@ -47,7 +48,7 @@ const DolphinPage = () => {
           left: "50%",
           width: "800px",
           transform: "translate(-50%, 0%)",
-          fontSize: "50px",
+          fontSize: "40px",
           fontWeight: "bold",
           color: "black",
           zIndex: "10",
@@ -79,8 +80,8 @@ const StyleQuestion = styled.div`
   position: absolute;
 
   transform: translate(50%, 0%);
-  top: 63%;
-  right: 74%;
+  bottom: 0px;
+  left: 35px;
 `;
 
 const move = keyframes`

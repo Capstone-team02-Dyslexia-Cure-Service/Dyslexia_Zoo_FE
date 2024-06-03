@@ -26,7 +26,10 @@ declare namespace Question {
     content: string;
   }
 
-  export interface QuestionSubmitResDto extends Feedback {
+  export interface QuestionSubmitResDto {
+    answerVideoFilePath: string;
+    speedFeedback: string | null;
+    accuracyFeedback: string;
     isCorrect: boolean;
   }
 

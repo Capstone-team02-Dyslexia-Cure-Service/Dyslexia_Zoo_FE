@@ -1,7 +1,7 @@
 import { useEffect, lazy } from "react";
 import { useNavigate, Routes, Route, Navigate } from "react-router-dom";
 
-import { useUserState, PAGE_URL } from "../shared";
+import { useUserState, PAGE_URL, useLayoutState } from "../shared";
 
 const SignIn = lazy(() => import("@/pages/auth/signIn/SignInPage"));
 const BasicTest = lazy(() => import("@/pages/auth/basicTest/BasicTestPage"));
@@ -15,9 +15,13 @@ const Dolphin = lazy(() => import("@/pages/play/DolphinPage"));
 const AuthRouter = () => {
   const isSignIn = useUserState((state) => state.isSignIn);
   const navigate = useNavigate();
+  const setLoading = useLayoutState((state) => state.setLoading);
 
   useEffect(() => {
-    if (!isSignIn) navigate(PAGE_URL.SignIn);
+    if (!isSignIn) {
+      setLoading(false);
+      navigate(PAGE_URL.SignIn);
+    }
   }, []);
 
   return (

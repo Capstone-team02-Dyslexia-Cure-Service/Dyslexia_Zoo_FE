@@ -9,7 +9,7 @@ export const QuestionFeedback = () => {
   const feedback = usePlayState((state) => state.feedback);
   const setFeedback = usePlayState((state) => state.setFeedback);
   const handleLoadedMetadata = (event: any) => {
-    event.target.playbackRate = 0.8;
+    event.target.playbackRate = 0.6;
   };
 
   return (
@@ -18,15 +18,9 @@ export const QuestionFeedback = () => {
         <Background>
           <Wrapper>
             <IntroVideo>
-              <Video
-                autoPlay
-                controls
-                loop
-                onLoadedMetadata={handleLoadedMetadata}
-              >
+              <Video autoPlay loop onLoadedMetadata={handleLoadedMetadata}>
                 <source src={feedback.videoPath} type="video/mp4" />
               </Video>
-              발음 영상을 가져오고 있어!
             </IntroVideo>
             {feedback.speedFeedback ? (
               <>
@@ -133,11 +127,16 @@ const IntroVideo = styled.div`
   margin-top: 24px;
   margin-bottom: 20px;
 
+  border-radius: 6px;
+
   font-size: 20px;
+
+  overflow: hidden;
   color: white;
 `;
 
 const Video = styled.video`
+  transform: scale(1.5);
   width: 100%;
   height: 100%;
 

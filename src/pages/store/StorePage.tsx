@@ -9,7 +9,7 @@ import { StoreTest } from "@/widgets";
 const StorePage = () => {
   const animals = useAnimalState((state) => state.animals);
   const { loadAnimals } = AnimalService();
-  const [onTest, setOnTest] = useState(true);
+  const [onTest, setOnTest] = useState(false);
 
   useEffect(() => {
     loadAnimals();

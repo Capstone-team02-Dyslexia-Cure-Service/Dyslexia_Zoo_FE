@@ -4,7 +4,7 @@ import { immer } from "zustand/middleware/immer";
 export const useUserState = create<User.UserStore>()(
   immer((set) => ({
     //State
-    isSignIn: true,
+    isSignIn: false,
     name: "",
     statisticData: [],
 

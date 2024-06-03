@@ -17,7 +17,7 @@ export const HungryStudy = () => {
   const { animalFeed } = StudyService();
   const count = useRef(0);
   const handleLoadedMetadata = (event: any) => {
-    event.target.playbackRate = 0.8;
+    event.target.playbackRate = 0.6;
   };
 
   return (
@@ -27,9 +27,10 @@ export const HungryStudy = () => {
           <Video
             autoPlay
             onLoadedMetadata={handleLoadedMetadata}
-            onEnded={() => {
+            onEnded={(event: any) => {
               count.current++;
-              if (count.current > 3) {
+              event.target.play();
+              if (count.current > 2) {
                 state.id && animalFeed(state.id);
                 state.setStudy({ url: false, content: false, id: false });
                 count.current = 0;
@@ -37,7 +38,6 @@ export const HungryStudy = () => {
             }}
           >
             {state.url ? <source src={state.url} type="video/mp4" /> : null}
-            발음 영상을 가져오고 있어!
           </Video>
         </IntroVideo>
         <Content>{state.content}</Content>
@@ -81,6 +81,9 @@ const IntroVideo = styled.div`
 
   font-size: 20px;
   color: white;
+  border-radius: 10px 10px 0px 0px;
+
+  overflow: hidden;
 `;
 
 const Video = styled.video`
@@ -89,7 +92,7 @@ const Video = styled.video`
 
   object-fit: cover;
 
-  border-radius: 10px 10px 0px 0px;
+  transform: scale(1.5);
 `;
 
 const Content = styled.div`

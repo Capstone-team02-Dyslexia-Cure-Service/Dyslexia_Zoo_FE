@@ -16,10 +16,12 @@ export const PlayService = () => {
 
     const { data } = (await API.get(`${URL}/question/random_list`, {
       headers: { numOfQuestions: 1 },
-    })) as AxiosResponse<Question.QuestionResDto>;
+    })) as AxiosResponse<Question.QuestionResDto[]>;
+
+    console.log(data);
 
     setLoading(false);
-    setPlay(data);
+    setPlay(data[0]);
   };
 
   const submitQuestion = async (
@@ -30,18 +32,31 @@ export const PlayService = () => {
     if (typeof answer === "string") {
       setLoading("GETRESULT");
 
+      console.log(answer);
+
       const {
-        data: { isCorrect, videoPath, speedFeedback, accuracyFeedback },
-      } = (await API.post(
-        `${URL}/solvingRecord/solve/one/write?questionId=${id}&questionResponseType=${questionResponseType}`,
-        {
-          answer: answer,
-        }
-      )) as AxiosResponse<Question.QuestionSubmitResDto>;
+        data: {
+          isCorrect,
+          answerVideoFilePath,
+          speedFeedback,
+          accuracyFeedback,
+        },
+      } = (await API.post(`${URL}/solvingRecord/solve/one/write`, {
+        answer: answer,
+        questionId: id,
+        questionResponseType: questionResponseType,
+      })) as AxiosResponse<Question.QuestionSubmitResDto>;
+
+      console.log(answerVideoFilePath);
 
       setLoading(false);
       if (isCorrect) setSuccess(true);
-      else setFeedback({ videoPath, speedFeedback, accuracyFeedback });
+      else
+        setFeedback({
+          videoPath: answerVideoFilePath,
+          speedFeedback,
+          accuracyFeedback,
+        });
     } else {
       setLoading("GETRESULT");
 
@@ -49,7 +64,12 @@ export const PlayService = () => {
       formData.append("answerFile", answer);
 
       const {
-        data: { isCorrect, videoPath, speedFeedback, accuracyFeedback },
+        data: {
+          isCorrect,
+          answerVideoFilePath,
+          speedFeedback,
+          accuracyFeedback,
+        },
       } = (await FORMAPI.post(
         `${URL}/solvingRecord/solve/one/read?questionId=${id}&questionResponseType=${questionResponseType}`,
         formData
@@ -57,7 +77,12 @@ export const PlayService = () => {
 
       setLoading(false);
       if (isCorrect) setSuccess(true);
-      else setFeedback({ videoPath, speedFeedback, accuracyFeedback });
+      else
+        setFeedback({
+          videoPath: answerVideoFilePath,
+          speedFeedback,
+          accuracyFeedback,
+        });
     }
   };
 

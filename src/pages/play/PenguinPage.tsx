@@ -5,7 +5,7 @@ import { keyframes } from "@emotion/react";
 
 import { Background, FixContainer, TTSText, HomeButton } from "@/entities";
 
-import { Question } from "@/widgets";
+import { Question, QuestionFeedback } from "@/widgets";
 
 import { PlayService, usePlayState, useLayoutState } from "@/shared";
 
@@ -36,6 +36,7 @@ const PenguinPage = () => {
   return (
     <>
       <Background src="/img/penguin_background.png" alt="background" />
+      <QuestionFeedback />
       <HomeButton />
       <TTSText
         text={"문제를 해결하고, 펭귄과 놀아봐!!"}
@@ -44,7 +45,7 @@ const PenguinPage = () => {
           top: "20px",
           left: "50%",
           transform: "translate(-50%, 0%)",
-          fontSize: "50px",
+          fontSize: "40px",
           fontWeight: "bold",
           color: "black",
           zIndex: "10",
@@ -75,9 +76,9 @@ const PenguinPage = () => {
 const StyleQuestion = styled.div`
   position: absolute;
 
-  transform: translate(-50%, 0%);
-  top: 63%;
-  left: 74%;
+  transform: translate(0%, 0%);
+  bottom: 0px;
+  right: 35px;
 `;
 
 const move = keyframes`

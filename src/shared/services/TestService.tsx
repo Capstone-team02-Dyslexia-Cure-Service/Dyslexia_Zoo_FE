@@ -1,9 +1,12 @@
 import { AxiosResponse } from "axios";
+import { useNavigate } from "react-router";
 
-import { API, FORMAPI, useTestState, useLayoutState } from "@/shared";
+import { API, FORMAPI, useTestState, useLayoutState, PAGE_URL } from "@/shared";
 
 export const TestService = () => {
   const URL = "api/v1/test";
+
+  const navigate = useNavigate();
 
   const setTest = useTestState((state) => state.setTest);
 
@@ -17,6 +20,8 @@ export const TestService = () => {
     const { data } = (await API.get(`${URL}/create`, {
       headers: { numOfQuestions: 9 },
     })) as AxiosResponse<Question.TestResDto>;
+
+    console.log(data);
 
     setLoading(false);
     setTest(data);
@@ -43,9 +48,7 @@ export const TestService = () => {
 
     await API.post(
       `${URL}/interim_submit/write?testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
-      {
-        answer: answer,
-      }
+      answer
     );
 
     setLoading(false);
@@ -73,14 +76,14 @@ export const TestService = () => {
   const getTestResult = async (testId: number) => {
     setLoading("GETRESULT");
 
-    const {
-      data: { numCorrect },
-    } = await API.get(`${URL}/submit/testId=${testId}`);
+    const { data } = await API.get(`${URL}/submit/testId=${testId}`);
 
     setLoading(false);
 
-    if (numCorrect > 6) setSuccess(true);
-    else setFailure(numCorrect);
+    if (data > 6) {
+      setSuccess(true);
+    } else setFailure(data);
+    navigate(PAGE_URL.Home);
   };
 
   return {

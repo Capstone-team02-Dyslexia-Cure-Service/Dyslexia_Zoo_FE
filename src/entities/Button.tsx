@@ -41,7 +41,7 @@ export const SubmitButton = ({
 }) => (
   <LargeButton
     onClick={onClick}
-    style={color ? { background: color } : undefined}
+    style={color ? { background: color, border: "3px color solid" } : undefined}
   >
     <SubmitIcon />
   </LargeButton>
