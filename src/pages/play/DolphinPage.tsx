@@ -7,7 +7,7 @@ import { Background, FixContainer, TTSText, HomeButton } from "@/entities";
 
 import { Question } from "@/widgets";
 
-import { PlayService, usePlayState } from "@/shared";
+import { PlayService, usePlayState, useLayoutState } from "@/shared";
 
 const DolphinPage = () => {
   const [state, set] = useState(false);
@@ -17,10 +17,21 @@ const DolphinPage = () => {
     (state) => state.questionResponseType
   );
   const content = usePlayState((state) => state.content);
+  const success = useLayoutState((state) => state.success);
 
   useEffect(() => {
     getQuestion();
   }, []);
+
+  useEffect(() => {
+    if (success)
+      setTimeout(() => {
+        set(true);
+        setTimeout(() => {
+          set(false);
+        }, 4000);
+      }, 2000);
+  }, [success]);
 
   return (
     <>
@@ -45,21 +56,9 @@ const DolphinPage = () => {
 
       <FixContainer>
         {state ? (
-          <MoveDolphin
-            src="/img/dolphin.png"
-            alt="PENGUIN"
-            onClick={() => {
-              set(true);
-            }}
-          />
+          <MoveDolphin src="/img/dolphin.png" alt="PENGUIN" />
         ) : (
-          <Dolphin
-            src="/img/dolphin.png"
-            alt="PENGUIN"
-            onClick={() => {
-              set(true);
-            }}
-          />
+          <Dolphin src="/img/dolphin.png" alt="PENGUIN" />
         )}
       </FixContainer>
       {content ? (

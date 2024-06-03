@@ -25,6 +25,7 @@ export const Question = ({
         type={type}
         color={color}
         buttonColor={buttonColor}
+        easy
       />
     ) : questionType === "WRITE_WORD" ? (
       <WriteQuestion

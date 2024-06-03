@@ -5,6 +5,7 @@ export const useLayoutState = create<User.LayoutStore>((set) => ({
   message: false,
   success: false,
   failure: false,
+  loading: false,
 
   setMessage: (message) => {
     set(() => ({ message: message }));
@@ -16,5 +17,9 @@ export const useLayoutState = create<User.LayoutStore>((set) => ({
 
   setFailure: (on) => {
     set(() => ({ failure: on }));
+  },
+
+  setLoading: (on) => {
+    set(() => ({ loading: on }));
   },
 }));

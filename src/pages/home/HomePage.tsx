@@ -1,11 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-import {
-  Background,
-  StoreButton,
-  StatisticButton,
-  ResultLoading,
-} from "@/entities";
+import { Background, StoreButton, StatisticButton } from "@/entities";
 
 import { Animal, PenguinMove, DolphinMove, HungryStudy } from "@/widgets";
 
@@ -19,7 +14,7 @@ import {
 
 const HomePage = () => {
   const animals = useAnimalState((state) => state.animals);
-  const studyMovieUrl = useStudyState((state) => state.url);
+  const studyMovieUrl = useStudyState((state) => state.content);
   const setSuccess = useLayoutState((state) => state.setSuccess);
   const setFailure = useLayoutState((state) => state.setFailure);
   const [now, setNow] = useState<Date>(new Date());
@@ -29,7 +24,6 @@ const HomePage = () => {
   const dolphin = useRef<Animal.Animal>();
 
   useEffect(() => {
-    setFailure(1);
     loadAnimals();
   }, []);
 

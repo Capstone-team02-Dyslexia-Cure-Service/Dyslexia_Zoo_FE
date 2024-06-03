@@ -7,7 +7,7 @@ import { Background, FixContainer, TTSText, HomeButton } from "@/entities";
 
 import { Question } from "@/widgets";
 
-import { PlayService, usePlayState } from "@/shared";
+import { PlayService, usePlayState, useLayoutState } from "@/shared";
 
 const PenguinPage = () => {
   const [state, set] = useState(false);
@@ -17,10 +17,21 @@ const PenguinPage = () => {
     (state) => state.questionResponseType
   );
   const content = usePlayState((state) => state.content);
+  const success = useLayoutState((state) => state.success);
 
   useEffect(() => {
     getQuestion();
   }, []);
+
+  useEffect(() => {
+    if (success)
+      setTimeout(() => {
+        set(true);
+        setTimeout(() => {
+          set(false);
+        }, 4000);
+      }, 2000);
+  }, [success]);
 
   return (
     <>
@@ -42,21 +53,9 @@ const PenguinPage = () => {
 
       <FixContainer>
         {state ? (
-          <MovePenguin
-            src="/img/penguin_play.png"
-            alt="PENGUIN"
-            onClick={() => {
-              set(true);
-            }}
-          />
+          <MovePenguin src="/img/penguin_play.png" alt="PENGUIN" />
         ) : (
-          <Penguin
-            src="/img/penguin_play.png"
-            alt="PENGUIN"
-            onClick={() => {
-              set(true);
-            }}
-          />
+          <Penguin src="/img/penguin_play.png" alt="PENGUIN" />
         )}
       </FixContainer>
       {content ? (

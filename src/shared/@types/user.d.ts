@@ -43,8 +43,10 @@ declare namespace User {
     message: false | string;
     success: boolean;
     failure: boolean | number;
+    loading: false | "LOADCONTENT" | "GETRESULT";
     setMessage: (message: false | string) => void;
     setSuccess: (on: boolean) => void;
     setFailure: (on: boolean | number) => void;
+    setLoading: (on: false | "LOADCONTENT" | "GETRESULT") => void;
   }
 }

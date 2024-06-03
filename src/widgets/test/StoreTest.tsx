@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 
-import { WriteQuestion } from "../question/WriteQuestion";
-import { ReadQuestion } from "../question/ReadQuestion";
+import { TTSText } from "@/entities";
+import { Question } from "@/widgets";
 
 export const StoreTest = () => {
   return (
@@ -12,21 +12,36 @@ export const StoreTest = () => {
           <BackGroundImg src="/img/truck.png"></BackGroundImg>
           <TestBox>
             <TestContainer>
-              <WriteQuestion
-                key={"1"}
+              <TTSText
+                text={"실력을 뽐내봐!!"}
+                style={{
+                  fontSize: "70px",
+                  fontWeight: "bold",
+                  color: "#ff1515",
+                  marginBottom: "0px",
+                }}
+              />
+              <TTSText
+                text={"문제를 하나를 마무리할 때마다 체크 버튼을 눌러줘!"}
+                style={{
+                  fontSize: "30px",
+                  fontWeight: "bold",
+                  color: "black",
+                  marginBottom: "30px",
+                }}
+              />
+              <Question
                 content={"강민규"}
-                id={"1"}
-                questionType={"SELECTWORD"}
+                id={1}
+                questionType={"SELECT_WORD"}
                 type="TEST"
-                easy
                 color="#ff4444"
                 buttonColor="#ff1515"
               />
-              <ReadQuestion
-                key={"1"}
+              <Question
                 content={"강민규"}
-                id={"1"}
-                questionType={"SELECTWORD"}
+                id={1}
+                questionType={"SELECT_WORD"}
                 type="TEST"
                 color="#ff4444"
                 buttonColor="#ff1515"
@@ -44,7 +59,7 @@ const slideIn = keyframes`
         right: -100%;
     }
     to {
-        right: 50%;
+        right: 70%;
         transform: translateX(50%);
     }
 `;

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { WriteQuestion } from "@/widgets";
+import { Question } from "@/widgets";
 
 import {
   Background,
@@ -12,11 +12,12 @@ import {
 import { TestService, useTestState } from "@/shared";
 
 const BasicTestPage = () => {
-  const { getTest, submitTestAnswers } = TestService();
-  const testContent = useTestState((state) => state.testContent);
+  const { getBasicTest, getTestResult } = TestService();
+  const questions = useTestState((state) => state.questions);
+  const testId = useTestState((state) => state.testId);
 
   useEffect(() => {
-    getTest();
+    getBasicTest();
   }, []);
 
   return (
@@ -29,26 +30,32 @@ const BasicTestPage = () => {
             fontSize: "60px",
             fontWeight: "bold",
             color: "white",
-            marginBottom: "20px",
+            marginBottom: "0px",
           }}
         />
-        {testContent
-          ? testContent.questions.map(({ id, type, content }) => {
-              return type === "WRITEWORD" ? (
-                <WriteQuestion
-                  key={id}
-                  content={content}
-                  id={id}
-                  questionType={type}
-                  type="TEST"
-                  easy
-                />
-              ) : null;
-            })
+        <TTSText
+          text={"문제를 하나를 마무리할 때마다 체크 버튼을 눌러줘!"}
+          style={{
+            fontSize: "30px",
+            fontWeight: "bold",
+            color: "white",
+            marginBottom: "30px",
+          }}
+        />
+        {questions
+          ? questions.map(({ questionId, questionResponseType, content }) => (
+              <Question
+                key={questionId}
+                content={content}
+                id={questionId}
+                questionType={questionResponseType}
+                type="TEST"
+              />
+            ))
           : null}
         <SubmitButton
           onClick={() => {
-            submitTestAnswers();
+            getTestResult(testId);
           }}
         />
       </BasicTestContainer>

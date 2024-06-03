@@ -8,6 +8,9 @@ import { usePlayState } from "@/shared";
 export const QuestionFeedback = () => {
   const feedback = usePlayState((state) => state.feedback);
   const setFeedback = usePlayState((state) => state.setFeedback);
+  const handleLoadedMetadata = (event: any) => {
+    event.target.playbackRate = 0.8;
+  };
 
   return (
     <>
@@ -15,7 +18,12 @@ export const QuestionFeedback = () => {
         <Background>
           <Wrapper>
             <IntroVideo>
-              <Video autoPlay controls>
+              <Video
+                autoPlay
+                controls
+                loop
+                onLoadedMetadata={handleLoadedMetadata}
+              >
                 <source src={feedback.videoPath} type="video/mp4" />
               </Video>
               발음 영상을 가져오고 있어!

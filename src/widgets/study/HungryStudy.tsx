@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useRef } from "react";
 
 import { useStudyState, StudyService } from "@/shared";
 
@@ -14,6 +15,10 @@ import { useStudyState, StudyService } from "@/shared";
 export const HungryStudy = () => {
   const state = useStudyState((state) => state);
   const { animalFeed } = StudyService();
+  const count = useRef(0);
+  const handleLoadedMetadata = (event: any) => {
+    event.target.playbackRate = 0.8;
+  };
 
   return (
     <Background>
@@ -21,9 +26,14 @@ export const HungryStudy = () => {
         <IntroVideo>
           <Video
             autoPlay
+            onLoadedMetadata={handleLoadedMetadata}
             onEnded={() => {
-              state.id && animalFeed(state.id);
-              state.setStudy({ url: false, content: false, id: false });
+              count.current++;
+              if (count.current > 3) {
+                state.id && animalFeed(state.id);
+                state.setStudy({ url: false, content: false, id: false });
+                count.current = 0;
+              }
             }}
           >
             {state.url ? <source src={state.url} type="video/mp4" /> : null}

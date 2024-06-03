@@ -9,7 +9,7 @@ import { StoreTest } from "@/widgets";
 const StorePage = () => {
   const animals = useAnimalState((state) => state.animals);
   const { loadAnimals } = AnimalService();
-  const [onTest, setOnTest] = useState(false);
+  const [onTest, setOnTest] = useState(true);
 
   useEffect(() => {
     //loadAnimals();
@@ -26,7 +26,7 @@ const StorePage = () => {
           position: "absolute",
           top: "20px",
           left: "50%",
-          width: "980px",
+          width: "880px",
           transform: "translate(-50%, 0%)",
           fontSize: "50px",
           fontWeight: "bold",
@@ -34,7 +34,26 @@ const StorePage = () => {
           zIndex: "10",
         }}
       />
-      {-0 ? null : (
+
+      <TTSText
+        text={"아직 동물원에 도착하지 못했어"}
+        style={{
+          position: "absolute",
+          backgroundColor: "red",
+          borderLeft: "13px solid red",
+          borderRadius: "13px",
+          top: "300px",
+          left: "64%",
+          width: "645px",
+          transform: "translate(-50%, 0%)",
+          fontSize: "50px",
+          fontWeight: "bold",
+          color: "black",
+          zIndex: "2",
+        }}
+      />
+
+      {!animals ? null : (
         <Styles.StoreGrid>
           {animals.find((animal) => animal.animalType === "DOLPHIN") ? (
             <Styles.OffAnimalStoreImg
@@ -54,7 +73,7 @@ const StorePage = () => {
               alt="monkey_store"
             />
           ) : (
-            <Styles.AnimalStoreImg
+            <Styles.OffAnimalStoreImg
               src="/img/monkey_store.png"
               alt="monkey_store"
               onClick={() => setOnTest(true)}
@@ -66,7 +85,7 @@ const StorePage = () => {
               alt="seal_store"
             />
           ) : (
-            <Styles.AnimalStoreImg
+            <Styles.OffAnimalStoreImg
               src="/img/seal_store.png"
               alt="seal_store"
               onClick={() => setOnTest(true)}
