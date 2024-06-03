@@ -9,12 +9,16 @@ export const PlayService = () => {
   const setFeedback = usePlayState((state) => state.setFeedback);
 
   const setSuccess = useLayoutState((state) => state.setSuccess);
+  const setLoading = useLayoutState((state) => state.setLoading);
 
   const getQuestion = async () => {
+    setLoading("LOADCONTENT");
+
     const { data } = (await API.get(
       `${URL}`
     )) as AxiosResponse<Question.QuestionResDto>;
 
+    setLoading(false);
     setPlay(data);
   };
 
@@ -24,6 +28,8 @@ export const PlayService = () => {
     answer: File | string
   ) => {
     if (typeof answer === "string") {
+      setLoading("GETRESULT");
+
       const {
         data: { isCorrect, videoPath, speedFeedback, accuracyFeedback },
       } = (await API.post(
@@ -33,9 +39,12 @@ export const PlayService = () => {
         }
       )) as AxiosResponse<Question.QuestionSubmitResDto>;
 
+      setLoading(false);
       if (isCorrect) setSuccess(true);
       else setFeedback({ videoPath, speedFeedback, accuracyFeedback });
     } else {
+      setLoading("GETRESULT");
+
       const formData = new FormData();
       formData.append("answerFile", answer);
 
@@ -46,6 +55,7 @@ export const PlayService = () => {
         formData
       )) as AxiosResponse<Question.QuestionSubmitResDto>;
 
+      setLoading(false);
       if (isCorrect) setSuccess(true);
       else setFeedback({ videoPath, speedFeedback, accuracyFeedback });
     }

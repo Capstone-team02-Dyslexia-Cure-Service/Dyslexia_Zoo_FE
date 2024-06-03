@@ -8,7 +8,9 @@ export const UserService = () => {
   const URL = "api/v1";
   const setName = useUserState((state) => state.setName);
   const navigate = useNavigate();
+
   const setMessage = useLayoutState((state) => state.setMessage);
+
   const setStatisticData = useUserState((state) => state.setStatisticData);
 
   const signin = async (body: User.SignInReqDto) => {

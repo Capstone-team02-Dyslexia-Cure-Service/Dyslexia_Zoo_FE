@@ -1,4 +1,4 @@
-import LoadingComponent from "./ResultLoading";
+import LoadingComponent from "./StateLoading";
 
 export { Background } from "./Background";
 export {
@@ -24,7 +24,7 @@ export {
 export { Convas } from "./Convas";
 
 export { Loading } from "./Loading";
-export { ResultLoading } from "./ResultLoading";
+export { StateLoading } from "./StateLoading";
 
 export { Failure } from "./Failure";
 export { Success } from "./Success";
