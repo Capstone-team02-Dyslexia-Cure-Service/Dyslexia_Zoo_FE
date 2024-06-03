@@ -26,6 +26,7 @@ export { Convas } from "./Convas";
 export { Loading } from "./Loading";
 export { ResultLoading } from "./ResultLoading";
 
+export { Failure } from "./Failure";
 export { Success } from "./Success";
 
 export { TTSText } from "./TTSText";

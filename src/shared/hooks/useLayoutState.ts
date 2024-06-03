@@ -4,6 +4,7 @@ export const useLayoutState = create<User.LayoutStore>((set) => ({
   //State
   message: false,
   success: false,
+  failure: false,
 
   setMessage: (message) => {
     set(() => ({ message: message }));
@@ -11,5 +12,9 @@ export const useLayoutState = create<User.LayoutStore>((set) => ({
 
   setSuccess: (on) => {
     set(() => ({ success: on }));
+  },
+
+  setFailure: (on) => {
+    set(() => ({ failure: on }));
   },
 }));

@@ -42,7 +42,9 @@ declare namespace User {
   export interface LayoutStore {
     message: false | string;
     success: boolean;
+    failure: boolean | number;
     setMessage: (message: false | string) => void;
     setSuccess: (on: boolean) => void;
+    setFailure: (on: boolean | number) => void;
   }
 }
