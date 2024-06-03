@@ -3,7 +3,7 @@ import { AxiosResponse } from "axios";
 import { API, FORMAPI, usePlayState, useLayoutState } from "@/shared";
 
 export const PlayService = () => {
-  const URL = "/api/v1/question/one";
+  const URL = "/api/v1";
 
   const setPlay = usePlayState((state) => state.setPlay);
   const setFeedback = usePlayState((state) => state.setFeedback);
@@ -14,9 +14,9 @@ export const PlayService = () => {
   const getQuestion = async () => {
     setLoading("LOADCONTENT");
 
-    const { data } = (await API.get(
-      `${URL}`
-    )) as AxiosResponse<Question.QuestionResDto>;
+    const { data } = (await API.get(`${URL}/question/random_list`, {
+      headers: { numOfQuestions: 1 },
+    })) as AxiosResponse<Question.QuestionResDto>;
 
     setLoading(false);
     setPlay(data);
@@ -33,7 +33,7 @@ export const PlayService = () => {
       const {
         data: { isCorrect, videoPath, speedFeedback, accuracyFeedback },
       } = (await API.post(
-        `${URL}/questionId=${id}&questionResponseType=${questionResponseType}`,
+        `${URL}/solvingRecord/solve/one/write?questionId=${id}&questionResponseType=${questionResponseType}`,
         {
           answer: answer,
         }
@@ -51,7 +51,7 @@ export const PlayService = () => {
       const {
         data: { isCorrect, videoPath, speedFeedback, accuracyFeedback },
       } = (await FORMAPI.post(
-        `${URL}/questionId=${id}&questionResponseType=${questionResponseType}`,
+        `${URL}/solvingRecord/solve/one/read?questionId=${id}&questionResponseType=${questionResponseType}`,
         formData
       )) as AxiosResponse<Question.QuestionSubmitResDto>;
 

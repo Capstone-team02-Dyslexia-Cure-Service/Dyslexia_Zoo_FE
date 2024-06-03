@@ -1,5 +1,3 @@
-import LoadingComponent from "./StateLoading";
-
 export { Background } from "./Background";
 export {
   SoundButton,

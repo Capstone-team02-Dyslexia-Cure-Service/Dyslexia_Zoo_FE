@@ -42,7 +42,7 @@ export const TestService = () => {
     setLoading("GETRESULT");
 
     await API.post(
-      `${URL}/interim_submit/write/testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
+      `${URL}/interim_submit/write?testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
       {
         answer: answer,
       }
@@ -63,7 +63,7 @@ export const TestService = () => {
     formData.append("answerFile", answer);
 
     await FORMAPI.post(
-      `${URL}/interim_submit/read/testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
+      `${URL}/interim_submit/read?testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
       formData
     );
 

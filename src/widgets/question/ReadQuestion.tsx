@@ -13,12 +13,7 @@ import {
   SaveButton,
 } from "@/entities";
 
-import {
-  useTestState,
-  PlayService,
-  usePlayState,
-  useLayoutState,
-} from "@/shared";
+import { PlayService, usePlayState, useLayoutState } from "@/shared";
 
 import { useRecorder } from "@/utils";
 

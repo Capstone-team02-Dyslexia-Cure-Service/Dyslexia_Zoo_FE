@@ -9,7 +9,7 @@ export const usePlayState = create<Question.PlayStore>((set) => ({
 
   setPlay: (data) => {
     set(() => ({
-      id: data.questionId,
+      id: data.id,
       questionResponseType: data.questionResponseType,
       content: data.content,
       answer: undefined,

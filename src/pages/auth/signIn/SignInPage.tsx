@@ -4,8 +4,6 @@ import { Controller, useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-import { TTSText } from "@/entities";
-
 import { UserService } from "@/shared";
 
 const SignInPage = () => {

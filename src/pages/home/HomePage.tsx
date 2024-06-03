@@ -9,14 +9,11 @@ import {
   useAnimalState,
   AnimalService,
   useStudyState,
-  useLayoutState,
 } from "@/shared";
 
 const HomePage = () => {
   const animals = useAnimalState((state) => state.animals);
   const studyMovieUrl = useStudyState((state) => state.content);
-  const setSuccess = useLayoutState((state) => state.setSuccess);
-  const setFailure = useLayoutState((state) => state.setFailure);
   const [now, setNow] = useState<Date>(new Date());
   const { loadAnimals } = AnimalService();
 

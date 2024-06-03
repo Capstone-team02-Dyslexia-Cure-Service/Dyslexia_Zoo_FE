@@ -12,7 +12,7 @@ const StorePage = () => {
   const [onTest, setOnTest] = useState(true);
 
   useEffect(() => {
-    //loadAnimals();
+    loadAnimals();
   }, []);
 
   return (

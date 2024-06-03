@@ -12,7 +12,7 @@ import {
   DeleteButton,
 } from "@/entities";
 
-import { PlayService, usePlayState, useLayoutState } from "@/shared";
+import { PlayService, useLayoutState } from "@/shared";
 
 import { shuffle } from "@/utils";
 

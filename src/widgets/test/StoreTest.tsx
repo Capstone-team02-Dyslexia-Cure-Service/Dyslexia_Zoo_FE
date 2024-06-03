@@ -1,10 +1,20 @@
+import { useEffect } from "react";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 
-import { TTSText } from "@/entities";
+import { TTSText, SubmitButton } from "@/entities";
 import { Question } from "@/widgets";
+import { TestService, useTestState } from "@/shared";
 
 export const StoreTest = () => {
+  const { getTest, getTestResult } = TestService();
+  const questions = useTestState((state) => state.questions);
+  const testId = useTestState((state) => state.testId);
+
+  useEffect(() => {
+    getTest();
+  }, []);
+
   return (
     <>
       <Container>
@@ -30,21 +40,24 @@ export const StoreTest = () => {
                   marginBottom: "30px",
                 }}
               />
-              <Question
-                content={"강민규"}
-                id={1}
-                questionType={"SELECT_WORD"}
-                type="TEST"
+              {questions
+                ? questions.map(({ id, questionResponseType, content }) => (
+                    <Question
+                      key={id}
+                      content={content}
+                      id={id}
+                      questionType={questionResponseType}
+                      type="TEST"
+                      color="#ff4444"
+                      buttonColor="#ff1515"
+                    />
+                  ))
+                : null}
+              <SubmitButton
                 color="#ff4444"
-                buttonColor="#ff1515"
-              />
-              <Question
-                content={"강민규"}
-                id={1}
-                questionType={"SELECT_WORD"}
-                type="TEST"
-                color="#ff4444"
-                buttonColor="#ff1515"
+                onClick={() => {
+                  getTestResult(testId);
+                }}
               />
             </TestContainer>
           </TestBox>

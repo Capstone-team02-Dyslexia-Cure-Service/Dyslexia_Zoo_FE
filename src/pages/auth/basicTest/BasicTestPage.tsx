@@ -43,11 +43,11 @@ const BasicTestPage = () => {
           }}
         />
         {questions
-          ? questions.map(({ questionId, questionResponseType, content }) => (
+          ? questions.map(({ id, questionResponseType, content }) => (
               <Question
-                key={questionId}
+                key={id}
                 content={content}
-                id={questionId}
+                id={id}
                 questionType={questionResponseType}
                 type="TEST"
               />

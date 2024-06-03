@@ -21,7 +21,7 @@ declare namespace Question {
   export type TestResDto = { testId: number; questions: QuestionResDto[] };
 
   export interface QuestionResDto {
-    questionId: number;
+    id: number;
     questionResponseType: QuestionType;
     content: string;
   }
