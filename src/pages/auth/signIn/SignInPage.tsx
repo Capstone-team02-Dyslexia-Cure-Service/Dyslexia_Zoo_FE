@@ -35,6 +35,7 @@ const SignInPage = () => {
         <StyleButton type="submit" variant="contained">
           동물원 입장!
         </StyleButton>
+        <SignUp>혹시 동물원이 아직 없다면..</SignUp>
       </SignInForm>
       <MainImg src="/img/signin_logo.png" alt="signin_logo" />
     </>
@@ -79,6 +80,22 @@ const SunImg = styled.img`
   z-index: 1;
 `;
 
+const SignUp = styled.div`
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
+
+  margin-top: 10px;
+  margin-bottom: 2px;
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 1);
+
+  :hover {
+    margin-top: 12px;
+    margin-bottom: 0px;
+    text-shadow: none;
+  }
+`;
+
 const StyleInput = styled.input`
   background-color: white;
 
@@ -99,6 +116,7 @@ const StyleInput = styled.input`
 const StyleButton = styled(Button)`
   font-size: 19px;
   font-weight: bold;
+
   width: 230px;
   height: 45px;
 
