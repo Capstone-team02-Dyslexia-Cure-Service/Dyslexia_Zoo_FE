@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 
-import styled from "@emotion/styled";
-import { keyframes } from "@emotion/react";
-
 import { Background, FixContainer, TTSText, HomeButton } from "@/entities";
-
 import { Question, QuestionFeedback } from "@/widgets";
-
 import { PlayService, usePlayState, useLayoutState } from "@/shared";
+
+import * as Styles from "./Styles";
 
 const PenguinPage = () => {
   const [state, set] = useState(false);
@@ -54,78 +51,23 @@ const PenguinPage = () => {
 
       <FixContainer>
         {state ? (
-          <MovePenguin src="/img/penguin_play.png" alt="PENGUIN" />
+          <Styles.MovePenguin src="/img/penguin_play.png" alt="PENGUIN" />
         ) : (
-          <Penguin src="/img/penguin_play.png" alt="PENGUIN" />
+          <Styles.Penguin src="/img/penguin_play.png" alt="PENGUIN" />
         )}
       </FixContainer>
       {content ? (
-        <StyleQuestion>
+        <Styles.RightStyleQuestion>
           <Question
             content={content}
             id={id}
             questionType={questionResponseType}
             type="PLAY"
           />
-        </StyleQuestion>
+        </Styles.RightStyleQuestion>
       ) : null}
     </>
   );
 };
-
-const StyleQuestion = styled.div`
-  position: absolute;
-
-  transform: translate(0%, 0%);
-  bottom: 0px;
-  right: 35px;
-`;
-
-const move = keyframes`
-  0% {
-    transform: rotate(0deg);
-    animation-timing-function: linear;
-  }
-  10% {
-    transform: rotate(60deg);
-    animation-timing-function: linear;
-  }
-  30% {
-    transform: rotate(60deg);
-    animation-timing-function: linear;
-  }
-  40% {
-    top: 0%;
-    left: 60%;
-    transform: rotate(150deg);
-    animation-timing-function: linear;
-  }
-  65% {
-    top: 10%;
-    left: 70%;
-    transform: rotate(200deg);
-    animation-timing-function: linear;
-  }
-  100% {
-    top: 120%;
-    left: 76%;
-    transform: rotate(470deg);
-    animation-timing-function: linear;
-  }
-`;
-
-const Penguin = styled.img`
-  position: absolute;
-  top: 23%;
-  left: 0%;
-
-  width: 200px;
-
-  z-index: 10;
-`;
-
-const MovePenguin = styled(Penguin)`
-  animation: ${move} 4s 0s;
-`;
 
 export default PenguinPage;
