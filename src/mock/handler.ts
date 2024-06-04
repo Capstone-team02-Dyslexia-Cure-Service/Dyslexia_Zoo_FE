@@ -1,4 +1,4 @@
-import { http, HttpResponse, ResponseResolver } from "msw";
+/* import { http, HttpResponse, ResponseResolver } from "msw";
 
 const getBasicTest: ResponseResolver = () => {
   return HttpResponse.json<Question.TestResDto>({
@@ -30,4 +30,4 @@ const handlers = [
   http.get(import.meta.env.VITE_SERVER_URL + "/api/v1/play", getPlayQuestion),
 ];
 
-export default handlers;
+export default handlers; */

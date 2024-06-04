@@ -1,4 +1,4 @@
-import RecordRTC, { RecordRTCPromisesHandler } from "recordrtc";
+import RecordRTC from "recordrtc";
 import { convertBlobToFile } from "./createWavFile";
 
 const rtcSession: RecordRTC.Options = {
@@ -11,7 +11,7 @@ const rtcSession: RecordRTC.Options = {
   timeSlice: 1000,
 };
 
-function createAudioElement(blobUrl: string) {
+/* function createAudioElement(blobUrl: string) {
   const downloadEl = document.createElement("a");
   downloadEl.innerHTML = "download";
   downloadEl.download = "audio.wav";
@@ -24,7 +24,7 @@ function createAudioElement(blobUrl: string) {
   audioEl.appendChild(sourceEl);
   document.body.appendChild(audioEl);
   document.body.appendChild(downloadEl);
-}
+} */
 
 export const useRecorder = () => {
   //const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
