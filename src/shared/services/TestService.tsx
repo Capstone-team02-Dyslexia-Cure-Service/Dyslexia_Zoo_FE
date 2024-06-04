@@ -46,10 +46,12 @@ export const TestService = () => {
   ) => {
     setLoading("GETRESULT");
 
-    await API.post(
-      `${URL}/interim_submit/write?testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
-      answer
-    );
+    await API.post(`${URL}/interim_submit/write`, {
+      testId: testId,
+      answer: answer,
+      questionId: questionId,
+      questionResponseType: questionResponseType,
+    });
 
     setLoading(false);
   };
