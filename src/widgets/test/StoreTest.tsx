@@ -8,7 +8,7 @@ import { TestService, useTestState } from "@/shared";
 
 export const StoreTest = () => {
   const { getTest, getTestResult } = TestService();
-  const questions = useTestState((state) => state.questions);
+  const questions = useTestState((state) => state.questionList);
   const testId = useTestState((state) => state.testId);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export const StoreTest = () => {
                   fontSize: "70px",
                   fontWeight: "bold",
                   color: "#ff1515",
-                  marginBottom: "0px",
+                  marginBottom: "5px",
                 }}
               />
               <TTSText
@@ -37,7 +37,7 @@ export const StoreTest = () => {
                   fontSize: "30px",
                   fontWeight: "bold",
                   color: "black",
-                  marginBottom: "30px",
+                  marginBottom: "40px",
                 }}
               />
               {questions
@@ -109,17 +109,24 @@ const TestBox = styled.div`
 
   left: 537px;
   bottom: 58px;
-  width: 794px;
+  width: 804px;
   height: 435px;
-  border-top: 25px solid white;
-  border-bottom: 25px solid white;
+  border-top: 20px solid white;
+  border-bottom: 20px solid white;
 
   border-radius: 20px;
 
   overflow-y: scroll;
+  overflow-x: hidden;
 
   ::-webkit-scrollbar {
-    display: none;
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #dcdcdc;
   }
 `;
 

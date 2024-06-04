@@ -18,7 +18,7 @@ declare namespace Question {
   }
 
   //DTO
-  export type TestResDto = { testId: number; questions: QuestionResDto[] };
+  export type TestResDto = { testId: number; questionList: QuestionResDto[] };
 
   export interface QuestionResDto {
     id: number;
@@ -43,7 +43,7 @@ declare namespace Question {
   //Store
   export interface TestStore {
     testId: number;
-    questions: QuestionResDto[];
+    questionList: QuestionResDto[];
     answers: (File | string | undefined)[];
 
     setTest: (data: TestResDto) => void;

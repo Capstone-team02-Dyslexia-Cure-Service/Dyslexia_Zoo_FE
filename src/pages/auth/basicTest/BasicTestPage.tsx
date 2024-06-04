@@ -13,7 +13,7 @@ import { TestService, useTestState } from "@/shared";
 
 const BasicTestPage = () => {
   const { getBasicTest, getTestResult } = TestService();
-  const questions = useTestState((state) => state.questions);
+  const questions = useTestState((state) => state.questionList);
   const testId = useTestState((state) => state.testId);
 
   useEffect(() => {
