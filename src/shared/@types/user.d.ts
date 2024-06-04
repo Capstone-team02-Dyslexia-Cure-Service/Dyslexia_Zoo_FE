@@ -5,6 +5,13 @@ declare namespace User {
     password: string;
   }
 
+  export interface SignUpDto {
+    email: string;
+    password: string;
+    name: string;
+    age: number;
+  }
+
   export interface SignInResDto {
     id: number;
     name: string;
@@ -20,12 +27,22 @@ declare namespace User {
     solvingRecordIdList: number[];
     score: number;
   }[];
+
   /*   
   export interface SignInResDto {
     accessToken: string;
     refreshToken: string;
   } 
   */
+
+  //Form
+  export interface SignUpForm {
+    email: string;
+    password: string;
+    passwordCheck: string;
+    name: string;
+    age: number;
+  }
 
   //Variable
   export type StatisticData = { day: string; score: number }[];

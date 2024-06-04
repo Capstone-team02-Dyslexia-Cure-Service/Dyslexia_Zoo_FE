@@ -9,3 +9,5 @@ export { Question } from "./question/Question";
 export { StoreTest } from "./test/StoreTest";
 
 export { HungryStudy } from "./study/HungryStudy";
+
+export { SignUp } from "./signup/SignUp";

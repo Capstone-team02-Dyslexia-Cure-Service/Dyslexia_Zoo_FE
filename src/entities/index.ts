@@ -29,3 +29,5 @@ export { Success } from "./screen/Success";
 
 export { TTSText } from "./element/TTSText";
 export { StatusMessage } from "./element/StatusMessage";
+
+export { GrayBackground } from "./screen/GrayBackground";

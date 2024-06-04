@@ -39,7 +39,7 @@ export const SunImg = styled.img`
   z-index: 1;
 `;
 
-export const SignUp = styled.div`
+export const SignUpButton = styled.div`
   font-size: 17px;
   font-weight: bold;
   color: white;
@@ -70,6 +70,15 @@ export const StyleInput = styled.input`
   margin-top: 10px;
 
   font-size: 17px;
+
+  font-size: 16px;
+  text-align: center;
+  font-family: "Spoqa Han Sans Neo", "sans-seri";
+
+  ::placeholder {
+    font-family: "Spoqa Han Sans Neo", "sans-seri";
+    text-align: center;
+  }
 `;
 
 export const StyleButton = styled(Button)`
@@ -89,6 +98,8 @@ export const StyleButton = styled(Button)`
   margin-bottom: 5px;
 
   transition: opacity 1s linear;
+
+  font-family: "Spoqa Han Sans Neo", "sans-seri";
 
   :hover {
     background-color: #ff9614;
