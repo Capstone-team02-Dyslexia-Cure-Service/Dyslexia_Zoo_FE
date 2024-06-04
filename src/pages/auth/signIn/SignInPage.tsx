@@ -1,13 +1,12 @@
 import styled from "@emotion/styled";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 import { UserService } from "@/shared";
 
 const SignInPage = () => {
-  const { control, handleSubmit } = useForm<User.SignInReqDto>({
+  const { register, handleSubmit } = useForm<User.SignInReqDto>({
     defaultValues: {
       email: "",
       password: "",
@@ -24,58 +23,23 @@ const SignInPage = () => {
     <>
       <SunImg src="/img/sun.png" alt="signin_logo" />
       <SignInForm onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          name="email"
-          control={control}
-          render={({ field }) => (
-            <StyleInput
-              type="name"
-              label="이름"
-              variant="outlined"
-              {...field}
-            />
-          )}
+        <StyleInput
+          placeholder="아이디"
+          {...register("email", { required: "아이디를 입력해주세요!" })}
         />
-        <Controller
-          name="password"
-          control={control}
-          render={({ field }) => (
-            <StyleInput
-              type="password"
-              label="비밀번호"
-              variant="outlined"
-              {...field}
-            />
-          )}
+        <StyleInput
+          placeholder="비밀번호"
+          type="password"
+          {...register("password", { required: "비밀번호를 입력해주세요!" })}
         />
         <StyleButton type="submit" variant="contained">
-          로그인
+          동물원 입장!
         </StyleButton>
       </SignInForm>
       <MainImg src="/img/signin_logo.png" alt="signin_logo" />
     </>
   );
 };
-
-const StyleInput = styled(TextField)`
-  width: 240px;
-  margin-bottom: 10px;
-
-  background-color: white;
-
-  border-radius: 5px;
-`;
-
-const StyleButton = styled(Button)`
-  font-size: 17px;
-  width: 240px;
-
-  background-color: #ff9614;
-
-  :hover {
-    background-color: #ff8200;
-  }
-`;
 
 const SignInForm = styled.form`
   position: absolute;
@@ -113,6 +77,53 @@ const SunImg = styled.img`
   aspect-ratio: 1;
 
   z-index: 1;
+`;
+
+const StyleInput = styled.input`
+  background-color: white;
+
+  width: 220px;
+  height: 45px;
+
+  border: 0px white solid;
+  border-left: 5px white solid;
+  border-radius: 3px;
+
+  outline: none;
+
+  margin-top: 10px;
+
+  font-size: 17px;
+`;
+
+const StyleButton = styled(Button)`
+  font-size: 19px;
+  font-weight: bold;
+  width: 230px;
+  height: 45px;
+
+  background-color: #ff9614;
+
+  border: 0px;
+
+  box-shadow: 0px 5px 0 -0.5px black;
+
+  margin-top: 10px;
+  margin-bottom: 5px;
+
+  transition: opacity 1s linear;
+
+  :hover {
+    background-color: #ff9614;
+
+    border: 0px;
+
+    box-shadow: 0 0 0 0 black;
+    margin-top: 15px;
+    margin-bottom: 0px;
+
+    transition: 0s;
+  }
 `;
 
 export default SignInPage;
