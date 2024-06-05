@@ -4,7 +4,7 @@ declare namespace Question {
     | "SELECT_WORD"
     | "READ_WORD"
     | "WRITE_WORD"
-    | "READ_SENTENSE";
+    | "READ_SENTENCE";
 
   export interface TestAnswerInfo {
     id: sting;
@@ -47,7 +47,7 @@ declare namespace Question {
     answers: (File | string | undefined)[];
 
     setTest: (data: TestResDto) => void;
-    setAnswer: (index: number, data: File | string) => void;
+    setAnswer: (id: number, type: QuestionType, data: File | string) => void;
   }
 
   export interface PlayStore {

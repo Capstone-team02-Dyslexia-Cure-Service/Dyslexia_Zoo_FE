@@ -17,8 +17,6 @@ export const StudyService = () => {
       headers: { numOfQuestions: 1 },
     })) as AxiosResponse<Animal.GetStudyContentResDto>;
 
-    console.log(data);
-
     setLoading(false);
     setStudy({
       url: data[0].videoPath,

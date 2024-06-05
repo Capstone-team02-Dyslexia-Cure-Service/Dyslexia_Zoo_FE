@@ -15,7 +15,8 @@ declare namespace User {
   export interface SignInResDto {
     id: number;
     name: string;
-    level: stiring;
+    level: number;
+    isEvaluated: boolean;
 
     data?: { email?: sting };
   }
