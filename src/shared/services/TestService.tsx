@@ -24,8 +24,6 @@ export const TestService = () => {
       headers: { numOfQuestions: 9 },
     })) as AxiosResponse<Question.TestResDto>;
 
-    console.log(data);
-
     setLoading(false);
     setTest(data);
   };
@@ -36,8 +34,6 @@ export const TestService = () => {
     const { data } = (await API.get(`${URL}/create`, {
       headers: { numOfQuestions: 12 },
     })) as AxiosResponse<Question.TestResDto>;
-
-    console.log(data);
 
     setLoading(false);
     setTest(data);
@@ -95,8 +91,6 @@ export const TestService = () => {
     const { data } = await API.get(`${URL}/submit?testId=${testId}`);
 
     setLoading(false);
-
-    console.log(data);
 
     if (data < 6) {
       setSuccess(true);

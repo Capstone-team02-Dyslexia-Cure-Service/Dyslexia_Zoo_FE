@@ -8,7 +8,6 @@ export const usePlayState = create<Question.PlayStore>((set) => ({
   feedback: undefined,
 
   setPlay: (data) => {
-    console.log(data);
     set(() => ({
       id: data.id,
       questionResponseType: data.questionResponseType,

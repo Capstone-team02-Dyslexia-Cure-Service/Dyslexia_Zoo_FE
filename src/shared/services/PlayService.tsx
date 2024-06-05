@@ -18,8 +18,6 @@ export const PlayService = () => {
       headers: { numOfQuestions: 1 },
     })) as AxiosResponse<Question.QuestionResDto[]>;
 
-    console.log(data);
-
     setLoading(false);
     setPlay(data[0]);
   };
@@ -31,8 +29,6 @@ export const PlayService = () => {
   ) => {
     if (typeof answer === "string") {
       setLoading("GETRESULT");
-
-      console.log(answer);
 
       const {
         data: {
@@ -46,8 +42,6 @@ export const PlayService = () => {
         questionId: id,
         questionResponseType: questionResponseType,
       })) as AxiosResponse<Question.QuestionSubmitResDto>;
-
-      console.log(answerVideoFilePath);
 
       setLoading(false);
       if (isCorrect) setSuccess(true);
