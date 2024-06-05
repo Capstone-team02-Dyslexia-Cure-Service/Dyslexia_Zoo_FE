@@ -30,7 +30,7 @@ export const StateLoading = () => {
 export const LoadingWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
 
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
 

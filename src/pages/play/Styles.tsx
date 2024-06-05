@@ -82,7 +82,7 @@ const penguinMove = keyframes`
 export const LeftStyleQuestion = styled.div`
   position: absolute;
 
-  transform: translate(50%, 0%);
+  transform: translate(0%, 0%);
   bottom: 0px;
   left: 35px;
 `;
