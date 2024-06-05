@@ -48,7 +48,7 @@ const StorePage = () => {
           transform: "translate(-50%, 0%)",
           fontSize: "50px",
           fontWeight: "bold",
-          color: "black",
+          color: "white",
           zIndex: "2",
         }}
       />

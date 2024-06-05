@@ -35,6 +35,24 @@ export const UserService = () => {
     }
   };
 
+  const signUp = async (body: User.SignUpDto) => {
+    const { data } = (await API.post(
+      `${URL}/member/signup`,
+      body
+    )) as AxiosResponse<User.SignInResDto>;
+
+    if (data.data && data.data.email) {
+      setMessage(data.data.email);
+    } else {
+      setAccess(data.id);
+      setName(data.name);
+
+      if (!data.level || data.level === "NOT_EVALUATED")
+        navigate(PAGE_URL.BasicTest);
+      else navigate(PAGE_URL.Home);
+    }
+  };
+
   const loadStatisticData = async (pageNumber: number, size: number) => {
     const { data } = (await API.get(
       `${URL}/achievement/all?pageNumber=${pageNumber}&size=${size}`
@@ -43,5 +61,5 @@ export const UserService = () => {
     setStatisticData(data);
   };
 
-  return { signin, loadStatisticData };
+  return { signin, loadStatisticData, signUp };
 };

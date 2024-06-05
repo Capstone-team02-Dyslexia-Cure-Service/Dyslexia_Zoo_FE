@@ -1,4 +1,4 @@
-export { Background } from "./Background";
+export { Background } from "./screen/Background";
 export {
   SoundButton,
   SubmitButton,
@@ -10,7 +10,7 @@ export {
   StatisticButton,
   ExButton,
   DeleteButton,
-} from "./Button";
+} from "./element/Button";
 export {
   Container,
   RowContainer,
@@ -18,14 +18,16 @@ export {
   GraphContainer,
   BasicTestContainer,
   FixContainer,
-} from "./Container";
-export { Convas } from "./Convas";
+} from "./element/Container";
+export { Convas } from "./element/Convas";
 
-export { Loading } from "./Loading";
-export { StateLoading } from "./StateLoading";
+export { Loading } from "./screen/Loading";
+export { StateLoading } from "./screen/StateLoading";
 
-export { Failure } from "./Failure";
-export { Success } from "./Success";
+export { Failure } from "./screen/Failure";
+export { Success } from "./screen/Success";
 
-export { TTSText } from "./TTSText";
-export { StatusMessage } from "./StatusMessage";
+export { TTSText } from "./element/TTSText";
+export { StatusMessage } from "./element/StatusMessage";
+
+export { GrayBackground } from "./screen/GrayBackground";
