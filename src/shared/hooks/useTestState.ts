@@ -20,8 +20,13 @@ export const useTestState = create<Question.TestStore>()(
       });
     },
 
-    setAnswer: (index, data) => {
+    setAnswer: (id, type, data) => {
       set((state) => {
+        const index = state.questionList.findIndex(
+          (question) =>
+            question.id === id && question.questionResponseType === type
+        );
+
         state.answers[index] = data;
       });
     },

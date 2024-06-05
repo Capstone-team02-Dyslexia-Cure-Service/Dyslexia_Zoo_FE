@@ -11,6 +11,8 @@ export const useAnimalState = create<Animal.AnimalsStore>()(
       set(() => {
         const animals = [...get().animals];
 
+        console.log(hungerTimer);
+
         if (animals.find((animal) => animal.id === id))
           animals.find((animal) => animal.id === id)!.hungryTime = new Date(
             hungerTimer.split(".")[0]

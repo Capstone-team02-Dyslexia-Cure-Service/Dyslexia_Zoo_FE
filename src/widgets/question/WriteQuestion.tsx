@@ -12,7 +12,12 @@ import {
   DeleteButton,
 } from "@/entities";
 
-import { PlayService, useLayoutState } from "@/shared";
+import {
+  TestService,
+  useTestState,
+  PlayService,
+  useLayoutState,
+} from "@/shared";
 
 import { shuffle } from "@/utils";
 
@@ -35,6 +40,9 @@ export const WriteQuestion = ({
 }) => {
   const { submitQuestion } = PlayService();
 
+  const testId = useTestState((state) => state.testId);
+  const { submitWriteAnswer } = TestService();
+
   const setMessage = useLayoutState((state) => state.setMessage);
 
   const { register, handleSubmit, setValue } =
@@ -44,7 +52,7 @@ export const WriteQuestion = ({
     if (data.answer === undefined || data.answer === undefined)
       setMessage("정답을 기록하고 제출해주세요!");
     else if (type == "PLAY") submitQuestion(id, questionType, data.answer);
-    else console.log("Test");
+    else submitWriteAnswer(testId, id, questionType, data.answer);
   };
 
   const selectInput: string[] = [];

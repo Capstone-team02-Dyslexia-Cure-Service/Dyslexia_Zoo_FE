@@ -36,7 +36,7 @@ export const Question = ({
         color={color}
         buttonColor={buttonColor}
       />
-    ) : questionType === "READ_SENTENSE" || questionType === "READ_WORD" ? (
+    ) : questionType === "READ_SENTENCE" || questionType === "READ_WORD" ? (
       <ReadQuestion
         content={content}
         id={id}

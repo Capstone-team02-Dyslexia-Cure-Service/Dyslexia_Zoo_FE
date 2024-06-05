@@ -22,7 +22,7 @@ const HomePage = () => {
 
   useEffect(() => {
     loadAnimals();
-  }, []);
+  }, [studyMovieUrl]);
 
   useEffect(() => {
     setNow(new Date());

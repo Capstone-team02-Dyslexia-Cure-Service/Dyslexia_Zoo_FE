@@ -13,7 +13,13 @@ import {
   SaveButton,
 } from "@/entities";
 
-import { PlayService, usePlayState, useLayoutState } from "@/shared";
+import {
+  PlayService,
+  usePlayState,
+  useTestState,
+  TestService,
+  useLayoutState,
+} from "@/shared";
 
 import { useRecorder } from "@/utils";
 
@@ -32,9 +38,13 @@ export const ReadQuestion = ({
   color?: string;
   buttonColor?: string;
 }) => {
-  const setAnswer = usePlayState((state) => state.setAnswer);
+  const setPlayAnswer = usePlayState((state) => state.setAnswer);
   const answer = usePlayState((state) => state.answer);
   const { submitQuestion } = PlayService();
+
+  const testId = useTestState((state) => state.testId);
+  const setTestAnswer = useTestState((state) => state.setAnswer);
+  const { submitReadAnswer } = TestService();
 
   const setMessage = useLayoutState((state) => state.setMessage);
 
@@ -45,9 +55,10 @@ export const ReadQuestion = ({
   const { handleSubmit } = useForm<Question.WriteQuestionFrom>();
 
   const onSubmit: SubmitHandler<Question.ReadQuestionFrom> = () => {
-    if (answer === undefined) setMessage("정답을 기록하고 제출해주세요!");
-    else if (type == "PLAY") submitQuestion(id, questionType, answer);
-    else console.log("Test");
+    if (type === "PLAY" && answer === undefined)
+      setMessage("정답을 기록하고 제출해주세요!");
+    else if (type == "PLAY") submitQuestion(id, questionType, answer as File);
+    else submitReadAnswer(testId, id, questionType);
   };
 
   const StyleQuestionContainer = styled(QuestionContainer)`
@@ -78,19 +89,32 @@ export const ReadQuestion = ({
         ) : (
           <StopRecordButton
             color={buttonColor}
-            onClick={() => {
-              if (type === "PLAY")
-                stopRecorder(audioRecorder, (file: File) => {
-                  setAnswer(file);
-                });
-              else {
-                console.log("TEST");
-              }
-              setRecording(false);
-            }}
+            onClick={
+              type === "PLAY"
+                ? () => {
+                    stopRecorder(audioRecorder, (file: File) => {
+                      setPlayAnswer(file);
+                    });
+                    setRecording(false);
+                  }
+                : () => {
+                    stopRecorder(audioRecorder, (file: File) => {
+                      setTestAnswer(id, questionType, file);
+                      setPlayAnswer(file);
+                    });
+
+                    setRecording(false);
+                  }
+            }
           />
         )}
-        <Content>{content}</Content>
+        <Content
+          style={{
+            fontSize: questionType === "READ_SENTENCE" ? "26px" : "none",
+          }}
+        >
+          {content}
+        </Content>
         <SaveButton color={buttonColor} onClick={handleSubmit(onSubmit)} />
       </RowContainer>
     </StyleQuestionContainer>

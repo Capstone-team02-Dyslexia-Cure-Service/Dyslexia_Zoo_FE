@@ -20,6 +20,8 @@ const BasicTestPage = () => {
     getBasicTest();
   }, []);
 
+  console.log(questions);
+
   return (
     <>
       <Background src="/img/basictest_background.png" alt="background" />

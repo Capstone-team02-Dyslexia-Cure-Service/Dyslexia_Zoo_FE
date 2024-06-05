@@ -9,7 +9,7 @@ export const QuestionFeedback = () => {
   const feedback = usePlayState((state) => state.feedback);
   const setFeedback = usePlayState((state) => state.setFeedback);
   const handleLoadedMetadata = (event: any) => {
-    event.target.playbackRate = 0.6;
+    event.target.playbackRate = 0.7;
   };
 
   return (

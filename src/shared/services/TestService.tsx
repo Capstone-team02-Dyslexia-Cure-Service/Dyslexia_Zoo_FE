@@ -9,7 +9,10 @@ export const TestService = () => {
   const navigate = useNavigate();
 
   const setTest = useTestState((state) => state.setTest);
+  const answers = useTestState((state) => state.answers);
+  const questions = useTestState((state) => state.questionList);
 
+  const setMessage = useLayoutState((state) => state.setMessage);
   const setLoading = useLayoutState((state) => state.setLoading);
   const setSuccess = useLayoutState((state) => state.setSuccess);
   const setFailure = useLayoutState((state) => state.setFailure);
@@ -33,6 +36,8 @@ export const TestService = () => {
     const { data } = (await API.get(`${URL}/create`, {
       headers: { numOfQuestions: 12 },
     })) as AxiosResponse<Question.TestResDto>;
+
+    console.log(data);
 
     setLoading(false);
     setTest(data);
@@ -59,18 +64,27 @@ export const TestService = () => {
   const submitReadAnswer = async (
     testId: number,
     questionId: number,
-    questionResponseType: Question.QuestionType,
-    answer: File
+    questionResponseType: Question.QuestionType
   ) => {
     setLoading("GETRESULT");
 
-    const formData = new FormData();
-    formData.append("answerFile", answer);
-
-    await FORMAPI.post(
-      `${URL}/interim_submit/read?testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
-      formData
+    const index = questions.findIndex(
+      (question) =>
+        question.id === questionId &&
+        question.questionResponseType === questionResponseType
     );
+
+    if (index === -1 || answers[index] === undefined)
+      setMessage("정답을 기록하고 제출해주세요!");
+    else {
+      const formData = new FormData();
+      formData.append("answerFile", answers[index] as File);
+
+      await FORMAPI.post(
+        `${URL}/interim_submit/read?testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
+        formData
+      );
+    }
 
     setLoading(false);
   };
@@ -78,11 +92,13 @@ export const TestService = () => {
   const getTestResult = async (testId: number) => {
     setLoading("GETRESULT");
 
-    const { data } = await API.get(`${URL}/submit/testId=${testId}`);
+    const { data } = await API.get(`${URL}/submit?testId=${testId}`);
 
     setLoading(false);
 
-    if (data > 6) {
+    console.log(data);
+
+    if (data < 6) {
       setSuccess(true);
     } else setFailure(data);
     navigate(PAGE_URL.Home);
