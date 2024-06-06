@@ -62,8 +62,8 @@ export const ReadQuestion = ({
   };
 
   const StyleQuestionContainer = styled(QuestionContainer)`
-    background-color: ${color ? color : `#1f1fbd`};
-    border-color: ${color ? color : `#1f1fbd`};
+    background-color: ${color ? color : `#2121daad`};
+    border-color: ${color ? color : `#2121daad`};
   `;
 
   return (

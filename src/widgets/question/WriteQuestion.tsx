@@ -59,12 +59,12 @@ export const WriteQuestion = ({
 
   const StyleQuestionContainer = !easy
     ? styled(QuestionContainer)`
-        background-color: ${color ? color : `#2121da`};
-        border-color: ${color ? color : `#2121da`};
+        background-color: ${color ? color : `#2121daad`};
+        border-color: ${color ? color : `#2121daad`};
       `
     : styled(QuestionContainer)`
-        background-color: ${color ? color : `#2121da`};
-        border-color: ${color ? color : `#2121da`};
+        background-color: ${color ? color : `#2121daad`};
+        border-color: ${color ? color : `#2121daad`};
         height: 520px;
       `;
 

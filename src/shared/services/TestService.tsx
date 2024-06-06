@@ -76,6 +76,8 @@ export const TestService = () => {
       const formData = new FormData();
       formData.append("answerFile", answers[index] as File);
 
+      console.log(answers[index]);
+
       await FORMAPI.post(
         `${URL}/interim_submit/read?testId=${testId}&questionId=${questionId}&questionResponseType=${questionResponseType}`,
         formData
