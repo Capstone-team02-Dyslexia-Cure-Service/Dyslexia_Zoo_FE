@@ -46,7 +46,7 @@ export const UserService = () => {
       setAccess(data.id);
       setName(data.name);
 
-      if (!data.isEvalueted) navigate(PAGE_URL.BasicTest);
+      if (!data.isEvaluated) navigate(PAGE_URL.BasicTest);
       else navigate(PAGE_URL.Home);
     }
   };
