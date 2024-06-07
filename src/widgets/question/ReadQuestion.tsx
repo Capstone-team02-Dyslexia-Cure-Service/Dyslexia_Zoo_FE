@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import RecordRTC from "recordrtc";
+import AudioRecorder from "./Test";
 
 import styled from "@emotion/styled";
 
@@ -68,6 +69,7 @@ export const ReadQuestion = ({
 
   return (
     <StyleQuestionContainer onSubmit={handleSubmit(onSubmit)}>
+      <AudioRecorder></AudioRecorder>
       <TTSText
         text={"버튼을 누르고 아래 단어를 정확하게 발음해줘!"}
         style={{

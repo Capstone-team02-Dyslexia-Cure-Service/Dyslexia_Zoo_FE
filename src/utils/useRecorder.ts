@@ -1,9 +1,10 @@
 import RecordRTC from "recordrtc";
 import { convertBlobToFile } from "./createWavFile";
+import { createWavFile } from "./createWavFile";
 
 const rtcSession: RecordRTC.Options = {
   type: "audio",
-  mimeType: "audio/wav",
+  mimeType: "audio/webm",
   disableLogs: false,
   numberOfAudioChannels: 1,
   desiredSampRate: 16000,
@@ -11,7 +12,21 @@ const rtcSession: RecordRTC.Options = {
   timeSlice: 1000,
 };
 
-/* function createAudioElement(blobUrl: string) {
+/* const rtcSession = {
+  type: "audio",
+  mimeType: "audio/webm;codecs=pcm",
+  audio: true,
+  // recorderType: StereoAudioRecorder,
+  disableLogs: false,
+  numberOfAudioChannels: 1,
+  desiredSampRate: 16000,
+  bufferSize: 16384,
+  // sampleRate: 48000,
+  // desiredSampleRate: 16000,
+  timeSlice: 1000,
+}; */
+
+function createAudioElement(blobUrl: string) {
   const downloadEl = document.createElement("a");
   downloadEl.innerHTML = "download";
   downloadEl.download = "audio.wav";
@@ -24,7 +39,7 @@ const rtcSession: RecordRTC.Options = {
   audioEl.appendChild(sourceEl);
   document.body.appendChild(audioEl);
   document.body.appendChild(downloadEl);
-} */
+}
 
 export const useRecorder = () => {
   //const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -71,8 +86,15 @@ export const useRecorder = () => {
       // 녹음된 오디오 데이터를 Blob 객체로 가져오기
       const audioBlob = audioRecorder.current!.getBlob();
 
-      save(convertBlobToFile(audioBlob, "answerFile"));
-      //createAudioElement(window.URL.createObjectURL(audioBlob));
+      console.log(audioBlob);
+      console.log(createWavFile(audioBlob));
+
+      createWavFile(audioBlob).then((file) => {
+        save(convertBlobToFile(file, "answerFile"));
+        createAudioElement(
+          window.URL.createObjectURL(convertBlobToFile(file, "answerFile"))
+        );
+      });
     });
   };
 
