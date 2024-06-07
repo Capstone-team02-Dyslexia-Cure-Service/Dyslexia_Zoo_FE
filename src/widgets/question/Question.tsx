@@ -5,6 +5,7 @@ export const Question = ({
   content,
   id,
   questionType,
+  videoPath,
   type,
   color,
   buttonColor,
@@ -12,6 +13,7 @@ export const Question = ({
   content: string;
   id: number;
   questionType: Question.QuestionType;
+  videoPath: string;
   type: "TEST" | "PLAY";
   color?: string;
   buttonColor?: string;
@@ -22,6 +24,7 @@ export const Question = ({
         content={content}
         id={id}
         questionType={questionType}
+        videoPath={videoPath}
         type={type}
         color={color}
         buttonColor={buttonColor}
@@ -32,6 +35,7 @@ export const Question = ({
         content={content}
         id={id}
         questionType={questionType}
+        videoPath={videoPath}
         type={type}
         color={color}
         buttonColor={buttonColor}

@@ -48,7 +48,7 @@ export const SignUpButton = styled.div`
   margin-bottom: 2px;
   text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.5);
 
-  :hover {
+  :active {
     margin-top: 12px;
     margin-bottom: 0px;
     text-shadow: none;
@@ -101,7 +101,7 @@ export const StyleButton = styled(Button)`
 
   font-family: "Spoqa Han Sans Neo", "sans-seri";
 
-  :hover {
+  :active {
     background-color: #ff9614;
 
     border: 0px;

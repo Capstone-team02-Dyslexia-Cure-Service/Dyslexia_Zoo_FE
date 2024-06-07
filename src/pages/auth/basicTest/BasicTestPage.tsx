@@ -43,15 +43,18 @@ const BasicTestPage = () => {
           }}
         />
         {questions
-          ? questions.map(({ id, questionResponseType, content }) => (
-              <Question
-                key={id}
-                content={content}
-                id={id}
-                questionType={questionResponseType}
-                type="TEST"
-              />
-            ))
+          ? questions.map(
+              ({ id, questionResponseType, content, videoPath }) => (
+                <Question
+                  key={id}
+                  content={content}
+                  videoPath={videoPath}
+                  id={id}
+                  questionType={questionResponseType}
+                  type="TEST"
+                />
+              )
+            )
           : null}
         <SubmitButton
           onClick={() => {

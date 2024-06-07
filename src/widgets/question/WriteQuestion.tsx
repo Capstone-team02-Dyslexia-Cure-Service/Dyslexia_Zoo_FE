@@ -16,6 +16,7 @@ import {
   TestService,
   useTestState,
   PlayService,
+  usePlayState,
   useLayoutState,
 } from "@/shared";
 
@@ -25,6 +26,7 @@ export const WriteQuestion = ({
   content,
   id,
   questionType,
+  videoPath,
   type,
   easy,
   color,
@@ -33,11 +35,14 @@ export const WriteQuestion = ({
   content: string;
   id: number;
   questionType: Question.QuestionType;
+  videoPath: string;
   type: "TEST" | "PLAY";
   easy?: boolean;
   color?: string;
   buttonColor?: string;
 }) => {
+  console.log(videoPath);
+
   const { submitQuestion } = PlayService();
 
   const testId = useTestState((state) => state.testId);
@@ -80,7 +85,7 @@ export const WriteQuestion = ({
         }}
       />
       <RowContainer>
-        <SoundButton content={content} color={buttonColor} />
+        <SoundButton url={videoPath} color={buttonColor} />
         <AnswerInput color={buttonColor} {...register("answer")} />
         <SaveButton color={buttonColor} onClick={handleSubmit(onSubmit)} />
       </RowContainer>

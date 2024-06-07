@@ -17,7 +17,7 @@ export const HungryStudy = () => {
   const { animalFeed } = StudyService();
   const count = useRef(0);
   const handleLoadedMetadata = (event: any) => {
-    event.target.playbackRate = 0.7;
+    event.target.playbackRate = 0.8;
   };
 
   return (

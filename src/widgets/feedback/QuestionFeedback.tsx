@@ -18,7 +18,7 @@ export const QuestionFeedback = () => {
         <Background>
           <Wrapper>
             <IntroVideo>
-              <Video autoPlay loop onLoadedMetadata={handleLoadedMetadata}>
+              <Video autoPlay controls onLoadedMetadata={handleLoadedMetadata}>
                 <source src={feedback.videoPath} type="video/mp4" />
               </Video>
             </IntroVideo>
@@ -38,7 +38,7 @@ export const QuestionFeedback = () => {
                   style={{
                     background: "white",
                     width: "600px",
-                    height: "40px",
+                    height: "60px",
                     marginBottom: "20px",
                     fontSize: "20px",
                     fontWeight: "bold",
@@ -65,7 +65,7 @@ export const QuestionFeedback = () => {
               style={{
                 background: "white",
                 width: "580px",
-                height: "72px",
+                height: "120px",
                 marginBottom: "20px",
                 fontSize: "20px",
                 fontWeight: "bold",
@@ -93,7 +93,7 @@ export const QuestionFeedback = () => {
 };
 
 const Background = styled.div`
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.711);
   position: fixed;
   top: 0;
   left: 0;
@@ -109,7 +109,7 @@ const Background = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: #3627ff;
+  background-color: #2f25c5;
   width: 650px;
 
   display: flex;
@@ -136,7 +136,7 @@ const IntroVideo = styled.div`
 `;
 
 const Video = styled.video`
-  transform: scale(1.5);
+  transform: scale(1);
   width: 100%;
   height: 100%;
 
@@ -146,7 +146,7 @@ const Video = styled.video`
 `;
 
 const Button = styled(Container)`
-  background-color: #7878fd;
+  background-color: rgb(48, 48, 255);
 
   width: 600px;
   height: 45px;
@@ -162,7 +162,7 @@ const Button = styled(Container)`
   font-weight: bold;
   color: white;
 
-  &:hover {
+  &:active {
     box-shadow: none;
     margin-bottom: 24px;
     margin-top: 16px;

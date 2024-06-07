@@ -41,17 +41,20 @@ export const StoreTest = () => {
                 }}
               />
               {questions
-                ? questions.map(({ id, questionResponseType, content }) => (
-                    <Question
-                      key={id}
-                      content={content}
-                      id={id}
-                      questionType={questionResponseType}
-                      type="TEST"
-                      color="#ff4444"
-                      buttonColor="#ff1515"
-                    />
-                  ))
+                ? questions.map(
+                    ({ id, questionResponseType, content, videoPath }) => (
+                      <Question
+                        key={id}
+                        content={content}
+                        videoPath={videoPath}
+                        id={id}
+                        questionType={questionResponseType}
+                        type="TEST"
+                        color="#ff4444"
+                        buttonColor="#ff1515"
+                      />
+                    )
+                  )
                 : null}
               <SubmitButton
                 color="#ff4444"
