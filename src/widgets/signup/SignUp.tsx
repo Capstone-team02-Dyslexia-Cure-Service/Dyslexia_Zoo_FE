@@ -139,7 +139,7 @@ const StyleButton = styled(Button)`
 
   font-family: "Spoqa Han Sans Neo", "sans-seri";
 
-  :hover {
+  :active {
     background-color: #ff9614;
 
     border: 0px;

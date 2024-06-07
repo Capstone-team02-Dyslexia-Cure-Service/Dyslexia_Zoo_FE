@@ -23,6 +23,7 @@ declare namespace Question {
   export interface QuestionResDto {
     id: number;
     questionResponseType: QuestionType;
+    videoPath: string;
     content: string;
   }
 
@@ -54,6 +55,7 @@ declare namespace Question {
     id: number;
     questionResponseType: QuestionType;
     content: string;
+    videoPath: string;
     answer: File | string | undefined;
     feedback: Feedback | undefined;
 

@@ -23,7 +23,7 @@ export const AnimalStoreImg = styled.img`
 
   margin-bottom: 32px;
 
-  &:hover {
+  &:active {
     filter: none;
 
     margin-bottom: 22px;
@@ -37,7 +37,7 @@ export const OffAnimalStoreImg = styled(AnimalStoreImg)`
   margin-bottom: 22px;
   margin-top: 10px;
 
-  &:hover {
+  &:active {
     filter: brightness(0.4);
   }
 `;

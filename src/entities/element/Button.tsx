@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 import styled from "@emotion/styled";
 import HeadphonesIcon from "@mui/icons-material/Headphones";
@@ -11,26 +12,28 @@ import MicIcon from "@mui/icons-material/Mic";
 import StopIcon from "@mui/icons-material/Stop";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-import { speech } from "@/utils";
-
 import { Container } from "./Container";
 import { PAGE_URL } from "@/shared/configs/path";
 
 export const SoundButton = ({
-  content,
+  url,
   color,
 }: {
-  content: string;
+  url: string;
   color?: string;
-}) => (
-  <Button style={color ? { background: color } : undefined}>
-    <SoundIcon
-      onClick={() => {
-        speech(content);
-      }}
-    />
-  </Button>
-);
+}) => {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const playAudio = () => {
+    audioRef.current!.play();
+  };
+
+  return (
+    <Button style={color ? { background: color } : undefined}>
+      <SoundIcon onClick={playAudio} />
+      <audio src={url} ref={audioRef} />
+    </Button>
+  );
+};
 
 export const SubmitButton = ({
   onClick,
@@ -68,7 +71,7 @@ export const StartRecordButton = ({
   onClick: any;
   color?: string;
 }) => (
-  <Button onClick={onClick} style={color ? { background: color } : undefined}>
+  <Button onMouseUp={onClick} style={color ? { background: color } : undefined}>
     <StartRecordIcon />
   </Button>
 );
@@ -80,7 +83,7 @@ export const StopRecordButton = ({
   onClick: any;
   color?: string;
 }) => (
-  <Button onClick={onClick} style={color ? { background: color } : undefined}>
+  <Button onMouseUp={onClick} style={color ? { background: color } : undefined}>
     <StopRecordIcon />
   </Button>
 );
@@ -143,14 +146,14 @@ const Button = styled(Container)`
   height: 110px;
 
   border-radius: 5px;
-  margin-bottom: 2px;
+  margin-bottom: 16px;
 
-  box-shadow: 6px 8px 2px 0 black;
+  box-shadow: 0px 8px 4px 0 black;
 
-  &:hover {
+  &:active {
     box-shadow: 0 0 0 0 black;
-    margin-bottom: 0px;
-    margin-top: 2px;
+    margin-bottom: 8px;
+    margin-top: 8px;
   }
 `;
 
@@ -168,7 +171,7 @@ const WhiteButton = styled(Container)`
   font-size: 75px;
   font-weight: bold;
 
-  &:hover {
+  &:active {
     box-shadow: 0 0 0 0 black;
     margin: 32px 16px -2px 16px;
   }
@@ -183,7 +186,7 @@ const LargeButton = styled(Button)`
 
   margin-bottom: 32px;
 
-  &:hover {
+  &:active {
     box-shadow: 0 0 0 0 black;
     margin-bottom: 30px;
     margin-top: 2px;

@@ -14,6 +14,7 @@ const DolphinPage = () => {
     (state) => state.questionResponseType
   );
   const content = usePlayState((state) => state.content);
+  const videoPath = usePlayState((state) => state.videoPath);
   const success = useLayoutState((state) => state.success);
 
   useEffect(() => {
@@ -63,6 +64,7 @@ const DolphinPage = () => {
         <Styles.LeftStyleQuestion>
           <Question
             content={content}
+            videoPath={videoPath}
             id={id}
             questionType={questionResponseType}
             type="PLAY"
