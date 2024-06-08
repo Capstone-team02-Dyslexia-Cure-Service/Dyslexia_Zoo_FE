@@ -2,21 +2,18 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
 export const useAnimalState = create<Animal.AnimalsStore>()(
-  immer((set, get) => ({
+  immer((set) => ({
     //State
     animals: [],
 
     //Set function
     setAnimal: (id, animalType, description, nickname, hungerTimer) => {
-      set(() => {
-        const animals = [...get().animals];
-
-        if (animals.find((animal) => animal.id === id))
-          animals.find((animal) => animal.id === id)!.hungryTime = new Date(
-            hungerTimer.split(".")[0]
-          );
-        else {
-          animals.push({
+      set((state) => {
+        if (state.animals.find((animal) => animal.id === id)) {
+          state.animals.find((animal) => animal.id === id)!.hungryTime =
+            new Date(hungerTimer.split(".")[0]);
+        } else {
+          state.animals.push({
             id: id,
             animalType: animalType,
             description: description,
@@ -24,8 +21,6 @@ export const useAnimalState = create<Animal.AnimalsStore>()(
             hungryTime: new Date(hungerTimer.split(".")[0]),
           });
         }
-
-        return { animals: animals };
       });
     },
 

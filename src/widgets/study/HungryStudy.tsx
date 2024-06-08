@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRef } from "react";
 
+import { TTSText } from "@/entities";
 import { useStudyState, StudyService } from "@/shared";
 
 //영상에서 읽는 단어의 Text
@@ -23,6 +24,15 @@ export const HungryStudy = () => {
   return (
     <Background>
       <Wrapper>
+        <TTSText
+          text={"영상이 3번 재생되는 동안 공부해보자!"}
+          style={{
+            fontSize: "35px",
+            fontWeight: "bold",
+            color: "white",
+            marginBottom: "8px",
+          }}
+        />
         <IntroVideo>
           <Video
             autoPlay
@@ -64,8 +74,8 @@ const Background = styled.div`
 
 const Wrapper = styled.div`
   background-color: #3627ff;
-  width: 650px;
-  height: 550px;
+  width: 630px;
+  height: 585px;
 
   display: flex;
   flex-direction: column;

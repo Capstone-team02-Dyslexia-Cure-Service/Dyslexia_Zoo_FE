@@ -101,6 +101,10 @@ export const StyleButton = styled(Button)`
 
   font-family: "Spoqa Han Sans Neo", "sans-seri";
 
+  :hover {
+    background-color: #ff9614;
+  }
+
   :active {
     background-color: #ff9614;
 

@@ -40,8 +40,6 @@ export const WriteQuestion = ({
   color?: string;
   buttonColor?: string;
 }) => {
-  console.log(videoPath);
-
   const { submitQuestion } = PlayService();
 
   const testId = useTestState((state) => state.testId);
