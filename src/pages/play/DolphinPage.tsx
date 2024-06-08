@@ -44,7 +44,7 @@ const DolphinPage = () => {
           position: "absolute",
           top: "20px",
           left: "50%",
-          width: "800px",
+          width: "600px",
           transform: "translate(-50%, 0%)",
           fontSize: "40px",
           fontWeight: "bold",

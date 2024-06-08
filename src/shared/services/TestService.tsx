@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 
 import { API, FORMAPI, useTestState, useLayoutState, PAGE_URL } from "@/shared";
 
@@ -7,6 +7,7 @@ export const TestService = () => {
   const URL = "api/v1/test";
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const setTest = useTestState((state) => state.setTest);
   const answers = useTestState((state) => state.answers);
@@ -95,6 +96,12 @@ export const TestService = () => {
     if (data < 6) {
       setSuccess(true);
     } else setFailure(data);
+
+    //동물이 하나 있기 때문에 임시로 구현한 것, 변경 예정
+    if (location.pathname === "/store") {
+      await API.post("/api/v1/animal/buy", "DOLPHIN");
+    }
+
     navigate(PAGE_URL.Home);
   };
 

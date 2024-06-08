@@ -20,24 +20,24 @@ const dolphinMove = keyframes`
     opacity: 1;
   }
   40% {
-    top: 40%;
+    top: 33%;
     left: 65%;
     animation-timing-function: linear;
     transform: rotate(0deg);
   }
   60% {
-    top: 20%;
+    top: 16%;
     left: 40%;
     animation-timing-function: linear;
     transform: rotate(-60deg);
   }
   80% {
-    top: 40%;
+    top: 33%;
     left: 20%;
     animation-timing-function: linear;
   }
   100% {
-    top: 60%;
+    top: 63%;
     left: 5%;
     animation-timing-function: linear;
     transform: rotate(-80deg);
@@ -85,6 +85,8 @@ export const LeftStyleQuestion = styled.div`
   transform: translate(0%, 0%);
   bottom: 0px;
   left: 35px;
+
+  z-index: 4;
 `;
 
 export const RightStyleQuestion = styled.div`
@@ -115,14 +117,14 @@ export const MoveDolphin = styled(Dolphin)`
 export const RingFront = styled.img`
   position: absolute;
   top: 90px;
-  left: 675px;
+  left: 50%;
   z-index: 3;
 `;
 
 export const RingBack = styled.img`
   position: absolute;
   top: 20px;
-  left: 630px;
+  left: calc(50% - 47px);
 `;
 
 export const Penguin = styled.img`

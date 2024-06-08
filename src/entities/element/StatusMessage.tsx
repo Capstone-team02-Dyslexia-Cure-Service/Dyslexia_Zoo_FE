@@ -20,7 +20,7 @@ export const StatusMessage = () => {
 
 const MessageContainer = styled.div<{ show: boolean }>`
   display: ${({ show }) => (show ? "block" : "none")};
-  background-color: #4444ff;
+  background-color: #ff4444;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -32,4 +32,8 @@ const MessageContainer = styled.div<{ show: boolean }>`
   opacity: ${({ show }) => (show ? 1 : 0)};
 
   z-index: 100;
+
+  font-size: 25px;
+
+  box-shadow: 0px 8px 4px 0 #00000080;
 `;

@@ -4,13 +4,14 @@ import { useRef } from "react";
 import styled from "@emotion/styled";
 import HeadphonesIcon from "@mui/icons-material/Headphones";
 import CheckIcon from "@mui/icons-material/Check";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+//import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import MicIcon from "@mui/icons-material/Mic";
 import StopIcon from "@mui/icons-material/Stop";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import PublishIcon from "@mui/icons-material/Publish";
 
 import { Container } from "./Container";
 import { PAGE_URL } from "@/shared/configs/path";
@@ -48,9 +49,31 @@ export const SubmitButton = ({
       color ? { background: color, border: `3px ${color} solid` } : undefined
     }
   >
-    <SubmitIcon />
+    <SubmitIcon>시험 결과 확인하기!</SubmitIcon>
   </LargeButton>
 );
+
+/* export const SaveButton = ({
+  onClick,
+  color,
+}: {
+  onClick: any;
+  color?: string;
+}) => {
+  const [click, setClick] = useState(false);
+
+  return (
+    <Button
+      onClick={() => {
+        setClick(true);
+        onClick();
+      }}
+      style={color ? { background: color } : undefined}
+    >
+      {click ? <SaveCheckIcon /> : <SaveIcon />}
+    </Button>
+  );
+}; */
 
 export const SaveButton = ({
   onClick,
@@ -58,11 +81,27 @@ export const SaveButton = ({
 }: {
   onClick: any;
   color?: string;
-}) => (
-  <Button onClick={onClick} style={color ? { background: color } : undefined}>
-    <SaveIcon />
-  </Button>
-);
+}) => {
+  return (
+    <Button onClick={onClick} style={color ? { background: color } : undefined}>
+      <SaveIcon />
+    </Button>
+  );
+};
+
+export const SaveCheckButton = ({
+  onClick,
+  color,
+}: {
+  onClick: any;
+  color?: string;
+}) => {
+  return (
+    <Button onClick={onClick} style={color ? { background: color } : undefined}>
+      <SaveCheckIcon />
+    </Button>
+  );
+};
 
 export const StartRecordButton = ({
   onClick,
@@ -213,12 +252,18 @@ const StopRecordIcon = styled(StopIcon)`
   font-size: 100px;
 `;
 
-const SubmitIcon = styled(KeyboardArrowUpIcon)`
+const SubmitIcon = styled.div`
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+`;
+
+const SaveIcon = styled(PublishIcon)`
   color: white;
   font-size: 100px;
 `;
 
-const SaveIcon = styled(CheckIcon)`
+const SaveCheckIcon = styled(CheckIcon)`
   color: white;
   font-size: 100px;
 `;

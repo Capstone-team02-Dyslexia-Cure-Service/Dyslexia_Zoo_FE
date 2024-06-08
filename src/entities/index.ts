@@ -3,6 +3,7 @@ export {
   SoundButton,
   SubmitButton,
   SaveButton,
+  SaveCheckButton,
   StartRecordButton,
   StopRecordButton,
   HomeButton,

@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import hangul from "hangul-js";
 import styled from "@emotion/styled";
+import { useState } from "react";
 
 import {
   TTSText,
@@ -8,6 +9,7 @@ import {
   RowContainer,
   SoundButton,
   SaveButton,
+  SaveCheckButton,
   ExButton,
   DeleteButton,
 } from "@/entities";
@@ -40,21 +42,30 @@ export const WriteQuestion = ({
   color?: string;
   buttonColor?: string;
 }) => {
-  const { submitQuestion } = PlayService();
+  const { submitQuestion, getQuestion } = PlayService();
 
   const testId = useTestState((state) => state.testId);
   const { submitWriteAnswer } = TestService();
 
   const setMessage = useLayoutState((state) => state.setMessage);
 
+  const [isSubmit, setIsSubmit] = useState(false);
+
   const { register, handleSubmit, setValue } =
     useForm<Question.WriteQuestionFrom>();
 
   const onSubmit: SubmitHandler<Question.WriteQuestionFrom> = (data) => {
-    if (data.answer === undefined || data.answer === undefined)
+    console.log(data);
+    if (data.answer === undefined || data.answer === "")
       setMessage("정답을 기록하고 제출해주세요!");
-    else if (type == "PLAY") submitQuestion(id, questionType, data.answer);
-    else submitWriteAnswer(testId, id, questionType, data.answer);
+    else if (type == "PLAY") {
+      submitQuestion(id, questionType, data.answer);
+      getQuestion();
+      setValue("answer", "");
+    } else {
+      submitWriteAnswer(testId, id, questionType, data.answer);
+      setIsSubmit(true);
+    }
   };
 
   const selectInput: string[] = [];
@@ -84,7 +95,14 @@ export const WriteQuestion = ({
       <RowContainer>
         <SoundButton url={videoPath} color={buttonColor} />
         <AnswerInput color={buttonColor} {...register("answer")} />
-        <SaveButton color={buttonColor} onClick={handleSubmit(onSubmit)} />
+        {isSubmit ? (
+          <SaveCheckButton
+            color={buttonColor}
+            onClick={handleSubmit(onSubmit)}
+          />
+        ) : (
+          <SaveButton color={buttonColor} onClick={handleSubmit(onSubmit)} />
+        )}
       </RowContainer>
       {easy ? (
         <RowContainer>
