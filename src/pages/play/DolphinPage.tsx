@@ -25,16 +25,17 @@ const DolphinPage = () => {
   }, []);
 
   useEffect(() => {
-    if (success) idSuccess.current = true;
+    if (success && feedback !== undefined) idSuccess.current = true;
   }, [success]);
 
   useEffect(() => {
     if (feedback === undefined && idSuccess.current) {
       set(true);
-      idSuccess.current = false;
-      setTimeout(() => {
+      const timer = setTimeout(() => {
+        idSuccess.current = false;
         set(false);
       }, 4000);
+      return () => clearTimeout(timer);
     }
   }, [feedback]);
   return (
@@ -66,7 +67,7 @@ const DolphinPage = () => {
           <Styles.Dolphin src="/img/dolphin.png" alt="PENGUIN" />
         )}
       </FixContainer>
-      {content ? (
+      {!success && content && !state && !idSuccess.current ? (
         <Styles.LeftStyleQuestion>
           <Question
             content={content}

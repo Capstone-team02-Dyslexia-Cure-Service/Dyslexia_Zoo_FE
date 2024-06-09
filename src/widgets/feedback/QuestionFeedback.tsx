@@ -51,7 +51,7 @@ export const QuestionFeedback = () => {
               </>
             ) : null}
             <TTSText
-              text={"조금 더 정확하게 말하면 좋을 것 같아."}
+              text={"조금 더 정확하게 하면 좋을 것 같아."}
               style={{
                 fontSize: "27px",
                 fontWeight: "bold",

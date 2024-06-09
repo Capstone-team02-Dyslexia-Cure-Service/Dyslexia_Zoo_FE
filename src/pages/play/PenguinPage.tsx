@@ -25,16 +25,17 @@ const PenguinPage = () => {
   }, []);
 
   useEffect(() => {
-    if (success) idSuccess.current = true;
+    if (success && feedback !== undefined) idSuccess.current = true;
   }, [success]);
 
   useEffect(() => {
     if (feedback === undefined && idSuccess.current) {
       set(true);
-      idSuccess.current = false;
-      setTimeout(() => {
+      const timer = setTimeout(() => {
+        idSuccess.current = false;
         set(false);
       }, 4000);
+      return () => clearTimeout(timer);
     }
   }, [feedback]);
 
@@ -64,7 +65,7 @@ const PenguinPage = () => {
           <Styles.Penguin src="/img/penguin_play.png" alt="PENGUIN" />
         )}
       </FixContainer>
-      {content ? (
+      {!success && content && !state && !idSuccess.current ? (
         <Styles.RightStyleQuestion>
           <Question
             content={content}

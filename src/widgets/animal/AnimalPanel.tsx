@@ -87,7 +87,7 @@ const PanelContainer = styled(Container)`
   background: white;
 
   width: 250px;
-  height: 200px;
+  height: 220px;
 
   border: 0x solid black;
   border-radius: 5px;

@@ -76,8 +76,15 @@ export const PlayService = () => {
       )) as AxiosResponse<Question.QuestionSubmitResDto>;
 
       setLoading(false);
-      if (isCorrect) setSuccess(true);
-      else
+      if (isCorrect) {
+        console.log();
+        setFeedback({
+          videoPath: answerVideoFilePath,
+          speedFeedback,
+          accuracyFeedback,
+        });
+        setSuccess(true);
+      } else
         setFeedback({
           videoPath: answerVideoFilePath,
           speedFeedback,
