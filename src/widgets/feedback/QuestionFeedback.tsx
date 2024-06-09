@@ -50,15 +50,17 @@ export const QuestionFeedback = () => {
                 />
               </>
             ) : null}
-            <TTSText
-              text={"조금 더 정확하게 하면 좋을 것 같아."}
-              style={{
-                fontSize: "27px",
-                fontWeight: "bold",
-                color: "white",
-                marginBottom: "12px",
-              }}
-            />
+            {feedback.accuracyFeedback !== "잘했어!" ? (
+              <TTSText
+                text={"조금 더 정확하면 좋을 것 같아."}
+                style={{
+                  fontSize: "27px",
+                  fontWeight: "bold",
+                  color: "white",
+                  marginBottom: "12px",
+                }}
+              />
+            ) : null}
 
             <TTSText
               text={feedback.accuracyFeedback}
