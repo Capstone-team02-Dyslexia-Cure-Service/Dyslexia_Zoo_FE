@@ -38,7 +38,7 @@ export const ReadQuestion = ({
 }) => {
   const setPlayAnswer = usePlayState((state) => state.setAnswer);
   const answer = usePlayState((state) => state.answer);
-  const { submitQuestion, getQuestion } = PlayService();
+  const { submitQuestion } = PlayService();
 
   const testId = useTestState((state) => state.testId);
   const setTestAnswer = useTestState((state) => state.setAnswer);
@@ -55,7 +55,6 @@ export const ReadQuestion = ({
       setMessage("정답을 기록하고 제출해주세요!");
     else if (type == "PLAY") {
       submitQuestion(id, questionType, answer as File);
-      getQuestion();
     } else {
       submitReadAnswer(testId, id, questionType);
       setIsSubmit(true);

@@ -42,7 +42,7 @@ export const WriteQuestion = ({
   color?: string;
   buttonColor?: string;
 }) => {
-  const { submitQuestion, getQuestion } = PlayService();
+  const { submitQuestion } = PlayService();
 
   const testId = useTestState((state) => state.testId);
   const { submitWriteAnswer } = TestService();
@@ -60,7 +60,6 @@ export const WriteQuestion = ({
       setMessage("정답을 기록하고 제출해주세요!");
     else if (type == "PLAY") {
       submitQuestion(id, questionType, data.answer);
-      getQuestion();
       setValue("answer", "");
     } else {
       submitWriteAnswer(testId, id, questionType, data.answer);

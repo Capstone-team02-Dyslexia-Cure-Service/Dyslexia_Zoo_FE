@@ -34,6 +34,7 @@ const PenguinPage = () => {
       const timer = setTimeout(() => {
         idSuccess.current = false;
         set(false);
+        getQuestion();
       }, 4000);
       return () => clearTimeout(timer);
     }
