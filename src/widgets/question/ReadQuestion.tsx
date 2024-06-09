@@ -10,6 +10,7 @@ import {
   StartRecordButton,
   StopRecordButton,
   SaveButton,
+  SaveCheckButton,
 } from "@/entities";
 
 import {

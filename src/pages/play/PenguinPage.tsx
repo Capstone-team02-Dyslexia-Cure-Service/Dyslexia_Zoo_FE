@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { Background, FixContainer, TTSText, HomeButton } from "@/entities";
 import { Question, QuestionFeedback } from "@/widgets";
@@ -8,6 +8,8 @@ import * as Styles from "./Styles";
 
 const PenguinPage = () => {
   const [state, set] = useState(false);
+  const idSuccess = useRef(false);
+
   const { getQuestion } = PlayService();
   const id = usePlayState((state) => state.id);
   const questionResponseType = usePlayState(
@@ -16,20 +18,25 @@ const PenguinPage = () => {
   const content = usePlayState((state) => state.content);
   const videoPath = usePlayState((state) => state.videoPath);
   const success = useLayoutState((state) => state.success);
+  const feedback = usePlayState((state) => state.feedback);
 
   useEffect(() => {
     getQuestion();
   }, []);
 
   useEffect(() => {
-    if (success)
-      setTimeout(() => {
-        set(true);
-        setTimeout(() => {
-          set(false);
-        }, 4000);
-      }, 2000);
+    if (success) idSuccess.current = true;
   }, [success]);
+
+  useEffect(() => {
+    if (feedback === undefined && idSuccess.current) {
+      set(true);
+      idSuccess.current = false;
+      setTimeout(() => {
+        set(false);
+      }, 4000);
+    }
+  }, [feedback]);
 
   return (
     <>

@@ -83,7 +83,7 @@ export const QuestionFeedback = () => {
                 setFeedback(undefined);
               }}
             >
-              다시 한번 도전하기!
+              놀아주기로 돌아가기!
             </Button>
           </Wrapper>
         </Background>
