@@ -95,12 +95,12 @@ export const TestService = () => {
 
     if (data < 6) {
       setSuccess(true);
-    } else setFailure(data);
 
-    //동물이 하나 있기 때문에 임시로 구현한 것, 변경 예정
-    if (location.pathname === "/store") {
-      await API.post("/api/v1/animal/buy", "DOLPHIN");
-    }
+      //동물이 하나 있기 때문에 임시로 구현한 것, 변경 예정
+      if (location.pathname === "/store") {
+        await API.post("/api/v1/animal/buy", "DOLPHIN");
+      }
+    } else setFailure(data);
 
     navigate(PAGE_URL.Home);
   };
