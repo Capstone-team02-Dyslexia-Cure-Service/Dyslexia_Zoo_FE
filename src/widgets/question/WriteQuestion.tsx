@@ -111,8 +111,9 @@ export const WriteQuestion = ({
               setValue("answer", hangul.assemble(selectInput));
             }}
           ></DeleteButton>
-          {shuffle(hangul.disassemble(content)).map((value) => (
+          {shuffle(hangul.disassemble(content)).map((value, index) => (
             <ExButton
+              key={index}
               value={value}
               onClick={() => {
                 selectInput.push(value);

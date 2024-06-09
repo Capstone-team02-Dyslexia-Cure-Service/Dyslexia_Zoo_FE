@@ -50,6 +50,11 @@ export const ReadQuestion = ({
 
   const { handleSubmit } = useForm<Question.WriteQuestionFrom>();
 
+  //New
+  const [isRecording, setIsRecording] = useState(false);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const audioChunksRef = useRef<Blob[]>([]);
+
   const onSubmit: SubmitHandler<Question.ReadQuestionFrom> = () => {
     if (type === "PLAY" && answer === undefined)
       setMessage("정답을 기록하고 제출해주세요!");
@@ -60,11 +65,6 @@ export const ReadQuestion = ({
       setIsSubmit(true);
     }
   };
-
-  //New
-  const [isRecording, setIsRecording] = useState(false);
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const audioChunksRef = useRef<Blob[]>([]);
 
   const startRecording = async () => {
     try {
@@ -77,7 +77,9 @@ export const ReadQuestion = ({
       };
 
       mediaRecorderRef.current.start();
+
       setIsRecording(true);
+      console.log("!?");
     } catch (error) {
       console.error("Error accessing microphone:", error);
     }

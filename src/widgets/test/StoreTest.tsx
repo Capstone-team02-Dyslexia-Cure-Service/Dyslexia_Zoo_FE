@@ -44,7 +44,7 @@ export const StoreTest = () => {
                 ? questions.map(
                     ({ id, questionResponseType, content, videoPath }) => (
                       <Question
-                        key={id}
+                        key={`${id}-${questionResponseType}`}
                         content={content}
                         videoPath={videoPath}
                         id={id}
