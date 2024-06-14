@@ -38,12 +38,12 @@ const HomePage = () => {
         style={{
           position: "absolute",
 
-          top: "10px",
-          left: "30px",
+          top: "6px",
+          left: "20px",
 
-          fontSize: "40px",
+          fontSize: "50px",
           fontWeight: "bold",
-          color: "#5eb4ff",
+          color: "#549fe1",
 
           textAlign: "center",
         }}
@@ -53,12 +53,12 @@ const HomePage = () => {
         style={{
           position: "absolute",
 
-          top: "90px",
-          left: "30px",
+          top: "35px",
+          left: "340px",
 
-          fontSize: "25px",
+          fontSize: "23px",
           fontWeight: "bold",
-          color: "white",
+          color: "#5eb4ff",
 
           textAlign: "center",
         }}
