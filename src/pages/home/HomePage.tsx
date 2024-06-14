@@ -38,7 +38,7 @@ const HomePage = () => {
         style={{
           position: "absolute",
 
-          top: "6px",
+          top: "8px",
           left: "20px",
 
           fontSize: "50px",
