@@ -38,7 +38,7 @@ const HomePage = () => {
         style={{
           position: "absolute",
 
-          top: "8px",
+          top: "9px",
           left: "20px",
 
           fontSize: "50px",
@@ -53,7 +53,7 @@ const HomePage = () => {
         style={{
           position: "absolute",
 
-          top: "35px",
+          top: "34px",
           left: "340px",
 
           fontSize: "23px",
