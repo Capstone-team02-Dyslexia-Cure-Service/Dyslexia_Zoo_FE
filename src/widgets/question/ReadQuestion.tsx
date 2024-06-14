@@ -223,7 +223,11 @@ export const ReadQuestion = ({
   return (
     <StyleQuestionContainer onSubmit={handleSubmit(onSubmit)}>
       <TTSText
-        text={"버튼을 누르고 아래 단어를 정확하게 발음해줘!"}
+        text={
+          questionType === "READ_WORD"
+            ? "버튼을 누르고 아래 단어를 정확하게 발음해줘!"
+            : "버튼을 누르고 아래 문장을 정확하게 발음해줘!"
+        }
         style={{
           fontSize: "33px",
           fontWeight: "bold",

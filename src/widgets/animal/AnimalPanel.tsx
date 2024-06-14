@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { TTSText, Container } from "@/entities";
 import { StudyService } from "@/shared";
@@ -30,11 +31,13 @@ export const AnimalPanel = ({
   return (
     <PanelContainer
       style={{
-        top: `${mouseY - 270}px`,
+        top: `${mouseY - 300}px`,
         left: `${mouseX + 50}px`,
       }}
     >
-      <Close onClick={onClose}>X</Close>
+      <Close onClick={onClose}>
+        <CloseIcon />
+      </Close>
       <TTSText
         text={name}
         style={{
@@ -46,13 +49,13 @@ export const AnimalPanel = ({
       <TTSText
         text={info}
         style={{
-          width: "98%",
+          width: "99%",
           height: "90px",
 
           wordBreak: "break-all",
 
-          marginBottom: "14px",
-          marginTop: "10px",
+          marginBottom: "4px",
+          marginTop: "7px",
 
           fontSize: "17px",
           textAlign: "center",
@@ -87,7 +90,7 @@ const PanelContainer = styled(Container)`
   background: white;
 
   width: 250px;
-  height: 220px;
+  height: 260px;
 
   border: 0x solid black;
   border-radius: 5px;
@@ -97,8 +100,9 @@ const PanelContainer = styled(Container)`
 
 const Button = styled.button`
   width: 100%;
-  height: 50px;
-  margin-top: 5px;
+  height: 40px;
+
+  margin-top: 13px;
 
   background-color: #0000cd;
 
@@ -108,9 +112,28 @@ const Button = styled.button`
 
   border: 0px;
   border-radius: 5px;
+
+  box-shadow: 0px 5px 0 -0.5px black;
+
+  :active {
+    background-color: #0000cd;
+
+    border: 0px;
+
+    box-shadow: 0 0 0 0 black;
+    margin-top: 18px;
+    margin-bottom: -5px;
+
+    transition: 0s;
+  }
 `;
 
 const DisableButton = styled(Button)`
+  margin-top: 18px;
+  margin-bottom: -5px;
+
+  box-shadow: 0 0 0 0 black;
+
   background-color: gray;
 `;
 
@@ -122,8 +145,10 @@ const Close = styled.button`
   border: 0px;
 
   top: 8px;
-  right: 6px;
+  right: 5px;
 
   font-size: 20px;
   font-weight: bold;
+
+  color: black;
 `;
