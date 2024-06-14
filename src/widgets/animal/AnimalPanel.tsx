@@ -140,12 +140,12 @@ const DisableButton = styled(Button)`
 const Close = styled.button`
   position: absolute;
 
-  background-color: none;
+  background-color: transparent;
 
   border: 0px;
 
   top: 8px;
-  right: -3px;
+  right: -6px;
 
   font-size: 20px;
   font-weight: bold;
