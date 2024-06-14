@@ -151,4 +151,8 @@ const Close = styled.button`
   font-weight: bold;
 
   color: black;
+
+  :active {
+    background-color: transparent;
+  }
 `;

@@ -58,7 +58,7 @@ export const SignUpButton = styled.div`
 export const StyleInput = styled.input`
   background-color: white;
 
-  width: 220px;
+  width: 210px;
   height: 45px;
 
   border: 0px white solid;
