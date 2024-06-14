@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-import { Background, StoreButton, StatisticButton } from "@/entities";
+import { Background, StoreButton, StatisticButton, TTSText } from "@/entities";
 
 import { Animal, PenguinMove, DolphinMove, HungryStudy } from "@/widgets";
 
@@ -33,6 +33,36 @@ const HomePage = () => {
   return (
     <>
       <Background src="/img/home_background.png" alt="background" />
+      <TTSText
+        text={"Dyslexia Zoo"}
+        style={{
+          position: "absolute",
+
+          top: "10px",
+          left: "30px",
+
+          fontSize: "40px",
+          fontWeight: "bold",
+          color: "#5eb4ff",
+
+          textAlign: "center",
+        }}
+      />
+      <TTSText
+        text={"동물원 속 문장, 단어를 클릭하면 발음을 확인할 수 있어!"}
+        style={{
+          position: "absolute",
+
+          top: "20px",
+          right: "30px",
+
+          fontSize: "25px",
+          fontWeight: "bold",
+          color: "gray",
+
+          textAlign: "center",
+        }}
+      />
       {studyMovieUrl ? <HungryStudy /> : null}
       {penguin.current ? (
         <Animal
