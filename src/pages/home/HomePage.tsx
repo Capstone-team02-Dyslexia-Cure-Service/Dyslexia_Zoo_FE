@@ -53,12 +53,12 @@ const HomePage = () => {
         style={{
           position: "absolute",
 
-          top: "34px",
-          left: "340px",
+          top: "96px",
+          left: "20px",
 
           fontSize: "23px",
           fontWeight: "bold",
-          color: "#5eb4ff",
+          color: "white",
 
           textAlign: "center",
         }}
