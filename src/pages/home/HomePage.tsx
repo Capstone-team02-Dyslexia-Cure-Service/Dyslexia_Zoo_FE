@@ -54,7 +54,7 @@ const HomePage = () => {
           position: "absolute",
 
           top: "96px",
-          left: "20px",
+          left: "23px",
 
           fontSize: "23px",
           fontWeight: "bold",
