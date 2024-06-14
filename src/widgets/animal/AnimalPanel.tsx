@@ -135,6 +135,10 @@ const DisableButton = styled(Button)`
   box-shadow: 0 0 0 0 black;
 
   background-color: gray;
+
+  :active {
+    background-color: gray;
+  }
 `;
 
 const Close = styled.button`
